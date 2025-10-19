@@ -1,0 +1,16 @@
+@layer utilities {
+  .util-form-group-no-label {
+    @apply mt-7;
+  }
+  .util-radio-group-horizontal,
+  .util-radio-group-horizontal--top-space {
+    @apply flex items-center gap-4;
+  }
+  .util-radio-group-horizontal--top-space {
+    @apply mt-3;
+  }
+  .util-divider-inset {
+    /* ? Debe ser el mismo valor del padding horizontal de `body` del componente `UCard` */
+    @apply px-4;
+  }
+}

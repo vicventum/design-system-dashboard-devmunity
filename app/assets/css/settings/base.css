@@ -1,0 +1,38 @@
+@layer base {
+  * {
+    /* @apply border-neutral-300; */
+  }
+  body {
+    @apply overflow-x-hidden scroll-smooth text-pretty text-neutral-950;
+    scrollbar-gutter: stable;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance;
+  }
+
+  label {
+    @apply block cursor-pointer text-sm font-medium text-neutral-800;
+  }
+
+  ::-webkit-scrollbar {
+    @apply size-1;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-primary-400 transition-colors;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::selection {
+    @apply !bg-primary-500 text-neutral-50;
+  }
+  ::-moz-selection {
+    @apply !bg-primary-500 text-neutral-50;
+  }
+}

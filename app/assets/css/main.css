@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@import "./settings/variables.css";
+@import "./settings/colors.css";
+@import "./settings/base.css";
+@import "./settings/utilities.css";
