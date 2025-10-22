@@ -29,6 +29,13 @@ export default defineNuxtConfig({
     //   }
     // },
 
+    // components: [
+    //     {
+    //         path: '~/components',
+    //         pathPrefix: false,
+    //     },
+    // ],
+
     eslint: {
         config: {
             stylistic: {
