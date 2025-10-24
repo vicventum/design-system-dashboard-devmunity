@@ -38,6 +38,7 @@ export const Default: Story = {
             return { args }
         },
         template: `
+        <UButton>Button</UButton>
       <ACard v-bind="args">
         <template #header>
           <div class="p-4">
