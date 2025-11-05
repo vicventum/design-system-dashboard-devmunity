@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "commit": "cz"
   },
   "release": {
     "branches": [
@@ -53,9 +54,16 @@
     "@semantic-release/git": "^10.0.1",
     "@storybook/addon-docs": "8.0.8",
     "@storybook/addon-links": "8.0.8",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "prettier": "3.6.2",
     "prettier-plugin-tailwindcss": "0.7.1",
     "semantic-release": "^25.0.1",
     "storybook": "8.0.8"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
