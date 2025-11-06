@@ -13,7 +13,7 @@
                 </template>
             </ACard>
             <UCard variant="ghost"> oli </UCard>
-            test
+            test 1
         </ACardInner>
     </div>
 </template>
