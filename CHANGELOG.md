@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.0.5...v0.0.6) (2025-11-06)
+
+
+### Bug Fixes
+
+* test 1 ([2a1248b](https://github.com/vicventum/design-system-dashboard-devmunity/commit/2a1248ba5b7b6ab724418cc14e2a654df5ae2e37))
+
 ## [0.0.5](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.0.4...v0.0.5) (2025-11-05)
 
 
