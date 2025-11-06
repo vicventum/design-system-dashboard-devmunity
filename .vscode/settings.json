@@ -1,23 +1,27 @@
 {
-    "files.associations": {
-        "*.css": "tailwindcss"
-    },
-    "editor.quickSuggestions": {
-        "strings": "on"
-    },
-    "tailwindCSS.classAttributes": [
-        "class",
-        "ui",
-        ".*Styles*",
-        ".*Styles: .*", // <-- This should fix your issue.
-    ],
-    "tailwindCSS.experimental.classRegex": [
-        [
-            "ui:\\s*{([^)]*)\\s*}",
-            "(?:'|\"|`)([^']*)(?:'|\"|`)"
-        ]
-    ],
-    "editor.tabSize": 4,
-    "editor.stickyTabStops": true,
-    "references.preferredLocation": "view"
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "ui",
+    ".*Styles*",
+    ".*Styles: .*", // <-- This should fix your issue.
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "ui:\\s*{([^)]*)\\s*}",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ]
+  ],
+  "editor.tabSize": 4,
+  "editor.stickyTabStops": true,
+  "references.preferredLocation": "view",
+  "conventionalCommits.scopes": [
+    "dev-infra",
+    "vscode-extension"
+  ]
 }
