@@ -1,4 +1,4 @@
-<script setup>
+<script lang="jsx" setup>
 import { computed } from 'vue'
 import { twMerge } from 'tailwind-merge'
 

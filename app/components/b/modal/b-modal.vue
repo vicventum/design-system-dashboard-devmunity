@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { resolveComponent } from 'vue'
 import { twMerge } from 'tailwind-merge'
 

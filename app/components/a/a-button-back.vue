@@ -5,7 +5,7 @@ const props = defineProps({
         default: 'heroicons:arrow-left-16-solid',
         required: false,
     },
-    href: {
+    to: {
         type: String,
         default: '',
         required: false,
@@ -22,12 +22,12 @@ const router = useRouter()
 
 function handleClickLeftButtonIcon() {
     emit('on-click')
-    if (props.isBackAction && !props.href && props.icon.includes('arrow-left')) {
+    if (props.isBackAction && !props.to && props.icon.includes('arrow-left')) {
         router.back()
     }
 }
 </script>
 
 <template>
-    <UButton :to="href" :icon="icon" variant="icon" color="neutral" @click="handleClickLeftButtonIcon" />
+    <UButton :to="to" :icon="icon" variant="icon" color="neutral" @click="handleClickLeftButtonIcon" />
 </template>
