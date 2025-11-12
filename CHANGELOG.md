@@ -1,3 +1,11 @@
+# [0.1.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.0.6...v0.1.0) (2025-11-12)
+
+
+### Features
+
+* **components:** :sparkles: Cambia estructura de componentes y agrega nuevo componente AButtonBack ([c3ad2e9](https://github.com/vicventum/design-system-dashboard-devmunity/commit/c3ad2e9fe85f0aa97049ecb6cb2667f6dd1f9c20))
+* **components:** :sparkles: Crea componente BCardHeader ([7e3292f](https://github.com/vicventum/design-system-dashboard-devmunity/commit/7e3292fd60f94b2cc83941f14c6a1b0795d46961))
+
 ## [0.0.6](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.0.5...v0.0.6) (2025-11-06)
 
 
