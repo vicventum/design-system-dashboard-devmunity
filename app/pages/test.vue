@@ -2,8 +2,8 @@
 
 <template>
     <div class="h-screen">
-        <ACardInner class="h-full">
-            <ACard :has-footer-divider="false">
+        <BCardInner class="h-full">
+            <BCard :has-footer-divider="false">
                 <template #header>
                     <h1>Header</h1>
                 </template>
@@ -11,9 +11,9 @@
                 <template #footer>
                     <p>Footer</p>
                 </template>
-            </ACard>
+            </BCard>
             <UCard variant="ghost"> oli </UCard>
-            test 1
-        </ACardInner>
+            <AButtonBack icon="heroicons:arrow-left-16-solid" is-back-action />
+        </BCardInner>
     </div>
 </template>
