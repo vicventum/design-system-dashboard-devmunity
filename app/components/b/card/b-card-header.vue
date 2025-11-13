@@ -12,19 +12,9 @@ const props = defineProps({
         default: '',
         required: false,
     },
-    hasBorder: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
     variant: {
         type: String,
         default: 'main', // main, secondary
-        required: false,
-    },
-    variantSubtitle: {
-        type: String,
-        default: 'main',
         required: false,
     },
     hasLeftButtonIcon: {
@@ -68,8 +58,7 @@ function handleClickLeftButtonIcon() {
     <BCardInner
         :class="[
             'flex items-center justify-between',
-            { 'bg-neutral-50': variant === 'secondary' },
-            { 'border-y border-neutral-200': hasBorder && variant === 'secondary' },
+            { 'bg-muted border-y border-neutral-200': variant === 'secondary' },
         ]"
     >
         <div class="space-y-1">
@@ -99,7 +88,7 @@ function handleClickLeftButtonIcon() {
                 v-if="subtitle"
                 class="text-sm font-medium"
                 :class="{
-                    'text-neutral-400': variant === 'secondary',
+                    'text-dimmed': variant === 'secondary',
                 }"
             >
                 {{ subtitle }}

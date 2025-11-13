@@ -23,7 +23,12 @@
                 <template #header>
                     <BCardHeader title="Crear una nueva actividad" subtitle="Subtitle" has-left-button-icon>
                         <template #actions>
-                            <UButton label="Action" />
+                            <DActionButtons
+                                primary-button-text="Guardar"
+                                secondary-button-text="Cancelar"
+                                secondary-button-icon="heroicons:pencil"
+                                is-block-buttons
+                            />
                         </template>
                     </BCardHeader>
                 </template>
@@ -38,20 +43,27 @@
                     title="Crear una nueva actividad"
                     subtitle="Subtitle"
                     variant="secondary"
-                    variant-subtitle="secondary"
                     class="my-6"
                     class-title=""
-                    has-border
                 >
                     <template #actions>
                         <UButton label="Action" />
                     </template>
                 </BCardHeader>
 
-                <BCardInner>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eos perspiciatis
-                    asperiores suscipit voluptate magni excepturi. Doloribus in fugit quam voluptatibus,
-                    molestiae maxime illum explicabo ut corrupti, distinctio atque dolor.
+                <BCardInner class="space-y-2">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eos perspiciatis
+                        asperiores suscipit voluptate magni excepturi. Doloribus in fugit quam voluptatibus,
+                        molestiae maxime illum explicabo ut corrupti, distinctio atque dolor.
+                    </p>
+
+                    <DActionButtons
+                        primary-button-text="Guardar"
+                        secondary-button-text="Cancelar"
+                        secondary-button-icon="heroicons:pencil"
+                        is-block-buttons
+                    />
                 </BCardInner>
             </BCard>
         </UContainer>
