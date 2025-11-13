@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="jsx" setup>
+const modelIsOpenModal = ref(false)
+</script>
 
 <template>
     <div class="h-screen">
@@ -66,6 +68,22 @@
                     />
                 </BCardInner>
             </BCard>
+
+            <hr class="my-6" />
+
+            <UButton label="Open modal" @click="modelIsOpenModal = !modelIsOpenModal" />
+
+            <BModal v-model="modelIsOpenModal" title="Marcar como completada" class-button="justify-end">
+                <!-- <template #header> header </template> -->
+
+                <p class="h-screen">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam pariatur, suscipit
+                    veritatis delectus architecto hic non quidem ducimus, cum ex alias obcaecati enim maiores
+                    animi nesciunt, perferendis commodi in quae.
+                </p>
+
+                <!-- <template #footer> footer </template> -->
+            </BModal>
         </UContainer>
     </div>
 </template>

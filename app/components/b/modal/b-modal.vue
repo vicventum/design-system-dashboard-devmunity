@@ -32,7 +32,7 @@ const props = defineProps({
     },
     primaryButtonColor: {
         type: String,
-        default: 'color-primary',
+        default: 'primary',
         required: true,
     },
     secondaryButtonText: {
@@ -65,9 +65,9 @@ const props = defineProps({
         default: false,
         required: false,
     },
-    classButton: {
+    classButtons: {
         type: String,
-        default: 'form',
+        default: '',
         required: false,
     },
     hasBodyExpanded: {
@@ -130,40 +130,34 @@ watch(
 </script>
 
 <template>
-    <UModal v-model="isOpen" :ui="uiStyles">
-        <component :is="state ? UForm : 'section'" v-bind="formProps" @submit="handleSubmit">
-            <BCard :ui="{ footer: { padding: 'p-0 sm:p-0' } }" :has-body-expanded="hasBodyExpanded">
-                <template #header>
-                    <slot v-if="$slots.header" name="header" />
-                    <BCardHeader v-else :title="title" size="sm">
-                        <template #actions>
-                            <UButton icon="heroicons:x-mark" variant="icon" @click="isOpen = false" />
-                        </template>
-                    </BCardHeader>
-                </template>
+    <UModal v-model:open="isOpen" title="Title" description="Description" :ui="uiStyles">
+        <template #header>
+            <slot v-if="$slots.header" name="header" />
+        </template>
 
-                <BCardInner v-if="text" class="p-6">
+        <template #body>
+            <component :is="state ? UForm : 'section'" v-bind="formProps" @submit="handleSubmit">
+                <p v-if="text">
                     {{ text }}
-                </BCardInner>
+                </p>
                 <slot v-else />
+            </component>
+        </template>
 
-                <template v-if="hasFooter" #footer>
-                    <slot v-if="$slots.footer" name="footer" />
-                    <BCardInner v-else>
-                        <ABlockActionButtons
-                            :class="twMerge('flex justify-start gap-x-2', classButton)"
-                            :primary-button-color="primaryButtonColor"
-                            :primary-button-text="primaryButtonText"
-                            :secondary-button-text="secondaryButtonText"
-                            :width-buttons="widthButtons"
-                            :is-block-buttons="isBlockButtons"
-                            :is-primary-button-disabled="isPrimaryButtonDisabled"
-                            @on-click-primary-button="handleClickPrimaryButton"
-                            @on-click-secondary-button="handleClickSecondaryButton"
-                        />
-                    </BCardInner>
-                </template>
-            </BCard>
-        </component>
+        <template v-if="hasFooter" #footer>
+            <slot v-if="$slots.footer" name="footer" />
+            <DActionButtons
+                v-else
+                :class="twMerge('flex w-full justify-end gap-x-2', classButtons)"
+                :primary-button-color="primaryButtonColor"
+                :primary-button-text="primaryButtonText"
+                :secondary-button-text="secondaryButtonText"
+                :width-buttons="widthButtons"
+                :is-block-buttons="isBlockButtons"
+                :is-primary-button-disabled="isPrimaryButtonDisabled"
+                @on-click-primary-button="handleClickPrimaryButton"
+                @on-click-secondary-button="handleClickSecondaryButton"
+            />
+        </template>
     </UModal>
 </template>
