@@ -7,6 +7,11 @@ const props = defineProps({
         default: () => '',
         required: false,
     },
+    classButtons: {
+        type: [String, Object, Array],
+        default: () => '',
+        required: false,
+    },
     primaryButtonText: {
         type: String,
         default: '',
@@ -37,17 +42,12 @@ const props = defineProps({
         default: '',
         required: false,
     },
-    widthButtons: {
-        type: String,
-        default: 'w-[150px]',
-        required: false,
-    },
-    isReverse: {
+    hasButtonsBlock: {
         type: Boolean,
         default: false,
         required: false,
     },
-    isBlockButtons: {
+    isReverse: {
         type: Boolean,
         default: false,
         required: false,
@@ -65,14 +65,10 @@ const props = defineProps({
 })
 const emit = defineEmits(['on-click-primary-button', 'on-click-secondary-button'])
 
-const WITH_BUTTONS_DEFAULT = 'w-[150px]'
-
 const classCard = computed(() => twMerge('flex gap-x-4', props.class, props.isReverse && 'flex-row-reverse'))
-const classButton = computed(() => [
-    'justify-center',
-    { 'flex-auto': props.isBlockButtons },
-    props.widthButtons || WITH_BUTTONS_DEFAULT,
-])
+const classButtonsComputed = computed(() =>
+    twMerge('justify-center w-[150px]', props.hasButtonsBlock && 'flex-auto', props.classButtons)
+)
 </script>
 
 <template>
@@ -82,7 +78,7 @@ const classButton = computed(() => [
             :to="secondaryButtonTo"
             :label="secondaryButtonText"
             :disabled="isSecondaryButtonDisabled"
-            :class="classButton"
+            :class="classButtonsComputed"
             variant="outline"
             color="neutral"
             @click="$emit('on-click-secondary-button')"
@@ -94,7 +90,7 @@ const classButton = computed(() => [
             :icon="primaryButtonIcon"
             :color="primaryButtonColor"
             :disabled="isPrimaryButtonDisabled"
-            :class="classButton"
+            :class="classButtonsComputed"
             type="submit"
             trailing
             @click="$emit('on-click-primary-button')"

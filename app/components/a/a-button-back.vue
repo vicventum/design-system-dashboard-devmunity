@@ -10,10 +10,10 @@ const props = defineProps({
         default: '',
         required: false,
     },
-    isBackAction: {
+    hasBackAction: {
         type: Boolean,
         default: false,
-        required: true,
+        required: false,
     },
 })
 
@@ -22,7 +22,7 @@ const router = useRouter()
 
 function handleClickLeftButtonIcon() {
     emit('on-click')
-    if (props.isBackAction && !props.to && props.icon.includes('arrow-left')) {
+    if (props.hasBackAction && !props.to && props.icon.includes('arrow-left')) {
         router.back()
     }
 }

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="jsx" setup>
 import { resolveComponent } from 'vue'
 import { twMerge } from 'tailwind-merge'
 
@@ -45,22 +45,12 @@ const props = defineProps({
         default: true,
         required: false,
     },
-    width: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    widthButtons: {
-        type: String,
-        default: 'w-40',
-        required: false,
-    },
     isPrimaryButtonDisabled: {
         type: Boolean,
         default: false,
         required: false,
     },
-    isBlockButtons: {
+    hasButtonsBlock: {
         type: Boolean,
         default: false,
         required: false,
@@ -68,11 +58,6 @@ const props = defineProps({
     classButtons: {
         type: String,
         default: '',
-        required: false,
-    },
-    hasBodyExpanded: {
-        type: Boolean,
-        default: false,
         required: false,
     },
 })
@@ -92,11 +77,18 @@ const formRef = defineModel('formRef', {
     required: false,
 })
 
-// Data
-
-const uiStyles = reactive({})
-
 // Computed
+
+// const uiStyles = computed(() => {
+//     const baseStyles = {}
+
+//     // Apply width styles
+//     if (props.width) {
+//         baseStyles.width = `${props.width}`
+//     }
+
+//     return baseStyles
+// })
 
 const formProps = computed(() => {
     // return props.data ? { ref: 'form', state: props.data, onSubmit: handleSubmit } : {}
@@ -115,22 +107,10 @@ function handleClickSecondaryButton() {
     isOpen.value = false
     emit('on-click-secondary-button')
 }
-
-// Watch
-
-watch(
-    () => props.width,
-    (width) => {
-        if (!width) return null
-
-        Object.assign(uiStyles, { width: `${props.width}` })
-    },
-    { immediate: true }
-)
 </script>
 
 <template>
-    <UModal v-model:open="isOpen" title="Title" description="Description" :ui="uiStyles">
+    <UModal v-model:open="isOpen" title="Title" description="Description">
         <template #header>
             <slot v-if="$slots.header" name="header" />
         </template>
@@ -148,13 +128,13 @@ watch(
             <slot v-if="$slots.footer" name="footer" />
             <DActionButtons
                 v-else
-                :class="twMerge('flex w-full justify-end gap-x-2', classButtons)"
                 :primary-button-color="primaryButtonColor"
                 :primary-button-text="primaryButtonText"
                 :secondary-button-text="secondaryButtonText"
-                :width-buttons="widthButtons"
-                :is-block-buttons="isBlockButtons"
+                :is-buttons-block="hasButtonsBlock"
                 :is-primary-button-disabled="isPrimaryButtonDisabled"
+                :class="twMerge('flex w-full justify-end gap-x-2', classButtons)"
+                class-buttons="w-40"
                 @on-click-primary-button="handleClickPrimaryButton"
                 @on-click-secondary-button="handleClickSecondaryButton"
             />

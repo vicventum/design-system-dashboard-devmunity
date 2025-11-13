@@ -64,7 +64,8 @@ const modelIsOpenModal = ref(false)
                         primary-button-text="Guardar"
                         secondary-button-text="Cancelar"
                         secondary-button-icon="heroicons:pencil"
-                        is-block-buttons
+                        class-buttons="w-[200px]"
+                        has-buttons-block
                     />
                 </BCardInner>
             </BCard>
@@ -73,7 +74,12 @@ const modelIsOpenModal = ref(false)
 
             <UButton label="Open modal" @click="modelIsOpenModal = !modelIsOpenModal" />
 
-            <BModal v-model="modelIsOpenModal" title="Marcar como completada" class-button="justify-end">
+            <BModal
+                v-model="modelIsOpenModal"
+                title="Marcar como completada"
+                class-button="justify-end"
+                class="w-[700px]"
+            >
                 <!-- <template #header> header </template> -->
 
                 <p class="h-screen">
