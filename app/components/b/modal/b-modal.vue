@@ -20,6 +20,11 @@ const props = defineProps({
         default: '',
         required: true,
     },
+    description: {
+        type: String,
+        default: '',
+        required: true,
+    },
     text: {
         type: String,
         default: '',
@@ -110,7 +115,7 @@ function handleClickSecondaryButton() {
 </script>
 
 <template>
-    <UModal v-model:open="isOpen" title="Title" description="Description">
+    <UModal v-model:open="isOpen" :title="title" :description="description">
         <template #header>
             <slot v-if="$slots.header" name="header" />
         </template>

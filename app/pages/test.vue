@@ -1,5 +1,11 @@
 <script lang="jsx" setup>
+import { CModalDanger } from '#components'
+
 const modelIsOpenModal = ref(false)
+const overlay = useOverlay()
+
+// Abriendo modal de forma programática (mientras no sea necesario pasar slots)
+const modalDanger = overlay.create(CModalDanger)
 </script>
 
 <template>
@@ -73,6 +79,20 @@ const modelIsOpenModal = ref(false)
             <hr class="my-6" />
 
             <UButton label="Open modal" @click="modelIsOpenModal = !modelIsOpenModal" />
+            <!-- <UButton label="Open modal danger" @click="modelIsOpenModalDanger = !modelIsOpenModalDanger" /> -->
+            <UButton
+                label="Open modal danger"
+                color="error"
+                @click="
+                    modalDanger.open({
+                        title: 'Title Danger',
+                        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui aut exercitationem necessitatibus, perspiciatis vel suscipit nam. Facilis, placeat! Dicta quo eveniet rerum officiis quibusdam laborum error necessitatibus sequi itaque praesentium.',
+                        onOnClickSecondaryButton: () => {
+                            modalDanger.close()
+                        },
+                    })
+                "
+            />
 
             <BModal
                 v-model="modelIsOpenModal"

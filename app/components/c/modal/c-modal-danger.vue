@@ -5,7 +5,17 @@ const props = defineProps({
         default: null,
         required: false,
     },
+    schema: {
+        type: Object,
+        default: null,
+        required: false,
+    },
     title: {
+        type: String,
+        default: '',
+        required: true,
+    },
+    description: {
         type: String,
         default: '',
         required: true,
@@ -42,16 +52,16 @@ const isOpen = defineModel({
     <BModal
         v-model="isOpen"
         :title="title"
+        :text="text"
         :primary-button-text="primaryButtonText"
         :secondary-button-text="secondaryButtonText"
-        primary-button-color="color-danger"
+        :state="state"
+        :schema="schema"
+        primary-button-color="error"
         is-block-buttons
         @on-click-primary-button="emit('on-click-primary-button')"
         @on-click-secondary-button="emit('on-click-secondary-button')"
     >
-        <template v-if="text">
-            {{ text }}
-        </template>
-        <slot v-else />
+        <slot v-if="!text" />
     </BModal>
 </template>
