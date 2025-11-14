@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.1.0...v0.2.0) (2025-11-14)
+
+
+### Features
+
+* **components:** :sparkles: Crea componente BModal ([6218f3a](https://github.com/vicventum/design-system-dashboard-devmunity/commit/6218f3aeeeb0695b05c00c64da6c3212b07afa08))
+* **components:** :sparkles: Crea componente CModalDanger ([1e3f7bb](https://github.com/vicventum/design-system-dashboard-devmunity/commit/1e3f7bb8778f970268b08043d70fef0fb0e7b10e))
+* **components:** :sparkles: Crea componente DActionButtons ([f7725cb](https://github.com/vicventum/design-system-dashboard-devmunity/commit/f7725cb5812b77628981abfb351b64e086e190c4))
+
 # [0.1.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.0.6...v0.1.0) (2025-11-12)
 
 
