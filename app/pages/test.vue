@@ -113,7 +113,30 @@ const modalDanger = overlay.create(CModalDanger)
 
             <hr class="my-6" />
 
-            <AButtonAvatarDropdown />
+            <ADropdownAvatar
+                :items="[
+                    {
+                        label: 'Configuraciones',
+                        icon: 'i-heroicons-cog-8-tooth',
+                        onSelect: () => {
+                            navigateTo('/')
+                        },
+                    },
+                    {
+                        test: 'test',
+                        slot: 'test',
+                    },
+                ]"
+                user-name="Victor Alvarez"
+                user-email="test@test.com"
+                user-to="/"
+            >
+                <AButtonAvatarDropdown />
+
+                <template #test="{ item }">
+                    {{ item.test }}
+                </template>
+            </ADropdownAvatar>
         </UContainer>
     </div>
 </template>
