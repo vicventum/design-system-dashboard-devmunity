@@ -9,7 +9,7 @@ const modalDanger = overlay.create(CModalDanger)
 </script>
 
 <template>
-    <div class="h-screen">
+    <div class="mb-16 min-h-full">
         <UContainer>
             <BCardInner class="h-full">
                 <BCard :has-footer-divider="false">
@@ -110,6 +110,10 @@ const modalDanger = overlay.create(CModalDanger)
 
                 <!-- <template #footer> footer </template> -->
             </BModal>
+
+            <hr class="my-6" />
+
+            <AButtonAvatarDropdown />
         </UContainer>
     </div>
 </template>
