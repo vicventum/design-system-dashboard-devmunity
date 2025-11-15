@@ -55,7 +55,7 @@ function handleClickLeftButtonIcon() {
 </script>
 
 <template>
-    <BCardInner
+    <ACardInner
         :class="[
             'text-default flex items-center justify-between',
             { 'bg-muted border-y border-neutral-200': variant === 'secondary' },
@@ -98,5 +98,5 @@ function handleClickLeftButtonIcon() {
         <div v-if="$slots.actions" class="p-0">
             <slot name="actions" />
         </div>
-    </BCardInner>
+    </ACardInner>
 </template>

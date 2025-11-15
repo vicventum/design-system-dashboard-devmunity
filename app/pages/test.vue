@@ -11,7 +11,7 @@ const modalDanger = overlay.create(CModalDanger)
 <template>
     <div class="mb-16 min-h-full">
         <UContainer>
-            <BCardInner class="h-full">
+            <ACardInner class="h-full">
                 <BCard :has-footer-divider="false">
                     <template #header>
                         <h1>Header</h1>
@@ -23,13 +23,13 @@ const modalDanger = overlay.create(CModalDanger)
                 </BCard>
                 <UCard variant="ghost"> oli </UCard>
                 <AButtonBack icon="heroicons:arrow-left-16-solid" is-back-action />
-            </BCardInner>
+            </ACardInner>
 
             <hr class="my-6" />
 
             <BCard>
                 <template #header>
-                    <BCardHeader title="Crear una nueva actividad" subtitle="Subtitle" has-left-button-icon>
+                    <DCardHeader title="Crear una nueva actividad" subtitle="Subtitle" has-left-button-icon>
                         <template #actions>
                             <DActionButtons
                                 primary-button-text="Guardar"
@@ -38,16 +38,16 @@ const modalDanger = overlay.create(CModalDanger)
                                 is-block-buttons
                             />
                         </template>
-                    </BCardHeader>
+                    </DCardHeader>
                 </template>
 
-                <BCardInner>
+                <ACardInner>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eos perspiciatis
                     asperiores suscipit voluptate magni excepturi. Doloribus in fugit quam voluptatibus,
                     molestiae maxime illum explicabo ut corrupti, distinctio atque dolor.
-                </BCardInner>
+                </ACardInner>
 
-                <BCardHeader
+                <DCardHeader
                     title="Crear una nueva actividad"
                     subtitle="Subtitle"
                     variant="secondary"
@@ -57,9 +57,9 @@ const modalDanger = overlay.create(CModalDanger)
                     <template #actions>
                         <UButton label="Action" />
                     </template>
-                </BCardHeader>
+                </DCardHeader>
 
-                <BCardInner class="space-y-2">
+                <ACardInner class="space-y-2">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eos perspiciatis
                         asperiores suscipit voluptate magni excepturi. Doloribus in fugit quam voluptatibus,
@@ -73,7 +73,7 @@ const modalDanger = overlay.create(CModalDanger)
                         class-buttons="w-[200px]"
                         has-buttons-block
                     />
-                </BCardInner>
+                </ACardInner>
             </BCard>
 
             <hr class="my-6" />
