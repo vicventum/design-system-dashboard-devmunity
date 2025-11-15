@@ -57,7 +57,7 @@ function handleClickLeftButtonIcon() {
 <template>
     <BCardInner
         :class="[
-            'flex items-center justify-between',
+            'text-default flex items-center justify-between',
             { 'bg-muted border-y border-neutral-200': variant === 'secondary' },
         ]"
     >

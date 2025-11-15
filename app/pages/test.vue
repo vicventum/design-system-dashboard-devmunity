@@ -140,14 +140,18 @@ const modalDanger = overlay.create(CModalDanger)
 
             <hr class="my-6" />
 
-            <!-- <APillAvatar text="test 1" /> -->
+            <!-- <APill text="test 1" /> -->
             <p>
-                <APillAvatar label="xs" size="xs" />
-                <APillAvatar label="sm" size="sm" color="warning" variant="subtle" />
-                <APillAvatar label="md" size="md" color="error" />
-                <APillAvatar label="lg" size="lg" color="success" />
-                <APillAvatar label="xl" size="xl" />
+                <APill label="xs" size="xs" />
+                <APill label="sm" size="sm" color="warning" variant="subtle" />
+                <APill label="md" size="md" color="error" />
+                <APill label="lg" size="lg" color="success" />
+                <APill label="xl" size="xl" />
             </p>
+
+            <hr class="my-6" />
+
+            <DUploadAvatar button-size="xl" button-color="error" />
         </UContainer>
     </div>
 </template>
