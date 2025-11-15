@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.2.0...v0.3.0) (2025-11-15)
+
+
+### Features
+
+* **components:** :sparkles: Crea componente `ADropdownAvatar` ([0aa9677](https://github.com/vicventum/design-system-dashboard-devmunity/commit/0aa96779530ed7c16389db6fb1ea9ead99e495ca))
+* **components:** :sparkles: Crea componente `APill` ([5ed606e](https://github.com/vicventum/design-system-dashboard-devmunity/commit/5ed606e86f0e29d8c1d09e55d9e6d803e496bcd1))
+* **components:** :sparkles: Crea componente AButtonAvatarDropdown ([d9e283d](https://github.com/vicventum/design-system-dashboard-devmunity/commit/d9e283dc20d3f70e214c56d9b26c55d688bec254))
+
 # [0.2.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.1.0...v0.2.0) (2025-11-14)
 
 
