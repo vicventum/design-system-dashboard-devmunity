@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.3.0...v0.4.0) (2025-11-17)
+
+
+### Features
+
+* **components:** :recycle: Reubica y cambia el nombre a los componentes `BCardInner` y `BCardHeader` ([bf321ce](https://github.com/vicventum/design-system-dashboard-devmunity/commit/bf321ce9a7991e032349074a90b336680a79c2e2))
+* **components:** :sparkles: Crea componente DUploadAvatar ([babbd45](https://github.com/vicventum/design-system-dashboard-devmunity/commit/babbd45ebaf47182375d95d8081e571314e12438))
+* **components:** :sparkles: Crea componentes `BBadge` y `CBadgeStatus` ([7aeb85a](https://github.com/vicventum/design-system-dashboard-devmunity/commit/7aeb85ae765604fdbb6f334312a7615fda32a868))
+
 # [0.3.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.2.0...v0.3.0) (2025-11-15)
 
 
