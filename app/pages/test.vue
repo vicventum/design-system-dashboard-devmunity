@@ -152,6 +152,13 @@ const modalDanger = overlay.create(CModalDanger)
             <hr class="my-6" />
 
             <DUploadAvatar button-size="xl" button-color="error" />
+
+            <hr class="my-6" />
+
+            <div class="flex gap-x-2">
+                <CBadgeStatus label="Urgente" value="CANCELLED" />
+                <CBadgeStatus label="Normal" value="normal" />
+            </div>
         </UContainer>
     </div>
 </template>
