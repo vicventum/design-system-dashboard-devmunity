@@ -1,0 +1,186 @@
+---
+description: Estructura de directorios y archivos importantes del proyecto design-system
+globs: **/*
+alwaysApply: false
+---
+
+# Estructura del Proyecto
+
+Esta regla documenta la organización de directorios y archivos importantes del sistema de diseño.
+
+## Estructura General
+
+```
+design-system/
+├── .cursor/
+│   └── rules/              # Reglas de Cursor para el proyecto
+│       ├── cursor-rules.mdc
+│       ├── self-improve.mdc
+│       └── project-structure.mdc
+│
+├── app/                    # Directorio principal de la aplicación Nuxt
+│   ├── app.config.ts      # Configuración de la aplicación
+│   ├── app.vue            # Componente raíz de la aplicación
+│   ├── Introduction.mdx   # Documentación de introducción
+│   │
+│   ├── assets/            # Recursos estáticos (CSS, imágenes, etc.)
+│   │   └── css/
+│   │       ├── main.css   # Archivo CSS principal
+│   │       ├── media/     # Media assets (imágenes, etc.)
+│   │       ├── settings/  # Configuraciones CSS base
+│   │       │   ├── base.css
+│   │       │   ├── colors.css
+│   │       │   ├── utilities.css
+│   │       │   └── variables.css
+│   │       └── themes/    # Temas y configuraciones de componentes
+│   │           ├── index.js
+│   │           └── components/
+│   │               ├── badge.js
+│   │               ├── button.js
+│   │               ├── card.js
+│   │               ├── dropdown-menu.js
+│   │               └── modal.js
+│   │
+│   ├── components/        # Componentes Vue del sistema de diseño
+│   │   ├── AppLogo.vue    # Logo de la aplicación
+│   │   ├── ButtonTest.vue # Componente de prueba
+│   │   ├── TemplateMenu.vue
+│   │   │
+│   │   ├── a/             # Categoría de componentes "a"
+│   │   │   ├── avatar/    # (vacío, preparado para futuros componentes)
+│   │   │   ├── button/
+│   │   │   │   ├── a-button-avatar-dropdown.vue
+│   │   │   │   └── a-button-back.vue
+│   │   │   ├── card/
+│   │   │   │   └── a-card-inner.vue
+│   │   │   ├── dropdown/
+│   │   │   │   └── a-dropdown-avatar.vue
+│   │   │   └── pill/
+│   │   │       └── a-pill.vue
+│   │   │
+│   │   ├── b/             # Categoría de componentes "b"
+│   │   │   ├── badge/
+│   │   │   │   └── b-badge.vue
+│   │   │   ├── card/
+│   │   │   │   └── b-card.vue
+│   │   │   └── modal/
+│   │   │       └── b-modal.vue
+│   │   │
+│   │   ├── c/             # Categoría de componentes "c"
+│   │   │   ├── badge/
+│   │   │   │   └── c-badge-status.vue
+│   │   │   └── modal/
+│   │   │       └── c-modal-danger.vue
+│   │   │
+│   │   └── d/             # Categoría de componentes "d"
+│   │       ├── card/
+│   │       │   └── d-card-header.vue
+│   │       ├── d-action-buttons.vue
+│   │       └── upload/
+│   │           └── d-upload-avatar.vue
+│   │
+│   └── pages/             # Páginas de Nuxt (routing automático)
+│       ├── index.vue      # Página principal
+│       └── test.vue       # Página de pruebas
+│
+├── public/                 # Archivos públicos estáticos
+│   ├── favicon.ico
+│   └── media/
+│       └── img/
+│           └── user-unknown.png
+│
+├── .gitignore             # Archivos ignorados por Git
+├── CHANGELOG.md           # Registro de cambios
+├── commitlint.config.js   # Configuración de Commitlint
+├── nuxt.config.ts         # Configuración principal de Nuxt
+├── package.json           # Dependencias y scripts del proyecto
+├── package-lock.json      # Lock file de npm
+├── README.md              # Documentación principal
+└── tsconfig.json          # Configuración de TypeScript
+```
+
+## Convenciones de Nomenclatura
+
+### Componentes
+
+Los componentes están organizados por categorías (a, b, c, d) y siguen el patrón:
+
+```
+{categoria}-{nombre-componente}.vue
+```
+
+Ejemplos:
+
+- `a-button-avatar-dropdown.vue`
+- `b-card.vue`
+- `c-badge-status.vue`
+- `d-card-header.vue`
+
+### Estructura de Carpetas de Componentes
+
+Cada categoría puede contener:
+
+- Subcarpetas por tipo de componente (badge, button, card, modal, etc.)
+- Componentes directamente en la carpeta de categoría (ej: `d-action-buttons.vue`)
+
+## Archivos de Configuración Importantes
+
+### `nuxt.config.ts`
+
+- Configuración principal de Nuxt
+- Módulos: `@nuxt/ui`, `@nuxtjs/storybook`
+- CSS principal: `~/assets/css/main.css`
+- Plugin de Tailwind CSS vía Vite
+
+### `package.json`
+
+- **Scripts principales:**
+    - `dev`: Servidor de desarrollo
+    - `build`: Build de producción
+    - `storybook`: Servidor de Storybook (puerto 6006)
+    - `commit`: Commitizen para commits convencionales
+- **Dependencias principales:**
+    - Nuxt 4.2.0
+    - @nuxt/ui 4.1.0
+    - Tailwind CSS 4.1.16
+    - Storybook 8.0.8
+
+### `app/assets/css/`
+
+- **settings/**: Variables, colores, utilidades base
+- **themes/**: Configuraciones de temas por componente
+- **main.css**: Punto de entrada principal de estilos
+
+## Directorios Clave
+
+### `app/components/`
+
+Contiene todos los componentes Vue del sistema de diseño, organizados por categorías.
+
+### `app/pages/`
+
+Páginas de Nuxt con routing automático. Cada archivo `.vue` se convierte en una ruta.
+
+### `app/assets/`
+
+Recursos que se procesan durante el build (CSS, imágenes, etc.).
+
+### `public/`
+
+Archivos estáticos servidos directamente sin procesamiento.
+
+### `.cursor/rules/`
+
+Reglas de Cursor para mantener consistencia en el proyecto.
+
+## Notas Importantes
+
+1. **Carpetas vacías**: Algunas carpetas como `app/components/a/avatar/` están preparadas para futuros componentes.
+
+2. **Storybook**: El proyecto incluye Storybook para documentación de componentes (puerto 6006).
+
+3. **Commits**: El proyecto usa Commitizen y Commitlint para commits convencionales.
+
+4. **Releases**: Configurado con Semantic Release para versionado automático.
+
+5. **TypeScript**: El proyecto usa TypeScript (ver `tsconfig.json`).

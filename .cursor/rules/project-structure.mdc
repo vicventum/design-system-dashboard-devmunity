@@ -1,0 +1,307 @@
+---
+description: Directory structure and important files of the design-system project
+globs: **/*
+alwaysApply: true
+---
+
+# Design System Project Structure
+
+This rule documents the directory structure and organization of the **Design System Dashboard Devmunity** project - a design system based on Nuxt 4 with Vue components, Storybook, and Tailwind CSS.
+
+## Project Overview
+
+**Design System Dashboard Devmunity** is a design system that provides:
+
+- Reusable Vue components organized by categories
+- Theme and styling system with Tailwind CSS
+- Interactive documentation with Storybook
+- Nuxt UI integration
+- Conventional commits and semantic releases configuration
+
+## Root Directory Structure
+
+```
+design-system/
+├── app/                  # 📱 Main Nuxt application directory
+│   ├── app.config.ts    # Application configuration (themes, colors)
+│   ├── app.vue          # Root application component
+│   ├── Introduction.mdx # Introduction documentation
+│   ├── assets/          # Processed static resources
+│   ├── components/      # Vue design system components
+│   └── pages/           # Nuxt pages (automatic routing)
+│
+├── public/               # 🌐 Static public files
+│
+├── .gitignore           # Files ignored by Git
+├── CHANGELOG.md         # Changelog (auto-generated)
+├── commitlint.config.js # Commitlint configuration
+├── nuxt.config.ts       # Main Nuxt configuration
+├── package.json         # Project dependencies and scripts
+├── README.md            # Main documentation
+└── tsconfig.json        # TypeScript configuration
+```
+
+## App Directory (`/app/`)
+
+**Purpose**: Main Nuxt 4 application directory with all logic and components.
+
+```
+app/
+├── app.config.ts        # ⚙️ Application configuration
+│                        #    - Component themes
+│                        #    - Color palette (primary, secondary, etc.)
+│                        #    - Nuxt UI configuration
+│
+├── app.vue              # 🎯 Root application component
+│
+├── Introduction.mdx     # 📖 Introduction documentation (MDX)
+│
+├── assets/              # 🎨 Processed static resources
+│   └── css/
+│       ├── main.css     # Main CSS file (entry point)
+│       ├── media/       # Media assets (images, etc.)
+│       │   └── img/
+│       ├── settings/    # Base CSS configurations
+│       │   ├── base.css
+│       │   ├── colors.css
+│       │   ├── utilities.css
+│       │   └── variables.css
+│       └── themes/      # Component themes and configurations
+│           ├── index.js # Centralized theme exports
+│           └── components/
+│               ├── badge.js
+│               ├── button.js
+│               ├── card.js
+│               ├── dropdown-menu.js
+│               └── modal.js
+│
+├── components/          # 🧩 Vue design system components
+│   │
+│   ├── a/              # 📦 Component category "a"
+│   │   ├── avatar/     # (folder prepared for future components)
+│   │   ├── button/
+│   │   │   └── a-button-back.vue
+│   │   ├── card/
+│   │   │   └── a-card-inner.vue
+│   │   ├── dropdown/
+│   │   │   └── a-dropdown-avatar.vue
+│   │   └── pill/
+│   │       └── a-pill.vue
+│   │
+│   ├── b/              # 📦 Component category "b"
+│   │   ├── badge/
+│   │   │   └── b-badge.vue
+│   │   ├── card/
+│   │   │   └── b-card.vue
+│   │   └── modal/
+│   │       └── b-modal.vue
+│   │
+│   ├── c/              # 📦 Component category "c"
+│   │   ├── badge/
+│   │   │   └── c-badge-status.vue
+│   │   └── modal/
+│   │       └── c-modal-danger.vue
+│   │
+│   └── d/              # 📦 Component category "d"
+│       ├── card/
+│       │   └── d-card-header.vue
+│       ├── d-action-buttons.vue
+│       └── upload/
+│           └── d-upload-avatar.vue
+│
+└── pages/              # 📄 Nuxt pages (automatic routing)
+    ├── index.vue       # Main page (/)
+    └── test.vue        # Test page (/test)
+```
+
+## Public Directory (`/public/`)
+
+**Purpose**: Static files served directly without processing.
+
+```
+public/
+├── favicon.ico
+└── media/
+    └── img/
+        └── user-unknown.png
+```
+
+## Key Configuration Files
+
+### Application Configuration
+
+- **`app/app.config.ts`** - Application configuration
+    - Component themes imported from `~/assets/css/themes/index.js`
+    - Color palette: primary, secondary, success, warning, error, info, neutral, test
+    - Nuxt UI configuration
+
+- **`nuxt.config.ts`** - Main Nuxt configuration
+    - Modules: `@nuxt/ui`, `@nuxtjs/storybook`
+    - Main CSS: `~/assets/css/main.css`
+    - Tailwind CSS plugin via Vite
+    - DevTools enabled
+
+### Package Management
+
+- **`package.json`** - Project configuration
+    - **Main scripts:**
+        - `dev`: Nuxt development server
+        - `build`: Production build
+        - `generate`: Static generation
+        - `preview`: Production preview
+        - `storybook`: Storybook server (port 6006)
+        - `build-storybook`: Storybook build
+        - `commit`: Commitizen for conventional commits
+        - `prepare`: Husky for git hooks
+    - **Main dependencies:**
+        - Nuxt 4.2.0
+        - @nuxt/ui 4.1.0
+        - Tailwind CSS 4.1.16
+        - Storybook 8.0.8
+        - @iconify-json/lucide, @iconify-json/simple-icons
+    - **Release configuration:**
+        - Semantic Release configured
+        - Automatic CHANGELOG.md generation
+        - Automatic semantic versioning
+
+### Build & Development
+
+- **`tsconfig.json`** - TypeScript configuration
+    - Extends Nuxt configuration (`.nuxt/tsconfig.json`)
+
+- **`commitlint.config.js`** - Commitlint configuration
+    - Validates conventional commit format
+
+## Component Organization Patterns
+
+### Component Categories (`/app/components/`)
+
+Components are organized by categories (a, b, c, d) following the pattern:
+
+```
+{categoria}-{nombre-componente}.vue
+```
+
+**Examples:**
+
+- `a-button-avatar-dropdown.vue` - Button with avatar dropdown (category a)
+- `b-card.vue` - Card (category b)
+- `c-badge-status.vue` - Status badge (category c)
+- `d-card-header.vue` - Card header (category d)
+
+### Component Folder Structure
+
+Each category can contain:
+
+- **Subfolders by type**: badge, button, card, modal, upload, etc.
+- **Direct components**: Components at the category root (e.g.: `d-action-buttons.vue`)
+
+## Styling & Theming System
+
+### CSS Architecture (`/app/assets/css/`)
+
+```
+css/
+├── main.css              # Main entry point
+├── settings/             # Base configurations
+│   ├── base.css         # Base styles
+│   ├── colors.css       # Color definitions
+│   ├── utilities.css    # CSS utilities
+│   └── variables.css    # CSS variables
+└── themes/              # Theme system
+    ├── index.js         # Centralized exports
+    └── components/      # Component themes
+        ├── badge.js
+        ├── button.js
+        ├── card.js
+        ├── dropdown-menu.js
+        └── modal.js
+```
+
+### Component Themes
+
+Themes are defined in `/app/assets/css/themes/components/` and exported centrally from `index.js`. These themes are imported in `app.config.ts` and applied globally through Nuxt UI.
+
+### System Colors
+
+Defined in `app.config.ts`:
+
+- `primary`: brand-blue
+- `secondary`: brand-purple
+- `success`: brand-green
+- `warning`: brand-orange
+- `error`: brand-red
+- `info`: brand-blue-sky
+- `neutral`: brand-grey
+- `test`: purple
+
+## File Naming Conventions
+
+### Vue Components
+
+- **kebab-case**: `a-button-avatar-dropdown.vue`
+- **Category prefix**: `{categoria}-{nombre}.vue`
+- **Descriptive**: The name clearly indicates the purpose
+
+Components are organized by categories (a, b, c, d) and follow the pattern:
+
+```
+{categoria}-{nombre-componente}.vue
+```
+
+Examples:
+
+- `a-button-avatar-dropdown.vue`
+- `b-card.vue`
+- `c-badge-status.vue`
+- `d-card-header.vue`
+
+#### Component Folder Structure
+
+Each category can contain:
+
+- Subfolders by component type (badge, button, card, modal, etc.)
+- Components directly in the category folder (e.g.: `d-action-buttons.vue`)
+
+### Directories
+
+- **kebab-case**: `dropdown-menu`, `action-buttons`
+- **Logical grouping**: Related components together
+- **Categories**: a, b, c, d for organization
+
+### Configuration Files
+
+- **kebab-case**: `nuxt.config.ts`, `app.config.ts`
+- **Appropriate extension**: `.ts` for TypeScript, `.js` for JavaScript
+
+## Development Tools
+
+### Storybook
+
+- **Port**: 6006
+- **Command**: `npm run storybook`
+- **Build**: `npm run build-storybook`
+- **Configuration**: `@nuxtjs/storybook` module in `nuxt.config.ts`
+
+### Git Hooks & Commits
+
+- **Commitizen**: `npm run commit` for conventional commits
+- **Commitlint**: Validates commit format
+- **Husky**: Automatic git hooks
+- **Semantic Release**: Automatic versioning and CHANGELOG generation
+
+## Important Notes
+
+1. **Empty folders**: Some folders like `app/components/a/avatar/` are prepared for future components.
+
+2. **Automatic routing**: Nuxt automatically generates routes from `/app/pages/`.
+
+3. **Auto-imports**: Nuxt auto-imports components from `/app/components/`.
+
+4. **Tailwind CSS**: Configured via Vite plugin (`@tailwindcss/vite`).
+
+5. **TypeScript**: The project uses TypeScript with extended Nuxt configuration.
+
+6. **MDX Support**: The project supports `.mdx` files for documentation (e.g.: `Introduction.mdx`).
+
+7. **Icons**: Iconify integration for icons (lucide, simple-icons).

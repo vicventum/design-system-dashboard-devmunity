@@ -1,0 +1,351 @@
+---
+description: Application stack, dependencies, versions, and best practices for the design-system project
+globs: package.json
+alwaysApply: true
+---
+
+# Application Stack & Dependencies
+
+This rule documents the complete technology stack, dependency versions, and best practices for the **Design System Dashboard Devmunity** project.
+
+## Technology Stack Overview
+
+The project is built on a modern Vue.js ecosystem with the following core technologies:
+
+- **Framework**: Nuxt 4.2.0 (Vue 3 Composition API)
+- **Styling**: Tailwind CSS 4.1.16 with Nuxt UI 4.1.0
+- **Build Tool**: Vite (included with Nuxt)
+- **Language**: TypeScript
+- **Documentation**: Storybook 8.0.8
+- **Package Manager**: npm (with package-lock.json)
+
+## Core Dependencies
+
+### Framework & Runtime
+
+#### Nuxt (`^4.2.0`)
+
+- **Version**: 4.2.0
+- **Purpose**: Full-stack Vue framework with SSR, SSG, and SPA capabilities
+- **Best Practices**:
+    - Use Composition API (`<script setup>`) for all new components
+    - Leverage Nuxt's auto-imports for composables and utilities
+    - Use `definePageMeta()` for page-level configuration
+    - Prefer `useState()` for client-side state management
+    - Use `useFetch()` or `$fetch()` for data fetching
+    - Enable DevTools in development (`devtools: { enabled: true }`)
+    - **Note**: Nuxt 4 is the latest major version with improved performance and DX
+
+#### Vue (included with Nuxt)
+
+- **Version**: Vue 3 (via Nuxt 4)
+- **Purpose**: Progressive JavaScript framework
+- **Best Practices**:
+    - Use Composition API with `<script setup>` syntax
+    - Prefer `ref()` for primitives and `reactive()` for objects
+    - Use `computed()` for derived state
+    - Leverage `watch()` and `watchEffect()` for side effects
+    - Use `defineProps()` and `defineEmits()` for component props/events
+    - **Note**: Vue 3 provides better TypeScript support and performance
+
+### Styling & UI
+
+#### Tailwind CSS (`4.1.16`)
+
+- **Version**: 4.1.16
+- **Purpose**: Utility-first CSS framework
+- **Best Practices**:
+    - Use the Vite plugin (`@tailwindcss/vite`) for optimal performance
+    - Configure Tailwind via CSS variables in `app/assets/css/settings/`
+    - Use `@apply` sparingly; prefer utility classes in templates
+    - Leverage Tailwind's JIT mode (enabled by default in v4)
+    - Customize theme in `app.config.ts` for Nuxt UI integration
+    - **Note**: Tailwind CSS 4.x introduces new features and improved performance
+
+#### @tailwindcss/vite (`4.1.16`)
+
+- **Version**: 4.1.16
+- **Purpose**: Vite plugin for Tailwind CSS integration
+- **Best Practices**:
+    - Configure in `nuxt.config.ts` via Vite plugins
+    - Ensure CSS entry point is in `nuxt.config.ts` (`css: ['~/assets/css/main.css']`)
+    - **Note**: This plugin provides faster builds and better HMR
+
+#### @nuxt/ui (`4.1.0`)
+
+- **Version**: 4.1.0
+- **Purpose**: Vue component library built on Tailwind CSS
+- **Best Practices**:
+    - Configure themes in `app/app.config.ts`
+    - Use component props for customization instead of overriding styles
+    - Leverage Nuxt UI's color system (primary, secondary, etc.)
+    - Use `UButton`, `UCard`, `UModal` etc. from Nuxt UI
+    - Customize component themes in `app/assets/css/themes/components/`
+    - **Note**: Nuxt UI 4.x is compatible with Nuxt 4 and Tailwind CSS 4
+
+### Icons
+
+#### @iconify-json/lucide (`^1.2.72`)
+
+- **Version**: ^1.2.72
+- **Purpose**: Lucide icon set for Iconify
+- **Best Practices**:
+    - Use via Nuxt UI's icon component: `<UIcon name="lucide:icon-name" />`
+    - Import only needed icons to reduce bundle size
+    - **Note**: Lucide provides a comprehensive set of modern icons
+
+#### @iconify-json/simple-icons (`^1.2.57`)
+
+- **Version**: ^1.2.57
+- **Purpose**: Simple Icons brand icon set
+- **Best Practices**:
+    - Use for brand logos and social media icons
+    - Access via: `<UIcon name="simple-icons:brand-name" />`
+    - **Note**: Simple Icons provides official brand logos
+
+## Development Dependencies
+
+### Documentation & Testing
+
+#### Storybook (`8.0.8`)
+
+- **Version**: 8.0.8
+- **Purpose**: Component documentation and testing environment
+- **Best Practices**:
+    - Write stories for all reusable components
+    - Use MDX for rich documentation
+    - Document component props, slots, and events
+    - Use controls addon for interactive testing
+    - Run on port 6006: `npm run storybook`
+    - **Note**: Storybook 8.x provides improved performance and better Vue 3 support
+
+#### @nuxtjs/storybook (`8.3.5`)
+
+- **Version**: 8.3.5
+- **Purpose**: Nuxt integration for Storybook
+- **Best Practices**:
+    - Configure in `nuxt.config.ts` modules array
+    - Ensure compatibility with Nuxt 4
+    - Use Nuxt's auto-imports in stories
+    - **Note**: This module handles Nuxt-specific configuration automatically
+
+#### @storybook/addon-docs (`8.0.8`)
+
+- **Version**: 8.0.8
+- **Purpose**: Documentation addon for Storybook
+- **Best Practices**:
+    - Use for component API documentation
+    - Document props, events, and slots
+    - Include usage examples
+
+#### @storybook/addon-links (`8.0.8`)
+
+- **Version**: 8.0.8
+- **Purpose**: Navigation between stories
+- **Best Practices**:
+    - Use for creating story navigation flows
+    - Link related components together
+
+#### @chromatic-com/storybook (`1.3.3`)
+
+- **Version**: 1.3.3
+- **Purpose**: Visual testing and review platform
+- **Best Practices**:
+    - Use for visual regression testing
+    - Integrate with CI/CD for automated visual reviews
+    - **Note**: Optional but recommended for design systems
+
+### Code Quality & Formatting
+
+#### Prettier (`3.6.2`)
+
+- **Version**: 3.6.2
+- **Purpose**: Code formatter
+- **Best Practices**:
+    - Configure `.prettierrc` or in `package.json`
+    - Use with `prettier-plugin-tailwindcss` for class sorting
+    - Format on save in your IDE
+    - Run `prettier --check .` in CI
+    - **Note**: Prettier 3.x has improved performance
+
+#### prettier-plugin-tailwindcss (`0.7.1`)
+
+- **Version**: 0.7.1
+- **Purpose**: Sort Tailwind CSS classes automatically
+- **Best Practices**:
+    - Automatically sorts utility classes in the recommended order
+    - Works seamlessly with Prettier
+    - **Note**: Follows Tailwind's recommended class order
+
+### Git & Commit Management
+
+#### Commitizen (`^4.3.1`)
+
+- **Version**: ^4.3.1
+- **Purpose**: Interactive commit message generator
+- **Best Practices**:
+    - Use `npm run commit` instead of `git commit`
+    - Follow conventional commit format
+    - Types: feat, fix, docs, style, refactor, test, chore
+    - **Note**: Ensures consistent commit messages
+
+#### cz-conventional-changelog (`^3.3.0`)
+
+- **Version**: ^3.3.0
+- **Purpose**: Conventional changelog adapter for Commitizen
+- **Best Practices**:
+    - Configured in `package.json` config section
+    - Generates CHANGELOG-compatible commits
+    - **Note**: Works with Semantic Release
+
+#### @commitlint/cli (`^20.1.0`)
+
+- **Version**: ^20.1.0
+- **Purpose**: Lint commit messages
+- **Best Practices**:
+    - Configured in `commitlint.config.js`
+    - Validates commit format before commit
+    - Enforces conventional commits
+    - **Note**: Version 20.x is the latest major version
+
+#### @commitlint/config-conventional (`^20.0.0`)
+
+- **Version**: ^20.0.0
+- **Purpose**: Conventional commit rules for Commitlint
+- **Best Practices**:
+    - Extends conventional commit specification
+    - Ensures consistency with Semantic Release
+
+#### Husky (`^9.1.7`)
+
+- **Version**: ^9.1.7
+- **Purpose**: Git hooks manager
+- **Best Practices**:
+    - Configured via `npm run prepare`
+    - Use for pre-commit and commit-msg hooks
+    - Run linting and tests before commit
+    - **Note**: Husky 9.x has improved setup and performance
+
+### Release Management
+
+#### semantic-release (`^25.0.1`)
+
+- **Version**: ^25.0.1
+- **Purpose**: Automated version management and package publishing
+- **Best Practices**:
+    - Configured in `package.json` release section
+    - Automatically determines version from commits
+    - Generates CHANGELOG.md
+    - Publishes to npm and GitHub
+    - **Note**: Version 25.x supports modern Node.js and npm
+
+#### @semantic-release/changelog (`^6.0.3`)
+
+- **Version**: ^6.0.3
+- **Purpose**: Generate or update CHANGELOG.md
+- **Best Practices**:
+    - Configured to update CHANGELOG.md automatically
+    - Commits changelog with release
+
+#### @semantic-release/git (`^10.0.1`)
+
+- **Version**: ^10.0.1
+- **Purpose**: Commit release assets to git
+- **Best Practices**:
+    - Commits package.json and CHANGELOG.md
+    - Uses `[skip ci]` to avoid CI loops
+    - **Note**: Ensures version consistency
+
+## Build & Development Tools
+
+### TypeScript
+
+- **Version**: Included with Nuxt
+- **Purpose**: Type-safe JavaScript
+- **Best Practices**:
+    - Configured via `tsconfig.json` extending Nuxt's config
+    - Use TypeScript for all new files
+    - Leverage Nuxt's auto-generated types
+    - Use `defineProps<T>()` and `defineEmits<T>()` with types
+    - **Note**: Nuxt 4 has excellent TypeScript support out of the box
+
+### Vite
+
+- **Version**: Included with Nuxt 4
+- **Purpose**: Next-generation frontend build tool
+- **Best Practices**:
+    - Configure plugins in `nuxt.config.ts` vite section
+    - Use Vite's HMR for fast development
+    - Leverage Vite's optimized production builds
+    - **Note**: Nuxt 4 uses Vite by default (no Webpack)
+
+## Version Management Best Practices
+
+### Semantic Versioning
+
+- Use caret (`^`) for dependencies to allow minor and patch updates
+- Use exact versions for critical dependencies if needed
+- Review breaking changes before major version updates
+
+### Dependency Updates
+
+1. **Regular Audits**: Run `npm audit` regularly to check for vulnerabilities
+2. **Check Outdated**: Use `npm outdated` to see available updates
+3. **Update Strategy**:
+    - Patch updates: Safe to update automatically
+    - Minor updates: Review changelog, test thoroughly
+    - Major updates: Plan migration, check breaking changes
+
+### Lock File Management
+
+- **Always commit `package-lock.json`**: Ensures consistent installations
+- **Don't modify manually**: Let npm manage the lock file
+- **Update lock file**: Run `npm install` after updating `package.json`
+
+### Security
+
+- Run `npm audit` before each release
+- Use `npm audit fix` for automatic vulnerability fixes
+- Review and test after security updates
+
+## Module Configuration
+
+### Nuxt Modules
+
+Configured in `nuxt.config.ts`:
+
+- `@nuxt/ui`: UI component library
+- `@nuxtjs/storybook`: Storybook integration
+
+### Vite Plugins
+
+Configured in `nuxt.config.ts`:
+
+- `@tailwindcss/vite`: Tailwind CSS integration
+
+## Important Notes
+
+1. **Nuxt 4 Compatibility**: All dependencies are compatible with Nuxt 4.2.0
+2. **Tailwind CSS 4**: Using the latest Tailwind CSS 4.x with Vite plugin
+3. **Storybook 8**: Latest Storybook version with improved Vue 3 support
+4. **TypeScript**: Full TypeScript support with Nuxt's auto-generated types
+5. **ES Modules**: Project uses `"type": "module"` for ES module support
+6. **Conventional Commits**: Enforced via Commitizen and Commitlint
+7. **Automated Releases**: Semantic Release handles versioning and publishing
+
+## Version Compatibility Matrix
+
+| Dependency   | Version | Compatible With        |
+| ------------ | ------- | ---------------------- |
+| Nuxt         | 4.2.0   | Vue 3, Vite, Node 18+  |
+| @nuxt/ui     | 4.1.0   | Nuxt 4, Tailwind CSS 4 |
+| Tailwind CSS | 4.1.16  | Vite, PostCSS 8+       |
+| Storybook    | 8.0.8   | Vue 3, Vite            |
+| TypeScript   | Latest  | Nuxt 4, Vue 3          |
+
+## Recommended Update Schedule
+
+- **Weekly**: Check for security updates (`npm audit`)
+- **Monthly**: Review minor version updates
+- **Quarterly**: Evaluate major version updates
+- **Before Releases**: Full dependency audit and testing

@@ -1,0 +1,292 @@
+---
+description: Convenciones para componentes Vue en el sistema de diseño
+globs: app/components/**/*.vue
+alwaysApply: false
+---
+
+# Convenciones de Componentes Vue
+
+Esta regla documenta las convenciones y patrones para crear y mantener componentes Vue en el sistema de diseño, basado en el análisis de [d-card-header.vue](mdc:app/components/d/card/d-card-header.vue) y otros componentes del proyecto.
+
+## Estructura del Script Setup
+
+### Etiqueta Script
+
+Usa `<script lang="jsx" setup>` o `<script setup>` para componentes:
+
+```vue
+<script lang="jsx" setup>
+// Componente con JSX lang (cuando se usa JSX o se necesita)
+</script>
+
+<!-- O alternativamente -->
+<script setup>
+// Componente estándar
+</script>
+```
+
+**Nota**: Algunos componentes usan `lang="jsx"` incluso cuando el template está en formato template estándar.
+
+## Definición de Props
+
+### Estructura de Props
+
+Define props usando objetos con las siguientes propiedades:
+
+```vue
+const props = defineProps({ nombreProp: { type: Tipo, // String, Number, Boolean, Object, Array, etc. default:
+valorDefault, // Valor por defecto required: false, // true o false }, })
+```
+
+### Convenciones de Props
+
+1. **Tipo siempre especificado**: Define el tipo explícitamente
+2. **Valor por defecto**: Proporciona siempre un valor por defecto apropiado
+3. **Required**: Establece `required: false` explícitamente (o `true` cuando sea necesario)
+4. **Comentarios inline**: Agrega comentarios para documentar valores posibles:
+
+```vue
+variant: { type: String, default: 'main', // main, secondary required: false, },
+```
+
+### Ejemplo Completo
+
+```vue
+const props = defineProps({ title: { type: String, default: '', required: false, }, subtitle: { type: String,
+default: '', required: false, }, variant: { type: String, default: 'main', // main, secondary required: false,
+}, hasLeftButtonIcon: { type: Boolean, default: false, required: false, }, leftButtonIcon: { type: String,
+default: 'heroicons:arrow-left-16-solid', required: false, }, leftButtonIconTo: { type: String, default: '',
+required: false, }, classTitle: { type: String, default: '', required: false, }, })
+```
+
+## Definición de Emits
+
+### Formato de Emits
+
+Define emits usando arrays de strings con nombres en formato `on-*`:
+
+```vue
+const emit = defineEmits(['on-click-left-button-icon']) // Múltiples emits const emit = defineEmits([
+'on-click-primary-button', 'on-click-secondary-button' ])
+```
+
+### Convenciones de Nombres de Eventos
+
+- Usa el prefijo `on-` seguido de la acción: `on-click-*`, `on-upload-*`, etc.
+- Usa kebab-case para nombres compuestos: `on-click-left-button-icon`
+- Nombres descriptivos que indiquen claramente la acción
+
+## Event Handlers
+
+### Nomenclatura de Funciones Handler
+
+Usa el prefijo `handle` para funciones que manejan eventos:
+
+```vue
+function handleClickLeftButtonIcon() { emit('on-click-left-button-icon') } function handleUpload() {
+emit('on-upload-image') }
+```
+
+### Patrón
+
+```vue
+function handle{EventName}() { emit('on-{event-name}') // Lógica adicional si es necesario }
+```
+
+## Computed Properties
+
+### Uso de Computed
+
+Usa `computed()` para propiedades derivadas. Puede usarse con auto-import (sin import) o con import explícito:
+
+```vue
+// Con auto-import (recomendado en Nuxt) const headingTag = computed(() => { const tags = { main: 'h2',
+secondary: 'h3', } return tags[props.variant] ?? tags.main }) // O con import explícito import { computed }
+from 'vue' const uiStyles = computed(() => { // ... })
+```
+
+**Nota**: En Nuxt, `computed()` está disponible por auto-import, pero algunos componentes lo importan explícitamente.
+
+## Imports
+
+### Tailwind Merge
+
+Importa `twMerge` de `tailwind-merge` cuando necesites combinar clases de Tailwind:
+
+```vue
+import { twMerge } from 'tailwind-merge'
+```
+
+### Otros Imports
+
+- Usa auto-imports de Nuxt cuando sea posible (composables como `useRouter`, `computed`, etc.)
+- Importa explícitamente solo cuando sea necesario o para claridad
+
+## Template
+
+### Componentes con Prefijo de Categoría
+
+Usa componentes con prefijo de categoría (A, B, C, D):
+
+```vue
+<ACardInner>
+    <AButtonBack />
+</ACardInner>
+
+<BModal />
+<BCard />
+```
+
+### Componente Dinámico
+
+Usa `<Component>` con `:is` para elementos dinámicos:
+
+```vue
+<Component :is="headingTag" :class="twMerge([...])">
+    {{ title }}
+</Component>
+```
+
+### Clases con Tailwind Merge
+
+Usa `twMerge` para combinar clases condicionalmente:
+
+```vue
+:class=" twMerge([ 'font-bold', variant === 'main' && 'text-xl', variant === 'secondary' && 'text-lg',
+classTitle, ]) "
+```
+
+### Clases Condicionales con Objetos
+
+Usa objetos para clases condicionales:
+
+```vue
+:class="[ 'base-classes', { 'conditional-class': condition === 'value' } ]"
+```
+
+Ejemplo:
+
+```vue
+:class="[ 'text-default flex items-center justify-between', { 'bg-muted border-y border-neutral-200': variant
+=== 'secondary' } ]" :class="{ 'text-dimmed': variant === 'secondary', }"
+```
+
+### Renderizado Condicional
+
+Usa `v-if` para renderizado condicional de elementos y componentes:
+
+```vue
+<AButtonBack v-if="hasLeftButtonIcon" :icon="leftButtonIcon" @on-click="handleClickLeftButtonIcon" />
+
+<p v-if="subtitle">
+    {{ subtitle }}
+</p>
+```
+
+### Slots
+
+#### Verificación de Slots
+
+Verifica la existencia de slots con `$slots`:
+
+```vue
+<div v-if="$slots.actions" class="p-0">
+    <slot name="actions" />
+</div>
+```
+
+#### Slots con Template
+
+Para slots con verificación y template:
+
+```vue
+<template v-if="$slots.header" #header>
+    <slot name="header" />
+</template>
+```
+
+#### Slot Default
+
+```vue
+<slot />
+```
+
+## Prop Binding
+
+### Props con Kebab-Case
+
+Usa kebab-case en templates para props:
+
+```vue
+<AButtonBack :icon="leftButtonIcon" :To="leftButtonIconTo" :is-back-action="leftButtonIconTo" />
+```
+
+**Nota**: En Vue, las props se pueden escribir en camelCase o kebab-case, pero kebab-case es más común en templates.
+
+### Event Binding
+
+Usa kebab-case para eventos:
+
+```vue
+@on-click="handleClickLeftButtonIcon" @on-click-primary-button="handlePrimaryClick"
+```
+
+## Estructura General del Template
+
+### Organización
+
+Organiza el template de forma lógica:
+
+```vue
+<template>
+    <ACardInner :class="[...]">
+        <!-- Contenido principal -->
+        <div class="space-y-1">
+            <!-- ... -->
+        </div>
+
+        <!-- Acciones o contenido secundario -->
+        <div v-if="$slots.actions" class="p-0">
+            <slot name="actions" />
+        </div>
+    </ACardInner>
+</template>
+```
+
+## Buenas Prácticas
+
+### Orden de Secciones en Script
+
+1. Imports
+2. Props definition
+3. Emits definition
+4. Computed properties
+5. Functions/handlers
+6. Lifecycle hooks (si es necesario)
+
+### Orden de Secciones en Template
+
+1. Contenedor principal
+2. Contenido primario
+3. Contenido secundario condicional
+4. Slots
+
+### Comentarios
+
+- Usa comentarios inline para documentar valores posibles en props
+- Agrega comentarios de sección si es necesario:
+
+```vue
+// Computed // Model // Functions
+```
+
+### Naming Conventions
+
+- **Props**: camelCase (`hasLeftButtonIcon`, `classTitle`)
+- **Events**: kebab-case con prefijo `on-` (`on-click-left-button-icon`)
+- **Functions**: camelCase con prefijo `handle` (`handleClickLeftButtonIcon`)
+- **Computed**: camelCase descriptivo (`headingTag`, `uiStyles`)
+
+## Ejemplo Completo de Referencia
+
+Ver [d-card-header.vue](mdc:app/components/d/card/d-card-header.vue) para un ejemplo completo de todas estas convenciones aplicadas.
