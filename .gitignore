@@ -25,3 +25,9 @@ logs
 
 # Storybook
 storybook-static
+
+# Docs
+
+docs/*
+scripts/
+!docs/PRODUCT_BRIEF.md

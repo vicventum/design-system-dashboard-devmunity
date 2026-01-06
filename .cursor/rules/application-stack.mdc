@@ -15,8 +15,7 @@ The project is built on a modern Vue.js ecosystem with the following core techno
 - **Framework**: Nuxt 4.2.0 (Vue 3 Composition API)
 - **Styling**: Tailwind CSS 4.1.16 with Nuxt UI 4.1.0
 - **Build Tool**: Vite (included with Nuxt)
-- **Language**: TypeScript
-- **Documentation**: Storybook 8.0.8
+- **Documentation**: Component documentation in the project
 - **Package Manager**: npm (with package-lock.json)
 
 ## Core Dependencies
@@ -106,54 +105,6 @@ The project is built on a modern Vue.js ecosystem with the following core techno
 ## Development Dependencies
 
 ### Documentation & Testing
-
-#### Storybook (`8.0.8`)
-
-- **Version**: 8.0.8
-- **Purpose**: Component documentation and testing environment
-- **Best Practices**:
-    - Write stories for all reusable components
-    - Use MDX for rich documentation
-    - Document component props, slots, and events
-    - Use controls addon for interactive testing
-    - Run on port 6006: `npm run storybook`
-    - **Note**: Storybook 8.x provides improved performance and better Vue 3 support
-
-#### @nuxtjs/storybook (`8.3.5`)
-
-- **Version**: 8.3.5
-- **Purpose**: Nuxt integration for Storybook
-- **Best Practices**:
-    - Configure in `nuxt.config.ts` modules array
-    - Ensure compatibility with Nuxt 4
-    - Use Nuxt's auto-imports in stories
-    - **Note**: This module handles Nuxt-specific configuration automatically
-
-#### @storybook/addon-docs (`8.0.8`)
-
-- **Version**: 8.0.8
-- **Purpose**: Documentation addon for Storybook
-- **Best Practices**:
-    - Use for component API documentation
-    - Document props, events, and slots
-    - Include usage examples
-
-#### @storybook/addon-links (`8.0.8`)
-
-- **Version**: 8.0.8
-- **Purpose**: Navigation between stories
-- **Best Practices**:
-    - Use for creating story navigation flows
-    - Link related components together
-
-#### @chromatic-com/storybook (`1.3.3`)
-
-- **Version**: 1.3.3
-- **Purpose**: Visual testing and review platform
-- **Best Practices**:
-    - Use for visual regression testing
-    - Integrate with CI/CD for automated visual reviews
-    - **Note**: Optional but recommended for design systems
 
 ### Code Quality & Formatting
 

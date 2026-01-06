@@ -23,7 +23,6 @@ This rule documents the directory structure and organization of the **Design Sys
 ```
 design-system/
 ├── app/                  # 📱 Main Nuxt application directory
-│   ├── app.config.ts    # Application configuration (themes, colors)
 │   ├── app.vue          # Root application component
 │   ├── Introduction.mdx # Introduction documentation
 │   ├── assets/          # Processed static resources
@@ -37,8 +36,7 @@ design-system/
 ├── commitlint.config.js # Commitlint configuration
 ├── nuxt.config.ts       # Main Nuxt configuration
 ├── package.json         # Project dependencies and scripts
-├── README.md            # Main documentation
-└── tsconfig.json        # TypeScript configuration
+└── README.md            # Main documentation
 ```
 
 ## App Directory (`/app/`)
@@ -47,11 +45,6 @@ design-system/
 
 ```
 app/
-├── app.config.ts        # ⚙️ Application configuration
-│                        #    - Component themes
-│                        #    - Color palette (primary, secondary, etc.)
-│                        #    - Nuxt UI configuration
-│
 ├── app.vue              # 🎯 Root application component
 │
 ├── Introduction.mdx     # 📖 Introduction documentation (MDX)
@@ -130,13 +123,13 @@ public/
 
 ### Application Configuration
 
-- **`app/app.config.ts`** - Application configuration
+- **`app/app.config.js`** - Application configuration
     - Component themes imported from `~/assets/css/themes/index.js`
     - Color palette: primary, secondary, success, warning, error, info, neutral, test
     - Nuxt UI configuration
 
-- **`nuxt.config.ts`** - Main Nuxt configuration
-    - Modules: `@nuxt/ui`, `@nuxtjs/storybook`
+- **`nuxt.config.js`** - Main Nuxt configuration
+    - Modules: `@nuxt/ui`,
     - Main CSS: `~/assets/css/main.css`
     - Tailwind CSS plugin via Vite
     - DevTools enabled
@@ -157,7 +150,6 @@ public/
         - Nuxt 4.2.0
         - @nuxt/ui 4.1.0
         - Tailwind CSS 4.1.16
-        - Storybook 8.0.8
         - @iconify-json/lucide, @iconify-json/simple-icons
     - **Release configuration:**
         - Semantic Release configured
@@ -166,8 +158,6 @@ public/
 
 ### Build & Development
 
-- **`tsconfig.json`** - TypeScript configuration
-    - Extends Nuxt configuration (`.nuxt/tsconfig.json`)
 
 - **`commitlint.config.js`** - Commitlint configuration
     - Validates conventional commit format
@@ -281,7 +271,6 @@ Each category can contain:
 - **Port**: 6006
 - **Command**: `npm run storybook`
 - **Build**: `npm run build-storybook`
-- **Configuration**: `@nuxtjs/storybook` module in `nuxt.config.ts`
 
 ### Git Hooks & Commits
 
