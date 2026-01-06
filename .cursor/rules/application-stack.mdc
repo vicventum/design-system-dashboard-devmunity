@@ -266,7 +266,6 @@ The project is built on a modern Vue.js ecosystem with the following core techno
 Configured in `nuxt.config.ts`:
 
 - `@nuxt/ui`: UI component library
-- `@nuxtjs/storybook`: Storybook integration
 
 ### Vite Plugins
 
@@ -278,11 +277,10 @@ Configured in `nuxt.config.ts`:
 
 1. **Nuxt 4 Compatibility**: All dependencies are compatible with Nuxt 4.2.0
 2. **Tailwind CSS 4**: Using the latest Tailwind CSS 4.x with Vite plugin
-3. **Storybook 8**: Latest Storybook version with improved Vue 3 support
-4. **TypeScript**: Full TypeScript support with Nuxt's auto-generated types
-5. **ES Modules**: Project uses `"type": "module"` for ES module support
-6. **Conventional Commits**: Enforced via Commitizen and Commitlint
-7. **Automated Releases**: Semantic Release handles versioning and publishing
+3. **TypeScript**: Full TypeScript support with Nuxt's auto-generated types
+4. **ES Modules**: Project uses `"type": "module"` for ES module support
+5. **Conventional Commits**: Enforced via Commitizen and Commitlint
+6. **Automated Releases**: Semantic Release handles versioning and publishing
 
 ## Version Compatibility Matrix
 
@@ -291,7 +289,6 @@ Configured in `nuxt.config.ts`:
 | Nuxt         | 4.2.0   | Vue 3, Vite, Node 18+  |
 | @nuxt/ui     | 4.1.0   | Nuxt 4, Tailwind CSS 4 |
 | Tailwind CSS | 4.1.16  | Vite, PostCSS 8+       |
-| Storybook    | 8.0.8   | Vue 3, Vite            |
 | TypeScript   | Latest  | Nuxt 4, Vue 3          |
 
 ## Recommended Update Schedule
