@@ -1,5 +1,6 @@
 const config = {
   "stories": [
+    "../app/**/*.mdx",
     "../app/components/**/*.mdx",
     "../app/components/**/*.stories.@(js|jsx|ts|tsx|mdx)"
   ],

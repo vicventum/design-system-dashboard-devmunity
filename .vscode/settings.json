@@ -23,6 +23,7 @@
   "conventionalCommits.scopes": [
     "dev-infra",
     "vscode-extension",
-    "components"
+    "components",
+    "stories"
   ]
 }

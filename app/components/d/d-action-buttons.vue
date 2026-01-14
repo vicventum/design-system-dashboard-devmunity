@@ -4,12 +4,12 @@ import { twMerge } from 'tailwind-merge'
 const props = defineProps({
     class: {
         type: [String, Object, Array],
-        default: () => '',
+        default: '',
         required: false,
     },
     classButtons: {
         type: [String, Object, Array],
-        default: () => '',
+        default: '',
         required: false,
     },
     primaryButtonText: {
