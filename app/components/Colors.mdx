@@ -1,10 +1,12 @@
 import { Meta, ColorPalette, ColorItem, Title } from '@storybook/blocks'
-import { colors } from './tokens/colors'
+
+import { colorsFromCss, semanticColors } from '@/utils/get-colors-from-css'
 
 <Meta title='Tokens/Colors' />
 <Title>Colors</Title>
 
-The color tokens within this design system encapsulates a rich palette of semantic colors, each with specific roles and shades to cater to various UI elements and states.
+The color tokens within this design system encapsulates a rich palette of semantic colors, each with specific
+roles and shades to cater to various UI elements and states.
 
 The `primary` colors, with shades ranging from light lavender (#faf7fd) to deep purple (#361952), form the core visual identity, suitable for branding elements and primary actions.
 
@@ -21,8 +23,20 @@ Lastly, the `slate` collection, with shades from very light gray (#f6f7f9) to al
 
 Additional constants like `white`, `black`, `transparent`, and `currentColor` offer foundational colors for designing with flexibility and precision, supporting a cohesive and accessible user interface across the design system.
 
+---
+
+## Raw Colors
+
 <ColorPalette>
-    {Object.entries(colors).map(([name, value]) => (
+    {Object.entries(colorsFromCss).map(([name, value]) => (
         <ColorItem key={name} title={name} colors={value} />
+    ))}
+</ColorPalette>
+
+## Semantic Colors
+
+<ColorPalette>
+    {Object.entries(semanticColors).map(([name, value]) => (
+        <ColorItem key={name} title={name} colors={colorsFromCss[value]} subtitle={value} />
     ))}
 </ColorPalette>

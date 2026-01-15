@@ -11,7 +11,7 @@ export default defineAppConfig({
             error: 'brand-red',
             info: 'brand-blue-sky',
             neutral: 'brand-grey',
-            test: 'purple',
+            // test: 'purple',
         },
     },
 })
