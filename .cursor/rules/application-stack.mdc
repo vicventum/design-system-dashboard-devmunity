@@ -1,55 +1,42 @@
----
-description: Application stack, dependencies, versions, and best practices for the design-system project
-globs: package.json
-alwaysApply: true
----
+# Application Stack & Version Control
 
-# Application Stack & Dependencies
+## Core Frameworks
 
-This rule documents the complete technology stack, dependency versions, and best practices for the **Design System Dashboard Devmunity** project.
+### Nuxt (`^4.2.0`)
 
-## Technology Stack Overview
-
-The project is built on a modern Vue.js ecosystem with the following core technologies:
-
-- **Framework**: Nuxt 4.2.0 (Vue 3 Composition API)
-- **Styling**: Tailwind CSS 4.1.16 with Nuxt UI 4.1.0
-- **Build Tool**: Vite (included with Nuxt)
-- **Documentation**: Component documentation in the project
-- **Package Manager**: npm (with package-lock.json)
-
-## Core Dependencies
-
-### Framework & Runtime
-
-#### Nuxt (`^4.2.0`)
-
-- **Version**: 4.2.0
-- **Purpose**: Full-stack Vue framework with SSR, SSG, and SPA capabilities
+- **Version**: ^4.2.0
+- **Purpose**: Main full-stack Vue framework
 - **Best Practices**:
-    - Use Composition API (`<script setup>`) for all new components
-    - Leverage Nuxt's auto-imports for composables and utilities
-    - Use `definePageMeta()` for page-level configuration
-    - Prefer `useState()` for client-side state management
-    - Use `useFetch()` or `$fetch()` for data fetching
-    - Enable DevTools in development (`devtools: { enabled: true }`)
-    - **Note**: Nuxt 4 is the latest major version with improved performance and DX
+    - Use Nuxt 4 directory structure (app/ directory strongly recommended)
+    - Leverage auto-imports for components and composables
+    - Use `useFetch` and `useAsyncData` for data fetching
+    - Follow conventions for `server/` routes
+    - **Note**: This is the core framework. Compatibility with modules is critical.
 
-#### Vue (included with Nuxt)
+### Vue (`3.x`)
 
-- **Version**: Vue 3 (via Nuxt 4)
-- **Purpose**: Progressive JavaScript framework
+- **Version**: Implicit via Nuxt (Vue 3.x)
+- **Purpose**: Reactive UI library
 - **Best Practices**:
-    - Use Composition API with `<script setup>` syntax
-    - Prefer `ref()` for primitives and `reactive()` for objects
-    - Use `computed()` for derived state
-    - Leverage `watch()` and `watchEffect()` for side effects
-    - Use `defineProps()` and `defineEmits()` for component props/events
-    - **Note**: Vue 3 provides better TypeScript support and performance
+    - Use Composition API with `<script setup>`
+    - Prefer `ref` over `reactive` for consistency
+    - Use composables for logic reuse
+    - Keep components small and focused
 
-### Styling & UI
+### Storybook (`8.6.8`)
 
-#### Tailwind CSS (`4.1.16`)
+- **Version**: 8.6.8 (with `@nuxtjs/storybook`: latest)
+- **Purpose**: UI Component development and documentation
+- **Best Practices**:
+    - Build UI components in isolation
+    - Write stories for all components in `*.stories.ts` (or `.vue` if necessary)
+    - Use `autodocs` for automatic documentation
+    - Leverage `@storybook/test` for interactions
+    - **Note**: Configured via `.storybook/main.ts` and `nuxt.config.ts`
+
+## Styling & UI
+
+### Tailwind CSS (`4.1.16`)
 
 - **Version**: 4.1.16
 - **Purpose**: Utility-first CSS framework
@@ -61,7 +48,7 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - Customize theme in `app.config.ts` for Nuxt UI integration
     - **Note**: Tailwind CSS 4.x introduces new features and improved performance
 
-#### @tailwindcss/vite (`4.1.16`)
+### @tailwindcss/vite (`4.1.16`)
 
 - **Version**: 4.1.16
 - **Purpose**: Vite plugin for Tailwind CSS integration
@@ -70,7 +57,7 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - Ensure CSS entry point is in `nuxt.config.ts` (`css: ['~/assets/css/main.css']`)
     - **Note**: This plugin provides faster builds and better HMR
 
-#### @nuxt/ui (`4.1.0`)
+### @nuxt/ui (`4.1.0`)
 
 - **Version**: 4.1.0
 - **Purpose**: Vue component library built on Tailwind CSS
@@ -82,9 +69,9 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - Customize component themes in `app/assets/css/themes/components/`
     - **Note**: Nuxt UI 4.x is compatible with Nuxt 4 and Tailwind CSS 4
 
-### Icons
+## Icons
 
-#### @iconify-json/lucide (`^1.2.72`)
+### @iconify-json/lucide (`^1.2.72`)
 
 - **Version**: ^1.2.72
 - **Purpose**: Lucide icon set for Iconify
@@ -93,7 +80,7 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - Import only needed icons to reduce bundle size
     - **Note**: Lucide provides a comprehensive set of modern icons
 
-#### @iconify-json/simple-icons (`^1.2.57`)
+### @iconify-json/simple-icons (`^1.2.57`)
 
 - **Version**: ^1.2.57
 - **Purpose**: Simple Icons brand icon set
@@ -103,8 +90,6 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - **Note**: Simple Icons provides official brand logos
 
 ## Development Dependencies
-
-### Documentation & Testing
 
 ### Code Quality & Formatting
 
@@ -149,9 +134,9 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - Generates CHANGELOG-compatible commits
     - **Note**: Works with Semantic Release
 
-#### @commitlint/cli (`^20.1.0`)
+#### @commitlint/cli (`^20.3.1`)
 
-- **Version**: ^20.1.0
+- **Version**: ^20.3.1
 - **Purpose**: Lint commit messages
 - **Best Practices**:
     - Configured in `commitlint.config.js`
@@ -159,9 +144,9 @@ The project is built on a modern Vue.js ecosystem with the following core techno
     - Enforces conventional commits
     - **Note**: Version 20.x is the latest major version
 
-#### @commitlint/config-conventional (`^20.0.0`)
+#### @commitlint/config-conventional (`^20.3.1`)
 
-- **Version**: ^20.0.0
+- **Version**: ^20.3.1
 - **Purpose**: Conventional commit rules for Commitlint
 - **Best Practices**:
     - Extends conventional commit specification
@@ -258,29 +243,6 @@ The project is built on a modern Vue.js ecosystem with the following core techno
 - Run `npm audit` before each release
 - Use `npm audit fix` for automatic vulnerability fixes
 - Review and test after security updates
-
-## Module Configuration
-
-### Nuxt Modules
-
-Configured in `nuxt.config.ts`:
-
-- `@nuxt/ui`: UI component library
-
-### Vite Plugins
-
-Configured in `nuxt.config.ts`:
-
-- `@tailwindcss/vite`: Tailwind CSS integration
-
-## Important Notes
-
-1. **Nuxt 4 Compatibility**: All dependencies are compatible with Nuxt 4.2.0
-2. **Tailwind CSS 4**: Using the latest Tailwind CSS 4.x with Vite plugin
-3. **TypeScript**: Full TypeScript support with Nuxt's auto-generated types
-4. **ES Modules**: Project uses `"type": "module"` for ES module support
-5. **Conventional Commits**: Enforced via Commitizen and Commitlint
-6. **Automated Releases**: Semantic Release handles versioning and publishing
 
 ## Version Compatibility Matrix
 

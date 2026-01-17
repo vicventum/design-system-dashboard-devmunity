@@ -1,0 +1,103 @@
+---
+description: Standards and conventions for writing Storybook stories in Vue 3 TypeScript
+globs: *.stories.ts
+alwaysApply: false
+---
+# Storybook Stories Conventions
+
+Follow these conventions when writing Storybook stories for Vue 3 components using TypeScript.
+
+## 1. Imports
+
+- Import types `Meta` and `StoryObj` from `@storybook/vue3`.
+- Import `fn` from `@storybook/test` for event spying.
+- Import the component and any necessary types from the component file.
+
+```typescript
+import type { Meta, StoryObj } from '@storybook/vue3'
+import { fn } from '@storybook/test'
+import MyComponent, { type MyComponentPropType } from './my-component.vue'
+```
+
+## 2. Meta Configuration
+
+- Define the meta object using `const meta = { ... } satisfies Meta<typeof MyComponent>`.
+- Use Atomic Design naming convention for the `title` (e.g., `Atoms/Button/MyComponent`).
+- Define `argTypes` to control the UI.
+  - Use `satisfies Type[]` for `options` to ensure type safety with component types.
+- Use `fn()` in `args` to spy on events.
+
+```typescript
+const meta = {
+    title: 'Atoms/Group/Component',
+    component: MyComponent,
+    argTypes: {
+        size: {
+            control: 'select',
+            options: ['sm', 'md', 'lg'] satisfies MyComponentPropType[],
+        },
+        onClick: {
+            table: { disable: true },
+        },
+    },
+    args: {
+        onClick: fn(),
+    },
+} satisfies Meta<typeof MyComponent>
+
+export default meta
+```
+
+## 3. Story Definitions
+
+- Define a `Story` type alias: `type Story = StoryObj<typeof meta>`.
+- Export named stories typed as `Story`.
+- Create a `Default` story with base arguments.
+- Reuse `Default.args` in other stories to avoid duplication.
+
+```typescript
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+    args: {
+        size: 'md',
+        label: 'Button',
+    },
+}
+
+export const Large: Story = {
+    args: {
+        ...Default.args,
+        size: 'lg',
+    },
+}
+```
+
+## 4. Custom Rendering (Slots)
+
+- Use the `render` function for stories requiring slots or complex setup.
+- Return a Vue component options object including:
+  - `components`: Register the component.
+  - `setup`: Return `args`.
+  - `template`: Use `v-bind="args"` to pass props.
+
+```typescript
+export const WithSlot: Story = {
+    args: {
+        ...Default.args,
+    },
+    render: (args) => ({
+        components: { MyComponent },
+        setup() {
+            return { args }
+        },
+        template: `
+            <MyComponent v-bind="args">
+                <template #default>
+                    <span>Slot Content</span>
+                </template>
+            </MyComponent>
+        `,
+    }),
+}
+```

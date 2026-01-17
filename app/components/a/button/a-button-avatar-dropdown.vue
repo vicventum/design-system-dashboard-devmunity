@@ -1,21 +1,44 @@
-<script lang="jsx" setup>
-const props = defineProps({
-    src: {
-        type: String,
-        default: '/media/img/user-unknown.png',
-        required: false,
-    },
-    buttonSize: {
-        type: String,
-        default: 'md',
-        required: false,
-    },
-    avatarSize: {
-        type: String,
-        default: 'sm',
-        required: false,
-    },
+<script lang="ts" setup>
+import type { UButton, UAvatar } from '#components'
+
+export type ButtonSize = InstanceType<typeof UButton>['$props']['size']
+export type AvatarSize = InstanceType<typeof UAvatar>['$props']['size']
+
+interface Props {
+    /**
+     * The source (path or URL) of the avatar
+     * @type string
+     */
+    src?: string
+    /**
+     * The size of the button
+     * @type ButtonSize
+     */
+    buttonSize?: ButtonSize
+    /**
+     * The size of the avatarSize
+     * @type AvatarSize
+     */
+    avatarSize?: AvatarSize
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    src: '/media/img/user-unknown.png',
+    buttonSize: 'md',
+    avatarSize: 'sm',
 })
+
+defineSlots<{
+    /** Example description for default */
+    default(): any
+}>()
+
+const emit = defineEmits<{
+    /**
+     * Emitted when the button is clicked
+     */
+    (e: 'on-click'): void
+}>()
 </script>
 
 <template>
@@ -35,6 +58,7 @@ const props = defineProps({
         color="primary"
         variant="ghost"
         class="rounded-full"
+        @click="emit('on-click')"
     >
         <slot />
     </UButton>
