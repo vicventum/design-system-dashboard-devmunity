@@ -1,45 +1,66 @@
-<script lang="jsx" setup>
-const props = defineProps({
-    src: {
-        type: String,
-        default: '/media/img/user-unknown.png',
-        required: false,
-    },
-    label: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    color: {
-        type: String,
-        default: 'neutral',
-        required: false,
-    },
-    variant: {
-        type: String,
-        default: 'outline',
-        required: false,
-        validator: (value) => ['solid', 'outline', 'soft', 'subtle'].includes(value),
-    },
-    size: {
-        type: String,
-        default: 'sm',
-        required: false,
-        validator: (value) => ['xs', 'sm', 'md', 'lg', 'xl'].includes(value),
-    },
-    hasAvatar: {
-        type: Boolean,
-        default: true,
-        required: false,
-    },
-    isClosable: {
-        type: Boolean,
-        default: true,
-        required: false,
-    },
+<script lang="ts" setup>
+import type { UBadge, UButton } from '#components'
+import { computed } from 'vue'
+
+// Derived types from Nuxt UI components
+export type BadgeSize = InstanceType<typeof UBadge>['$props']['size']
+export type BadgeColor = InstanceType<typeof UBadge>['$props']['color']
+export type BadgeVariant = InstanceType<typeof UBadge>['$props']['variant']
+
+interface Props {
+    /**
+     * Avatar image source URL
+     */
+    src?: string
+    /**
+     * Text label to display
+     */
+    label?: string
+    /**
+     * Color theme of the badge
+     */
+    color?: BadgeColor
+    /**
+     * Visual style variant
+     */
+    variant?: BadgeVariant
+    /**
+     * Size of the badge
+     */
+    size?: BadgeSize
+    /**
+     * Whether to show avatar
+     */
+    hasAvatar?: boolean
+    /**
+     * Whether to show close button
+     */
+    isClosable?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    src: '/media/img/user-unknown.png',
+    label: '',
+    color: 'neutral',
+    variant: 'outline',
+    size: 'sm',
+    hasAvatar: true,
+    isClosable: true,
 })
 
-const emit = defineEmits('on-close')
+const emit = defineEmits<{
+    /**
+     * Emitted when the close button is clicked
+     */
+    (e: 'on-close'): void
+}>()
+
+defineSlots<{
+    /**
+     * The default slot in which all the content
+     */
+    default(): any
+}>()
 
 const trailingIconSize = computed(() => {
     const sizeMap = {
@@ -72,7 +93,7 @@ const textSize = computed(() => {
                           src,
                           size,
                       }
-                    : null
+                    : undefined
             "
             :label="label"
             :trailing-icon="isClosable ? 'heroicons:x-mark' : ''"
@@ -82,6 +103,7 @@ const textSize = computed(() => {
             }"
             :color="color"
             :variant="variant"
+            :class="{ 'pl-2': !hasAvatar, 'pr-3': !isClosable }"
             class="rounded-full font-normal"
         >
             <template #trailing>
@@ -90,7 +112,6 @@ const textSize = computed(() => {
                     :size="size"
                     :ui="{
                         leadingIcon: trailingIconSize,
-                        icon: trailingIconSize,
                     }"
                     :color="color"
                     :variant="variant === 'solid' ? 'solid' : 'icon'"
