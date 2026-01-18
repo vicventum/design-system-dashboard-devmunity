@@ -1,10 +1,12 @@
 ---
-description: Convenciones para componentes Vue en el sistema de diseño
-globs: app/components/**/*.vue
+description: Convenciones para componentes Vue en el sistema de diseño (Solo componentes sin TypeScript)
+globs: 
 alwaysApply: false
 ---
 
 # Convenciones de Componentes Vue
+
+> **Nota**: Esta regla aplica específicamente a componentes cuya etiqueta `setup` sea diferente de `type="ts"` (es decir, componentes que no usan TypeScript).
 
 Esta regla documenta las convenciones y patrones para crear y mantener componentes Vue en el sistema de diseño, basado en el análisis de [d-card-header.vue](mdc:app/components/d/card/d-card-header.vue) y otros componentes del proyecto.
 

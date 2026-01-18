@@ -1,11 +1,9 @@
 ---
 description: Standards and conventions for writing Storybook stories in Vue 3 TypeScript
-globs: *.stories.ts
+globs: app/components/**/*.stories.ts
 alwaysApply: false
 ---
 # Storybook Stories Conventions
-
-Follow these conventions when writing Storybook stories for Vue 3 components using TypeScript.
 
 ## 1. Imports
 
@@ -26,6 +24,7 @@ import MyComponent, { type MyComponentPropType } from './my-component.vue'
 - Define `argTypes` to control the UI.
   - Use `satisfies Type[]` for `options` to ensure type safety with component types.
 - Use `fn()` in `args` to spy on events.
+- Don't use `tags: ['autodocs']`,
 
 ```typescript
 const meta = {

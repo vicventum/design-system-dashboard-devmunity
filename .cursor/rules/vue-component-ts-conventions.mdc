@@ -1,0 +1,62 @@
+---
+description: Coding conventions for Vue components using TypeScript and Script Setup
+globs: **/*.vue
+alwaysApply: false
+---
+# Vue Component TypeScript Conventions
+
+> **Note**: This rule applies specifically to components whose `setup` tag is `type="ts"` (i.e., components that use TypeScript).
+
+## Script Section
+
+- **Tag**: Use `<script lang="ts" setup>`.
+- **Imports**: Import types for Nuxt/UI components from `#components`.
+  ```typescript
+  import type { UButton } from '#components'
+  ```
+
+## Types and Interfaces
+
+- **Derived Types**: Use `InstanceType<typeof Component>['$props']['propName']` to derive valid values from underlying components (e.g., Nuxt UI components).
+- **Export Types**: Export these derived types if they are useful for consumers.
+  ```typescript
+  export type ButtonSize = InstanceType<typeof UButton>['$props']['size']
+  ```
+- **Props Interface**: Define a typed `interface Props`.
+  - Use JSDoc `/** ... */` comments for documentation.
+  - Use `?` for optional props.
+  ```typescript
+  interface Props {
+      /**
+       * Description of the prop
+       */
+      size?: ButtonSize
+  }
+  ```
+
+## Component Options (Props, Emits, Slots)
+
+- **Props**: Use `withDefaults` and `defineProps<Props>()`.
+  ```typescript
+  const props = withDefaults(defineProps<Props>(), {
+      size: 'md'
+  })
+  ```
+- **Slots**: Use `defineSlots` to strictly type slots.
+  ```typescript
+  defineSlots<{
+      default(): any
+  }>()
+  ```
+- **Emits**: Use `defineEmits` with the call signature syntax.
+  - Event names should be `kebab-case`.
+  ```typescript
+  const emit = defineEmits<{
+      (e: 'on-click'): void
+  }>()
+  ```
+
+## Template
+
+- Use `kebab-case` for custom event listeners (e.g., `@on-click`).
+- When wrapping components, pass props effectively (e.g., using object binding for complex sub-props like `:avatar="{ src, size }" `).

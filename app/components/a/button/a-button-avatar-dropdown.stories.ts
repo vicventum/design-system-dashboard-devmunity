@@ -23,7 +23,6 @@ const meta = {
             },
         },
     },
-    // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
     args: {
         'onOn-click': fn(),
     },
@@ -41,19 +40,19 @@ export const Default: Story = {
     },
 }
 
-export const LargeButton: Story = {
-    args: {
-        ...Default.args,
-        buttonSize: 'xl',
-        avatarSize: 'md',
-    },
-}
-
 export const SmallButton: Story = {
     args: {
         ...Default.args,
         buttonSize: 'xs',
         avatarSize: 'xs',
+    },
+}
+
+export const LargeButton: Story = {
+    args: {
+        ...Default.args,
+        buttonSize: 'xl',
+        avatarSize: 'md',
     },
 }
 

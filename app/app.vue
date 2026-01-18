@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 useHead({
     meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     link: [{ rel: 'icon', href: '/favicon.ico' }],
@@ -35,6 +35,9 @@ useSeoMeta({
 
             <template #right>
                 <UColorModeButton />
+                <AButtonAvatarDropdown avatar-size="" button-size="" />
+                <AButtonBack icon="" to="" has-back-action="" />
+                <Icon name="" />
 
                 <UButton
                     to="https://github.com/nuxt-ui-templates/starter"
