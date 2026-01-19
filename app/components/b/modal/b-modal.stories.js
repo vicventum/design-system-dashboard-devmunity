@@ -1,7 +1,7 @@
 import BModal from './b-modal.vue'
 
 export default {
-    title: 'Blocks/Modal/Default',
+    title: 'Bases/Modal/Default',
     component: BModal,
     tags: ['autodocs'],
 }

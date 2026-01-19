@@ -35,10 +35,6 @@ useSeoMeta({
 
             <template #right>
                 <UColorModeButton />
-                <AButtonAvatarDropdown avatar-size="" button-size="" />
-                <AButtonBack icon="" to="" has-back-action="" />
-                <Icon name="" />
-
                 <UButton
                     to="https://github.com/nuxt-ui-templates/starter"
                     target="_blank"
@@ -52,6 +48,18 @@ useSeoMeta({
 
         <UMain>
             <NuxtPage />
+            <BBadge
+                label="test"
+                value="active"
+                :styles="{
+                    active: {
+                        color: 'primary',
+                        variant: 'solid',
+                        icon: 'heroicons:check-20-solid',
+                        asdf: true,
+                    },
+                }"
+            />
         </UMain>
 
         <USeparator icon="i-simple-icons-nuxtdotjs" />

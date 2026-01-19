@@ -1,7 +1,7 @@
 import BCard from './b-card.vue'
 
 export default {
-    title: 'Blocks/Card/Default',
+    title: 'Bases/Card/Default',
     component: BCard,
     tags: ['autodocs'],
 }
