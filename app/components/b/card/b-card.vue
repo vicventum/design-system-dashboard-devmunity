@@ -1,39 +1,61 @@
-<script lang="jsx" setup>
+<script lang="ts" setup>
 import { computed } from 'vue'
 import { twMerge } from 'tailwind-merge'
+import type { UCard } from '#components'
 
-const props = defineProps({
-    as: {
-        type: String,
-        default: 'div',
-        required: false,
-    },
-    variant: {
-        default: 'outline',
-        type: String,
-        required: false,
-    },
-    hasBodyExpanded: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
-    hasFooterDivider: {
-        type: Boolean,
-        default: true,
-        required: false,
-    },
-    ui: {
-        type: Object,
-        default: null,
-        required: false,
-    },
+// Types
+export type CardVariant = InstanceType<typeof UCard>['$props']['variant']
+
+interface Props {
+    /**
+     * The HTML tag to render the card as
+     * @default 'div'
+     */
+    as?: string
+    /**
+     * The visual variant of the card
+     * @default 'outline'
+     */
+    variant?: CardVariant
+    /**
+     * Whether the card body should expand to fill available space
+     * @default false
+     */
+    hasBodyExpanded?: boolean
+    /**
+     * Whether to show a divider above the footer
+     * @default true
+     */
+    hasFooterDivider?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    as: 'article',
+    variant: 'outline',
+    hasBodyExpanded: false,
+    hasFooterDivider: true,
 })
+
+defineSlots<{
+    /**
+     * The default slot in which all the content
+     */
+    default(): any
+    /**
+     * The header slot
+     */
+    header(): any
+    /**
+     * The footer slot
+     */
+    footer(): any
+}>()
 
 // Computed
 
 const uiStyles = computed(() => {
     const baseStyles = {
+        root: '',
         header: 'p-0 sm:p-0',
         body: 'p-0 sm:p-0',
         footer: 'p-0 sm:p-0 sm:px-0',
@@ -49,11 +71,6 @@ const uiStyles = computed(() => {
     // Apply hasFooterDivider styles
     if (!props.hasFooterDivider) {
         baseStyles.body = twMerge(baseStyles.body, 'border-none')
-    }
-
-    // Apply custom ui prop (overrides previous styles)
-    if (props.ui) {
-        Object.assign(baseStyles, props.ui)
     }
 
     return baseStyles

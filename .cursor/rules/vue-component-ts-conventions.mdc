@@ -25,6 +25,7 @@ alwaysApply: false
 - **Props Interface**: Define a typed `interface Props`.
   - Use JSDoc `/** ... */` comments for documentation.
   - Use `?` for optional props.
+  - Use `is` or `has` prefixes for boolean props (e.g., `isOpen`, `hasIcon`).
   ```typescript
   interface Props {
       /**
@@ -43,15 +44,23 @@ alwaysApply: false
   })
   ```
 - **Slots**: Use `defineSlots` to strictly type slots.
+  - Use JSDoc to describe the slot's content or purpose.
   ```typescript
   defineSlots<{
+      /**
+       * The default slot content
+       */
       default(): any
   }>()
   ```
 - **Emits**: Use `defineEmits` with the call signature syntax.
   - Event names should be `kebab-case`.
+  - Use JSDoc to describe when the event is emitted.
   ```typescript
   const emit = defineEmits<{
+      /**
+       * Emitted when the user clicks the element
+       */
       (e: 'on-click'): void
   }>()
   ```
@@ -60,3 +69,17 @@ alwaysApply: false
 
 - Use `kebab-case` for custom event listeners (e.g., `@on-click`).
 - When wrapping components, pass props effectively (e.g., using object binding for complex sub-props like `:avatar="{ src, size }" `).
+- Use the `:ui` prop to override internal component styles, often referencing computed properties for complexity.
+
+## Logic & Computed Styles
+
+- **Class Mappings**: Use `computed` properties with a map object (e.g., `sizeMap`) to handle complex prop-to-class logic instead of inline templates.
+  ```typescript
+  const textSize = computed(() => {
+      const sizeMap = {
+          sm: 'text-xs',
+          md: 'text-sm'
+      }
+      return sizeMap[props.size] || 'text-sm'
+  })
+  ```
