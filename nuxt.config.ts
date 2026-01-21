@@ -1,9 +1,13 @@
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
-    modules: ['@nuxt/ui', '@nuxtjs/storybook'],
+    modules: [
+        '@nuxt/ui',
+        // Solo carga el módulo si la variable STORYBOOK es true
+        process.env.STORYBOOK === 'true' ? '@nuxtjs/storybook' : undefined,
+    ].filter(Boolean), // Elimina los 'undefined' del array
     css: ['~/assets/css/main.css'],
 
     vite: {

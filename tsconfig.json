@@ -1,6 +1,9 @@
 {
     // "extends": "./tsconfig.json",
     "extends": "./.nuxt/tsconfig.json",
+    "compilerOptions": {
+        "allowArbitraryExtensions": true
+    },
     // "exclude": [
     //     ".nuxt",
     //     "node_modules"

@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import AButtonAvatarDropdown from './components/a/button/a-button-avatar-dropdown.vue';
+import ADropdownAvatar from './components/a/dropdown/a-dropdown-avatar.vue';
+
 useHead({
     meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     link: [{ rel: 'icon', href: '/favicon.ico' }],
@@ -48,18 +51,6 @@ useSeoMeta({
 
         <UMain>
             <NuxtPage />
-            <BBadge
-                label="test"
-                value="active"
-                :styles="{
-                    active: {
-                        color: 'primary',
-                        variant: 'solid',
-                        icon: 'heroicons:check-20-solid',
-                        asdf: true,
-                    },
-                }"
-            />
         </UMain>
 
         <USeparator icon="i-simple-icons-nuxtdotjs" />
@@ -68,7 +59,30 @@ useSeoMeta({
             <template #left>
                 <p class="text-muted text-sm">Built with Nuxt UI • © {{ new Date().getFullYear() }}</p>
             </template>
-
+            <ADropdownAvatar
+                :items="[
+                    [
+                        {
+                            label: 'Profile',
+                            icon: 'heroicons:user',
+                        },
+                    ],
+                    [
+                        {
+                            label: 'Settings',
+                            icon: 'heroicons:cog-6-tooth',
+                        },
+                    ],
+                ]"
+                userName="John Doe"
+                userEmail="john@example.com"
+            >
+                <AButtonAvatarDropdown
+                    label="Custom Trigger"
+                    color="primary"
+                    trailing-icon="i-heroicons-chevron-down"
+                />
+            </ADropdownAvatar>
             <template #right>
                 <UButton
                     to="https://github.com/nuxt-ui-templates/starter"

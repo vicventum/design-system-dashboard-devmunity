@@ -1,44 +1,86 @@
-<script lang="jsx" setup>
-const props = defineProps({
-    items: {
-        type: Array,
-        default: () => [],
-        required: true,
-    },
-    userName: {
-        type: String,
-        default: '',
-        required: true,
-    },
-    userEmail: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    userTo: {
-        type: String,
-        default: '',
-        required: false,
-    },
+<script lang="ts" setup>
+import type { UDropdownMenu } from '#components'
+
+export interface DropdownItem {
+    userName?: string
+    userEmail?: string
+    slot?: string
+    onSelect?: () => void
+    // label?: string
+    // icon?: string
+    // to?: string
+    [key: string]: any
+}
+
+interface Props {
+    /**
+     * Array of dropdown items to display, grouped in arrays
+     */
+    items: DropdownItem[][]
+    /**
+     * Display name of the user
+     */
+    userName: string
+    /**
+     * Email address of the user
+     */
+    userEmail?: string
+    /**
+     * Navigation path for user profile
+     */
+    userTo?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    items: () => [],
+    userEmail: '',
+    userTo: '',
 })
 
+defineSlots<{
+    /**
+     * Default slot content for dropdown trigger (REQUIRED)
+     */
+    default(): any
+    /**
+     * User information slot
+     */
+    user(props: { item: DropdownItem }): any
+    /**
+     * Additional dynamic slots
+     */
+    [name: string]: any
+}>()
+
+// Validate that the default slot is provided
+const slots = useSlots()
+if (!slots.default) {
+    console.warn('ADropdownAvatar: The default slot is required')
+}
+
 const uiStyles = computed(() => {
-    if (props.userTo) return {}
+    const ui = {
+        content: 'min-w-40',
+    }
+    if (props.userTo) return ui
     return {
+        ...ui,
         item: 'data-highlighted:first:before:bg-transparent data-[state=open]:first:before:bg-transparent',
     }
 })
 
-const itemsComputed = computed(() => [
-    {
-        userName: props.userName,
-        userEmail: props.userEmail,
-        slot: 'user',
-        onSelect: () => {
-            const path = props.userTo
-            if (path) navigateTo(path)
+const itemsComputed = computed((): DropdownItem[][] => [
+    [
+        {
+            userName: props.userName,
+            userEmail: props.userEmail,
+            slot: 'user',
+            onSelect: () => {
+                const path = props.userTo
+                if (path) navigateTo(path)
+            },
         },
-    },
+    ],
     ...props.items,
 ])
 </script>
@@ -47,7 +89,7 @@ const itemsComputed = computed(() => [
     <UDropdownMenu :items="itemsComputed" :ui="uiStyles">
         <slot />
 
-        <template #user="{ item }">
+        <template #user="{ item }: { item: any }">
             <div class="text-start">
                 <span class="text-highlighted block text-lg font-bold">
                     {{ item.userName }}

@@ -9,8 +9,8 @@
         "preview": "nuxt preview",
         "commit": "cz",
         "prepare": "husky",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
+        "storybook": "STORYBOOK=true storybook dev -p 6006",
+        "build-storybook": "STORYBOOK=true storybook build"
     },
     "release": {
         "branches": [
