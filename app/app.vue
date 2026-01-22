@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AButtonAvatarDropdown from './components/a/button/a-button-avatar-dropdown.vue';
-import ADropdownAvatar from './components/a/dropdown/a-dropdown-avatar.vue';
+import AButtonAvatarDropdown from './components/a/button/a-button-avatar-dropdown.vue'
+import ADropdownAvatar from './components/a/dropdown/a-dropdown-avatar.vue'
 
 useHead({
     meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
@@ -23,6 +23,8 @@ useSeoMeta({
     twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
     twitterCard: 'summary_large_image',
 })
+
+const isOpen = ref(false)
 </script>
 
 <template>
@@ -59,30 +61,18 @@ useSeoMeta({
             <template #left>
                 <p class="text-muted text-sm">Built with Nuxt UI • © {{ new Date().getFullYear() }}</p>
             </template>
-            <ADropdownAvatar
-                :items="[
-                    [
-                        {
-                            label: 'Profile',
-                            icon: 'heroicons:user',
-                        },
-                    ],
-                    [
-                        {
-                            label: 'Settings',
-                            icon: 'heroicons:cog-6-tooth',
-                        },
-                    ],
-                ]"
-                userName="John Doe"
-                userEmail="john@example.com"
-            >
-                <AButtonAvatarDropdown
-                    label="Custom Trigger"
-                    color="primary"
-                    trailing-icon="i-heroicons-chevron-down"
-                />
-            </ADropdownAvatar>
+            <BModal v-model="isOpen" title="Modal">
+                <UForm class="w-full space-y-4">
+                    <UFormField label="Email" name="email" class="w-full">
+                        <UInput type="email" :ui="{ root: 'w-full' }" />
+                    </UFormField>
+
+                    <UFormField label="Password" name="password" class="w-full">
+                        <UInput type="password" :ui="{ root: 'w-full' }" />
+                    </UFormField>
+                </UForm>
+            </BModal>
+            <UButton @click="isOpen = true">Open Modal</UButton>
             <template #right>
                 <UButton
                     to="https://github.com/nuxt-ui-templates/starter"

@@ -1,84 +1,118 @@
-<script lang="jsx" setup>
-import { resolveComponent } from 'vue'
-import { twMerge } from 'tailwind-merge'
+<script lang="ts" setup>
+import { resolveComponent, computed, type Ref } from 'vue'
+import { twMerge, type ClassNameValue } from 'tailwind-merge'
+import type { UForm, UModal } from '#components'
 
-const UForm = resolveComponent('UForm')
+const UFormComponent = resolveComponent('UForm')
 
-const props = defineProps({
-    state: {
-        type: Object,
-        default: null,
-        required: false,
-    },
-    schema: {
-        type: Object,
-        default: null,
-        required: false,
-    },
-    title: {
-        type: String,
-        default: '',
-        required: true,
-    },
-    description: {
-        type: String,
-        default: '',
-        required: true,
-    },
-    text: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    primaryButtonText: {
-        type: String,
-        default: 'Guardar',
-        required: false,
-    },
-    primaryButtonColor: {
-        type: String,
-        default: 'primary',
-        required: true,
-    },
-    secondaryButtonText: {
-        type: String,
-        default: 'Cancelar',
-        required: false,
-    },
-    hasFooter: {
-        type: Boolean,
-        default: true,
-        required: false,
-    },
-    isPrimaryButtonDisabled: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
-    hasButtonsBlock: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
-    classButtons: {
-        type: String,
-        default: '',
-        required: false,
-    },
+interface Props {
+    /**
+     * The state object for form management
+     */
+    state?: Record<string, any> | null
+    /**
+     * The schema for form validation
+     */
+    schema?: Record<string, any> | null
+    /**
+     * The title of the modal
+     */
+    title: string
+    /**
+     * The description of the modal
+     */
+    description?: string
+    /**
+     * Text for the main content when it is not necessary to use the slot with more complex markup
+     */
+    text?: string
+    /**
+     * Text for the primary button
+     */
+    primaryButtonText?: string
+    /**
+     * Color variant for the primary button
+     */
+    primaryButtonColor?: string
+    /**
+     * Text for the secondary button
+     */
+    secondaryButtonText?: string
+    /**
+     * Whether the modal has a footer
+     */
+    hasFooter?: boolean
+    /**
+     * Whether the primary button is disabled
+     */
+    isPrimaryButtonDisabled?: boolean
+    /**
+     * Whether buttons should be displayed as blocks
+     */
+    hasButtonsBlock?: boolean
+    /**
+     * Additional CSS classes for buttons
+     */
+    classButtons?: ClassNameValue
+    /**
+     * Additional CSS classes for the modal
+     */
+    class?: ClassNameValue
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    state: null,
+    schema: null,
+    description: '',
+    text: '',
+    primaryButtonText: 'Guardar',
+    primaryButtonColor: 'primary',
+    secondaryButtonText: 'Cancelar',
+    hasFooter: true,
+    isPrimaryButtonDisabled: false,
+    hasButtonsBlock: false,
+    classButtons: '',
+    class: '',
 })
 
-const emit = defineEmits(['on-click-primary-button', 'on-click-secondary-button', 'on-submit'])
+const emit = defineEmits<{
+    /**
+     * Emitted when the primary button is clicked
+     */
+    (e: 'on-click-primary-button'): void
+    /**
+     * Emitted when the secondary button is clicked
+     */
+    (e: 'on-click-secondary-button'): void
+    /**
+     * Emitted when the form is submitted
+     */
+    (e: 'on-submit'): void
+}>()
+
+defineSlots<{
+    /**
+     * Custom header content
+     */
+    header?(): any
+    /**
+     * Default body content when no text is provided
+     */
+    default?(): any
+    /**
+     * Custom footer content
+     */
+    footer?(): any
+}>()
 
 // Model
 
-const isOpen = defineModel({
-    type: Boolean,
+const isOpen = defineModel<boolean>({
     default: false,
     required: true,
 })
-const formRef = defineModel('formRef', {
-    type: Object,
-    default: () => {},
+const formRef = defineModel<Ref<any>>('formRef', {
+    default: () => ({}) as any,
     required: false,
 })
 
@@ -96,32 +130,40 @@ const formRef = defineModel('formRef', {
 // })
 
 const formProps = computed(() => {
-    // return props.data ? { ref: 'form', state: props.data, onSubmit: handleSubmit } : {}
     return props.state ? { ref: 'formRef', state: props.state, schema: props.schema } : {}
 })
 
 // Methods
 
-function handleSubmit() {
+function handleSubmit(): void {
     emit('on-submit')
 }
-function handleClickPrimaryButton() {
+function handleClickPrimaryButton(): void {
     emit('on-click-primary-button')
 }
-function handleClickSecondaryButton() {
+function handleClickSecondaryButton(): void {
     isOpen.value = false
     emit('on-click-secondary-button')
 }
 </script>
 
 <template>
-    <UModal v-model:open="isOpen" :title="title" :description="description">
+    <UModal
+        v-model:open="isOpen"
+        :title="title"
+        :description="description"
+        :class="twMerge('w-lg', props.class)"
+    >
         <template #header>
             <slot v-if="$slots.header" name="header" />
         </template>
 
         <template #body>
-            <component :is="state ? UForm : 'section'" v-bind="formProps" @submit="handleSubmit">
+            <component
+                :is="props.state ? UFormComponent : 'section'"
+                v-bind="formProps"
+                @submit="handleSubmit"
+            >
                 <p v-if="text">
                     {{ text }}
                 </p>
@@ -136,9 +178,9 @@ function handleClickSecondaryButton() {
                 :primary-button-color="primaryButtonColor"
                 :primary-button-text="primaryButtonText"
                 :secondary-button-text="secondaryButtonText"
-                :is-buttons-block="hasButtonsBlock"
+                :has-buttons-block="hasButtonsBlock"
                 :is-primary-button-disabled="isPrimaryButtonDisabled"
-                :class="twMerge('flex w-full justify-end gap-x-2', classButtons)"
+                :class="twMerge('flex w-full justify-end gap-x-2', props.classButtons)"
                 class-buttons="w-40"
                 @on-click-primary-button="handleClickPrimaryButton"
                 @on-click-secondary-button="handleClickSecondaryButton"
