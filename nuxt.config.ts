@@ -14,20 +14,11 @@ export default defineNuxtConfig({
         plugins: [tailwindcss()],
     },
 
-    // ui: {
-    //   theme: {
-    //     colors: [
-    //       'primary',
-    //       'secondary',
-    //       'tertiary',
-    //       'info',
-    //       'success',
-    //       'warning',
-    //       'error',
-    //       'test'
-    //     ]
-    //   }
-    // },
+    ui: {
+        theme: {
+            colors: ['primary', 'secondary', 'accent', 'info', 'success', 'warning', 'error'],
+        },
+    },
 
     // components: [
     //     {

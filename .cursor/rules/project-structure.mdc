@@ -218,6 +218,7 @@ Defined in `app.config.ts`:
 
 - `primary`: brand-blue
 - `secondary`: brand-purple
+- `accent`: brand-yellow
 - `success`: brand-green
 - `warning`: brand-orange
 - `error`: brand-red

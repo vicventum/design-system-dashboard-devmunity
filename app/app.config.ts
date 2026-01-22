@@ -6,6 +6,7 @@ export default defineAppConfig({
         colors: {
             primary: 'brand-blue',
             secondary: 'brand-purple',
+            accent: 'brand-yellow',
             success: 'brand-green',
             warning: 'brand-orange',
             error: 'brand-red',
