@@ -24,6 +24,7 @@
     "dev-infra",
     "vscode-extension",
     "components",
-    "stories"
+    "stories",
+    "theme"
   ]
 }

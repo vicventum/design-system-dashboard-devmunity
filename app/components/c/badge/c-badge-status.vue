@@ -1,25 +1,38 @@
-<script setup>
-const props = defineProps({
-    label: {
-        type: String,
-        default: '',
-        required: true,
-    },
-    value: {
-        type: String,
-        default: '',
-        required: true,
-    },
+<script lang="ts" setup>
+import type { BBadge } from '#components'
+
+type BadgeStyles = InstanceType<typeof BBadge>['$props']['styles']
+type DefaultStyle = InstanceType<typeof BBadge>['$props']['defaultStyle']
+
+interface Props {
+    /**
+     * The label text to display on the badge
+     */
+    label: string
+    /**
+     * The status value that determines the badge style
+     */
+    value: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    label: '',
+    value: '',
 })
 
-const styles = {
-    PLANNED: {
+const styles: BadgeStyles = {
+    TODO: {
         color: 'accent',
+        variant: 'soft',
+    },
+    IN_PROGRESS: {
+        color: 'secondary',
         variant: 'soft',
     },
     FINISHED: {
         color: 'success',
         variant: 'soft',
+        icon: 'material-symbols:check-circle-outline',
     },
     CANCELLED: {
         color: 'error',
@@ -31,7 +44,15 @@ const styles = {
         variant: 'soft',
     },
 }
-const defaultStyle = styles.OTHER
+
+const defaultStyle: DefaultStyle = styles.OTHER
+
+defineSlots<{
+    /**
+     * The default slot content
+     */
+    default(): any
+}>()
 </script>
 
 <template>
