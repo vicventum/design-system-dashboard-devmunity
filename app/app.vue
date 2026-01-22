@@ -61,17 +61,7 @@ const isOpen = ref(false)
             <template #left>
                 <p class="text-muted text-sm">Built with Nuxt UI • © {{ new Date().getFullYear() }}</p>
             </template>
-            <BModal v-model="isOpen" title="Modal">
-                <UForm class="w-full space-y-4">
-                    <UFormField label="Email" name="email" class="w-full">
-                        <UInput type="email" :ui="{ root: 'w-full' }" />
-                    </UFormField>
-
-                    <UFormField label="Password" name="password" class="w-full">
-                        <UInput type="password" :ui="{ root: 'w-full' }" />
-                    </UFormField>
-                </UForm>
-            </BModal>
+            <CModalDanger v-model="isOpen" title="Modal" description="Modal description" />
             <UButton @click="isOpen = true">Open Modal</UButton>
             <template #right>
                 <UButton

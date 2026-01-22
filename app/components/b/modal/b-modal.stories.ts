@@ -29,6 +29,9 @@ const meta = {
             control: 'boolean',
             name: 'isOpen',
             description: 'Whether the modal is open',
+            table: {
+                category: 'v-model',
+            },
         },
     },
     args: {
@@ -115,7 +118,7 @@ export const WithForm: Story = {
         title: 'With Form',
         description: 'Modal with form',
         modelValue: false,
-        class: 'w-74'
+        class: 'w-74',
     },
     render: (args) =>
         ({
