@@ -1,28 +1,44 @@
-<script setup>
-const props = defineProps({
-    src: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    buttonSize: {
-        type: String,
-        default: 'sm',
-        required: false,
-        validator: (value) => ['xs', 'sm', 'md', 'lg', 'xl'].includes(value),
-    },
-    buttonColor: {
-        type: String,
-        default: 'neutral',
-        required: false,
-    },
+<script lang="ts" setup>
+import type { UButton } from '#components'
+
+// Types
+export type ButtonSize = InstanceType<typeof UButton>['$props']['size']
+export type ButtonColor = InstanceType<typeof UButton>['$props']['color']
+
+interface Props {
+    /**
+     * The source URL of the avatar image
+     */
+    src?: string
+    /**
+     * The size of the upload button
+     */
+    buttonSize?: ButtonSize
+    /**
+     * The color of the upload button
+     */
+    buttonColor?: ButtonColor
+}
+
+interface Emits {
+    /**
+     * Emitted when an image is uploaded
+     */
+    (e: 'on-upload-image', file: File): void
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    src: '',
+    buttonSize: 'sm',
+    buttonColor: 'neutral',
 })
-const emit = defineEmits('on-upload-image')
+
+const emit = defineEmits<Emits>()
 
 // Data
 
-const fileName = ref(null)
-const inputFileRef = ref(null)
+const fileName = ref<File | null>(null)
+const inputFileRef = ref<HTMLInputElement | null>(null)
 
 // Computed
 
@@ -39,14 +55,17 @@ const getImage = computed(() => {
 
 // Methods
 
-function handleUploadImage(event) {
-    if (event.target.files) {
-        fileName.value = event.target.files[0]
-    } else {
-        fileName.value = event.dataTransfer.files[0]
-    }
+// Proposed change in handleUploadImage function
+function handleUploadImage(event: Event): void {
+    const target = event.target as HTMLInputElement
+    const files = target.files || (event as DragEvent).dataTransfer?.files
 
-    emit('on-upload-image', fileName.value)
+    // Capture the first file and check for its existence
+    const file = files?.[0]
+    if (file) {
+        fileName.value = file
+        emit('on-upload-image', file)
+    }
 }
 </script>
 
@@ -64,12 +83,12 @@ function handleUploadImage(event) {
             <div
                 v-else
                 class="bg-primary-50 grid size-20 place-items-center rounded-md"
-                @click="inputFileRef.click()"
+                @click="inputFileRef?.click()"
             >
                 <UIcon name="heroicons:photo" class="size-6 text-neutral-900" />
             </div>
         </div>
-        <UButton :color="buttonColor" variant="outline" @click="inputFileRef.click()" :size="buttonSize">
+        <UButton :color="buttonColor" variant="outline" @click="inputFileRef?.click()" :size="buttonSize">
             {{ 'Cambiar' }}
         </UButton>
     </div>
