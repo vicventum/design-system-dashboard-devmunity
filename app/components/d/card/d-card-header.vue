@@ -1,45 +1,63 @@
-<script lang="jsx" setup>
+<script lang="ts" setup>
 import { twMerge } from 'tailwind-merge'
 
-const props = defineProps({
-    title: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    subtitle: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    variant: {
-        type: String,
-        default: 'main', // main, secondary
-        required: false,
-    },
-    hasLeftButtonIcon: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
-    leftButtonIcon: {
-        type: String,
-        default: 'heroicons:arrow-left-16-solid',
-        required: false,
-    },
-    leftButtonIconTo: {
-        type: String,
-        default: '',
-        required: false,
-    },
-    classTitle: {
-        type: String,
-        default: '',
-        required: false,
-    },
+interface Props {
+    /**
+     * The main title text
+     */
+    title: string
+    /**
+     * The subtitle text displayed below the title
+     */
+    subtitle?: string
+    /**
+     * The visual variant of the header
+     */
+    variant?: 'main' | 'secondary'
+    /**
+     * The icon to use for the left button
+     */
+    leftButtonIcon?: string
+    /**
+     * The navigation target for the left button
+     */
+    leftButtonIconTo?: string
+    /**
+     * Whether to show a left button icon
+     */
+    hasLeftButtonIcon?: boolean
+    /**
+     * Additional CSS classes for the title element
+     */
+    classTitle?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    subtitle: '',
+    variant: 'main',
+    leftButtonIcon: 'heroicons:arrow-left-16-solid',
+    leftButtonIconTo: '',
+    hasLeftButtonIcon: false,
+    classTitle: '',
 })
 
-const emit = defineEmits(['on-click-left-button-icon'])
+const emit = defineEmits<{
+    /**
+     * Emitted when the left button icon is clicked
+     */
+    (e: 'on-click-left-button-icon'): void
+}>()
+
+defineSlots<{
+    /**
+     * Slot for action buttons or elements
+     */
+    actions(): any
+    /**
+     * Default slot content (not used in this component)
+     */
+    default?(): any
+}>()
 
 const headingTag = computed(() => {
     const tags = {
@@ -58,15 +76,15 @@ function handleClickLeftButtonIcon() {
     <ACardInner
         :class="[
             'text-default flex items-center justify-between',
-            { 'bg-muted border-y border-neutral-200': variant === 'secondary' },
+            variant === 'secondary' && 'bg-muted border-y border-neutral-200',
         ]"
     >
         <div class="space-y-1">
             <div class="flex items-center gap-x-3">
-                <AButtonBack
+                <AButtonNavigation
                     v-if="hasLeftButtonIcon"
                     :icon="leftButtonIcon"
-                    :To="leftButtonIconTo"
+                    :to="leftButtonIconTo"
                     :is-back-action="leftButtonIconTo"
                     @on-click="handleClickLeftButtonIcon"
                 />

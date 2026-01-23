@@ -63,6 +63,8 @@ const isOpen = ref(false)
             </template>
             <CModalDanger v-model="isOpen" title="Modal" description="Modal description" />
             <UButton @click="isOpen = true">Open Modal</UButton>
+            <UBadge color="accent" />
+            <DCardHeader title="Card Header" subtitle="Card Subtitle" />
             <template #right>
                 <UButton
                     to="https://github.com/nuxt-ui-templates/starter"

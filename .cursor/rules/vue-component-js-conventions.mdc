@@ -132,7 +132,7 @@ Usa componentes con prefijo de categoría (A, B, C, D):
 
 ```vue
 <ACardInner>
-    <AButtonBack />
+    <AButtonNavigation />
 </ACardInner>
 
 <BModal />
@@ -178,7 +178,7 @@ Ejemplo:
 Usa `v-if` para renderizado condicional de elementos y componentes:
 
 ```vue
-<AButtonBack v-if="hasLeftButtonIcon" :icon="leftButtonIcon" @on-click="handleClickLeftButtonIcon" />
+<AButtonNavigation v-if="hasLeftButtonIcon" :icon="leftButtonIcon" @on-click="handleClickLeftButtonIcon" />
 
 <p v-if="subtitle">
     {{ subtitle }}
@@ -220,7 +220,7 @@ Para slots con verificación y template:
 Usa kebab-case en templates para props:
 
 ```vue
-<AButtonBack :icon="leftButtonIcon" :To="leftButtonIconTo" :is-back-action="leftButtonIconTo" />
+<AButtonNavigation :icon="leftButtonIcon" :To="leftButtonIconTo" :is-back-action="leftButtonIconTo" />
 ```
 
 **Nota**: En Vue, las props se pueden escribir en camelCase o kebab-case, pero kebab-case es más común en templates.
