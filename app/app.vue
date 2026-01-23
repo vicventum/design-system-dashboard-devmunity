@@ -65,6 +65,17 @@ const isOpen = ref(false)
             <UButton @click="isOpen = true">Open Modal</UButton>
             <UBadge color="accent" />
             <DCardHeader title="Card Header" subtitle="Card Subtitle" />
+            <DActionButtons
+                primary-button-text="Primary"
+                secondary-button-text="Secondary"
+                primary-button-icon="i-heroicons-solid-arrow-right"
+                primary-button-trailing-icon="i-heroicons-solid-arrow-right"
+            />
+            <UButton
+                icon="i-heroicons-solid-arrow-right"
+                trailing-icon="i-heroicons-solid-arrow-right"
+                label="Button"
+            />
             <template #right>
                 <UButton
                     to="https://github.com/nuxt-ui-templates/starter"

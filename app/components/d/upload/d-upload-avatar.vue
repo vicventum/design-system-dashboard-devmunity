@@ -7,7 +7,7 @@ export type ButtonColor = InstanceType<typeof UButton>['$props']['color']
 
 interface Props {
     /**
-     * The source URL of the avatar image
+     * The source URL of the previously uploaded avatar image before uploading a new one
      */
     src?: string
     /**
