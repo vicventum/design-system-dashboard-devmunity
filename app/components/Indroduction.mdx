@@ -2,44 +2,99 @@ import { Meta } from '@storybook/blocks'
 
 <Meta title='Introduction' />
 
-# Design System - Nuxt UI
+# Introducción al Sistema de Diseño
 
-Welcome to the Design System built with **Nuxt UI** and **Vue 3**.
+Este sistema de diseño ha sido concebido como una infraestructura robusta y escalable para la creación de **Dashboards** unificados. Su objetivo principal es optimizar el ciclo de desarrollo mediante una biblioteca de componentes preconfigurados y diseñados específicamente para un diseño de Dashboard ya definido, que garantizan consistencia visual y funcional, sin sacrificar la flexibilidad necesaria para adaptaciones de marca.
 
-## Overview
+## Arquitectura Subyacente
 
-This Storybook contains all the components of our design system, built on top of Nuxt UI.
+La librería está construida sobre **Nuxt UI**, lo que significa que todos sus componentes están disponibles para los desarrolladores. Sin embargo, el enfoque principal es crear componentes especializados que incorporen estilos y funcionalidades predefinidas adaptadas específicamente para el diseño del tipo de dashboard que se usa como base.
 
-## Getting Started
+Por ejemplo, en lugar de utilizar directamente `UModal` de Nuxt UI y personalizarlo desde cero, el sistema proporciona `BModal`, un componente que extiende `UModal` con características adicionales y diseño preconfigurado para uso inmediato.
 
-Browse the components in the sidebar to see:
+De esta manera, a diferencia de una biblioteca de componentes tradicional, este sistema actúa como una capa de abstracción semántica que:
 
-- **Interactive examples** of each component
-- **Props documentation** with controls
-- **Usage examples** and code snippets
+1.  **Agiliza el desarrollo:** Proporciona componentes con diseño base ya integrado para casos de uso comunes en dashboards.
+2.  **Mantiene la flexibilidad:** Aprovecha las capacidades de _Theming_ de Nuxt UI y las variables de CSS de Tailwind para permitir personalizaciones profundas (colores, bordes, espaciados) mediante archivos de configuración centralizados.
+3.  **Encapsula la complejidad:** En lugar de configurar componentes de terceros desde cero en cada vista, utilizamos "Wrappers" inteligentes (como `BModal` sobre `UModal`) que ya contienen la lógica y los estilos específicos de nuestro ecosistema.
 
-## Components
+## Sistema de Organización de Componentes
 
-All components are located in the `app/components` directory and follow the Nuxt auto-import convention.
+### Fundamento: Atomic Design
 
-## Tech Stack
+El sistema se basa en los principios de **[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)**, adaptados específicamente para el desarrollo de componentes. La metodología se centra en tres niveles principales:
 
-- **Vue 3** - Progressive JavaScript framework
-- **Nuxt 4** - The Intuitive Vue Framework
-- **Nuxt UI** - Fully styled and customizable components
-- **Tailwind CSS** - Utility-first CSS framework
-- **Storybook 8** - UI component development tool
+- **Átomos**: Unidades fundamentales e indivisibles del sistema. Son elementos reconocibles que requieren contexto adicional para tener sentido funcional. _Ejemplos_: botones, etiquetas, títulos.
+- **Moléculas**: Composición de dos o más átomos que crean elementos con significado propio, aunque no son completamente independientes. _Ejemplos_: cards, pares label-input.
+- **Organismos**: Estructuras complejas formadas por múltiples moléculas. Son elementos completamente independientes que mantienen su funcionalidad sin importar el contexto. _Ejemplos_: headers, grids con filtros.
 
-## Development
+> **Nota**: Los niveles de Templates y Páginas del Atomic Design original no aplican directamente al desarrollo de estilos, ya que se construyen mediante la composición de organismos en el marcado HTML.
 
-To run Storybook locally:
+### Sistema de Clasificación A-B-C-D
 
-```bash
-pnpm storybook
+Basándonos en los principios de **Atomic Design**, hemos implementado una variación denominada **Sistema ABCD** (Atoms, Bases, Composites, Designs), que mantiene los conceptos fundamentales pero los reorganiza para mejor adaptarse a los tipos de componentes de la librería.
+
+### A - Atoms (Átomos)
+
+Se mantiene el concepto de _Átomos_ de **Atomic Design**, siendo los bloques de construcción más básicos e indivisibles de la interfaz. Aunque Nuxt UI provee la mayoría de los átomos estándar, en esta capa definimos elementos específicos que no existen en la biblioteca base o que requieren una estructura única.
+
+- **Ejemplo:** `ACardInner`, `AButtonNavigation`, `APill`.
+
+### B - Bases (Componentes Base)
+
+Son componentes generales que pueden contener _Átomos_ o _Moléculas_, que actúan como "contenedores" o versiones estandarizadas de componentes más complejos. Si bien pueden usarse de forma directa, su propósito principal es definir un comportamiento y diseño general para ser reutilizados o extendidos.
+
+- **Ejemplo:** `BModal`. Es un envoltorio (_wrapper_) de `UModal` que ya incluye los estándares de estilos, funcionalidades y estructura interna del proyecto.
+
+### C - Composites (Compuestos)
+
+Son especializaciones semánticas de un componente **Base**. Se crean para cubrir casos de uso específicos y repetitivos, eliminando la necesidad de pasar las mismas props y modificaciones de estilos repetidamente a un componente base.
+
+- **Ejemplo:** `CModalDanger` (Una instancia de `BModal` preconfigurada con colores de error, iconos de advertencia y acciones de confirmación destructivas).
+
+### D - Designs (Diseños/Organismos)
+
+Son estructuras complejas y autónomas compuestas por la unión de _Atoms_, _Bases_, o _Composites_. A menudo representan secciones enteras de una página o componentes con una lógica de negocio específica y altamente reutilizable.
+
+- **Ejemplo:** Pueden ser secciones reutilizables más grandes similares a _Organismos_ compuestas por varios componentes, como por ejemplo `DCardHeader`, o algo más contenidas como _Moléculas_ pero que no requerirá de variantes al ser más específicas, que por lo tanto pueden tener lógica ya suscrita, por ejemplo `DUploadAvatar`
+
+---
+
+## Convención de Nomenclatura y Estructura
+
+La librería implementa el **sistema de nombramiento por ruta de Nuxt**, donde el nombre del componente refleja directamente su ubicación en la estructura de directorios. Este enfoque proporciona trazabilidad inmediata y facilita su auto-importación y la identificación de la categoría del componente mediante su prefijo.
+
+La ubicación en el sistema de archivos dicta el nombre del componente:
+
+```text
+app/
+└── components/
+    ├── a/           # Átomos
+    │   └── a-pill.vue
+    ├── b/           # Bases
+    │   └── b-modal.vue
+    ├── c/           # Composites
+    │   └── c-modal-danger.vue
+    └── d/           # Designs
+        └── d-card-header.vue
 ```
 
-To build Storybook:
+### Beneficios de este enfoque:
 
-```bash
-pnpm build-storybook
-```
+- **Autodescriptivo:** El prefijo (`A-`, `B-`, `C-`, `D-`) indica inmediatamente el nivel de complejidad y el propósito del componente.
+- **Escalabilidad**: Facilita la organización de nuevos componentes dentro de la estructura existente basandose en la jerarquía
+- **Trazabilidad**: La ruta del componente indica inmediatamente su categoría y propósito
+- **Sin Colisiones:** Evita conflictos con los componentes nativos de Nuxt UI (prefijados con `U-`).
+- **Mantenimiento**: Simplifica la localización y modificación de componentes específicos
+- **Colaboración**: Estandariza el proceso de desarrollo para equipos múltiples
+
+---
+
+## Stack Tecnológico
+
+Este sistema está alineado con las últimas versiones de las tecnologías líderes en el ecosistema Vue:
+
+- **Framework:** [Nuxt 4](https://nuxt.com/) (Estructura de directorios `app/`, auto-imports y alta performance).
+- **UI Library:** [@nuxt/ui 4](https://ui.nuxt.com/) (Base de componentes accesibles y personalizables).
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) (Motor de utilidades de última generación).
+- **Documentación:** [Storybook 8](https://storybook.js.org/) (Desarrollo y pruebas de componentes en aislamiento).
