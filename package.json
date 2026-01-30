@@ -10,7 +10,7 @@
         "commit": "cz",
         "prepare": "husky",
         "storybook": "STORYBOOK=true storybook dev -p 6006",
-        "build-storybook": "STORYBOOK=true storybook build"
+        "build-storybook": "nuxt prepare && STORYBOOK=true storybook build"
     },
     "release": {
         "branches": [
