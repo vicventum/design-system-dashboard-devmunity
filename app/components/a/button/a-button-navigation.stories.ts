@@ -3,8 +3,15 @@ import { fn } from '@storybook/test'
 import AButtonNavigation, { type ButtonSize } from './a-button-navigation.vue'
 
 const meta = {
-    title: 'Atoms/Button/Navigation',
+    title: 'Atoms/Button/AButtonNavigation',
     component: AButtonNavigation,
+    parameters: {
+        docs: {
+            description: {
+                component: 'Navigation button with icon, useful for moving between pages or triggering an action. Generally used in the header of main sections alongside the [DCardHeader](?path=/docs/design-card-header--docs) component.',
+            },
+        },
+    },
     argTypes: {
         size: {
             control: 'select',

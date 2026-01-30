@@ -1,15 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
-import { semanticColors } from '@/utils/get-colors-from-css'
+import { semanticColors } from '@/utils/util-get-colors-from-css'
 import DActionButtons from './d-action-buttons.vue'
+import type { SemanticColors } from '@/types'
 
 const meta = {
     title: 'Design/ActionButtons',
     component: DActionButtons,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Primary and secondary action buttons with layout variations. Generally used in sections that require a primary and/or secondary button, such as in the [DCardHeader](/docs/design-card-header--docs) section, or in the footer of modals like [BModal](/docs/bases-modal-bmodal--docs).',
+            },
+        },
+    },
     argTypes: {
         primaryButtonColor: {
             control: 'select',
-            options: Object.keys(semanticColors),
+            options: Object.keys(semanticColors) as SemanticColors[],
         },
         'onOn-click-primary-button': {
             table: { disable: true },

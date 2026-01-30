@@ -1,9 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BBadge, { type BadgeSize, type BadgeColor, type BadgeVariant } from './b-badge.vue'
+import BBadge, { type BadgeColor, type BadgeVariant } from './b-badge.vue'
 
 const meta = {
-    title: 'Bases/Badge/Default',
+    title: 'Bases/Badge/BBadge',
     component: BBadge,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'A small, rounded label used to display brief information. Typically used to show the status of an item.',
+            },
+        },
+    },
     argTypes: {
         value: {
             control: 'select',

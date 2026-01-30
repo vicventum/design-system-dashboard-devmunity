@@ -2,12 +2,19 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import ADropdownAvatar, { type DropdownItem } from './a-dropdown-avatar.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
-// import AButtonAvatarDropdown from '@/components/a/button/a-button-avatar-dropdown.vue'
 import AButtonAvatarDropdown from '@/components/a/button/a-button-avatar-dropdown.vue'
 
 const meta = {
-    title: 'Atoms/Dropdown/Avatar',
+    title: 'Atoms/Dropdown/ADropdownAvatar',
     component: ADropdownAvatar,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'A specialized dropdown menu for displaying user information. Typically used in conjunction with the [AButtonAvatarDropdown](?path=/docs/atoms-button-abuttonavatardropdown--docs) component.',
+            },
+        },
+    },
     render: (args) => ({
         components: { ADropdownAvatar, UButton, UAvatar, AButtonAvatarDropdown },
         setup() {
@@ -76,7 +83,17 @@ export const WithAButtonAvatarDropdownComponent: Story = {
         userName: 'Admin',
         userEmail: 'admin@sys.com',
         userTo: '/profile',
-        items: [...items, [{ label: 'Logout', icon: 'heroicons:arrow-left-on-rectangle', color: 'error', trailingIcon: 'heroicons:arrow-left-on-rectangle' }]],
+        items: [
+            ...items,
+            [
+                {
+                    label: 'Logout',
+                    icon: 'heroicons:arrow-left-on-rectangle',
+                    color: 'error',
+                    trailingIcon: 'heroicons:arrow-left-on-rectangle',
+                },
+            ],
+        ],
     },
 }
 

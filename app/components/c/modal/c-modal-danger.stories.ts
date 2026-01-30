@@ -4,8 +4,16 @@ import CModalDanger from './c-modal-danger.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 
 const meta = {
-    title: 'Composites/Modal/Danger',
+    title: 'Composites/Modal/CModalDanger',
     component: CModalDanger,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Modal component variant of [BModal](/docs/bases-modal-bmodal--docs), specifically for displaying a danger modal. It displays the footer buttons in block mode by default, and the main action button in "error" color.',
+            },
+        },
+    },
     argTypes: {
         'onOn-click-primary-button': {
             table: { disable: true },

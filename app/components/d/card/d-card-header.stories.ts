@@ -6,8 +6,16 @@ import BCard from '@/components/b/card/b-card.vue'
 import ACardInner from '@/components/a/card/a-card-inner.vue'
 
 const meta = {
-    title: 'Design/Card/Header',
+    title: 'Design/Card/DCardHeader',
     component: DCardHeader,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Componente de encabezado para una sección principal, en la que se puede mostrar un título con un botón de icono al lado (usualmente usado para ir hacia atrás), un subtítulo y un espacio para agregar contenido de acción (usualmente botones de acción [DActionButtons](/docs/design-actionbuttons--docs)). Usado por lo general como header en cards como [BCard](/docs/bases-card-bcard--docs).',
+            },
+        },
+    },
     argTypes: {
         variant: {
             control: 'select',

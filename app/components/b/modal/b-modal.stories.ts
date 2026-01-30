@@ -1,7 +1,8 @@
 import { reactive } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
+import type { SemanticColors } from '@/types'
 import { fn } from '@storybook/test'
-import { semanticColors } from '@/utils/get-colors-from-css'
+import { semanticColors } from '@/utils/util-get-colors-from-css'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UForm from '@nuxt/ui/components/Form.vue'
 import UFormField from '@nuxt/ui/components/FormField.vue'
@@ -9,12 +10,20 @@ import UInput from '@nuxt/ui/components/Input.vue'
 import BModal from './b-modal.vue'
 
 const meta = {
-    title: 'Bases/Modal/Default',
+    title: 'Bases/Modal/BModal',
     component: BModal,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Base modal component. Its structure consists of a blank body, and a header and footer with a predefined design. It can contain text, any other element in the body, or a form, for which the schema and state can be defined.',
+            },
+        },
+    },
     argTypes: {
         primaryButtonColor: {
             control: 'select',
-            options: Object.keys(semanticColors),
+            options: Object.keys(semanticColors) as SemanticColors[],
         },
         'onOn-click-primary-button': {
             table: { disable: true },

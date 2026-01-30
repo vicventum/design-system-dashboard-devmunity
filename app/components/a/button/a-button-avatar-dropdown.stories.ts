@@ -3,8 +3,15 @@ import { fn } from '@storybook/test'
 import AButtonAvatarDropdown, { type ButtonSize, type AvatarSize } from './a-button-avatar-dropdown.vue'
 
 const meta = {
-    title: 'Atoms/Button/AvatarDropdown',
+    title: 'Atoms/Button/AButtonAvatarDropdown',
     component: AButtonAvatarDropdown,
+    parameters: {
+        docs: {
+            description: {
+                component: 'Button with avatar for drop-down menus with user information. Typically used in the navigation bar.',
+            },
+        },
+    },
     argTypes: {
         src: {
             control: 'text',

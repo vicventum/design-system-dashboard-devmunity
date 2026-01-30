@@ -3,13 +3,14 @@ import ACardInner from './a-card-inner.vue'
 import BCard from '@/components/b/card/b-card.vue'
 
 const meta: Meta<typeof ACardInner> = {
-    title: 'Atoms/Card/Inner',
+    title: 'Atoms/Card/ACardInner',
     component: ACardInner,
     tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
-                component: 'ACardInner component with customizable rendering element and styling.',
+                component:
+                    'A simple component that allows you to apply standardized padding in all directions to separate content from its edges.',
             },
         },
     },

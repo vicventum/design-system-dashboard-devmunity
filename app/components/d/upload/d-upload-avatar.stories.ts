@@ -1,11 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import type { SemanticColors } from '@/types'
 import { fn } from '@storybook/test'
-import { semanticColors } from '@/utils/get-colors-from-css'
+import { semanticColors } from '@/utils/util-get-colors-from-css'
 import DUploadAvatar, { type ButtonSize, type ButtonColor } from './d-upload-avatar.vue'
 
 const meta = {
-    title: 'Design/Upload/Avatar',
+    title: 'Design/Upload/DUploadAvatar',
     component: DUploadAvatar,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Avatar upload and display component. Contains the logic to upload an image as an avatar and display a previously uploaded image.',
+            },
+        },
+    },
     argTypes: {
         buttonSize: {
             control: 'select',
@@ -13,7 +22,7 @@ const meta = {
         },
         buttonColor: {
             control: 'select',
-            options: Object.keys(semanticColors),
+            options: Object.keys(semanticColors) as SemanticColors[],
         },
         'onOn-upload-image': {
             table: { disable: true },

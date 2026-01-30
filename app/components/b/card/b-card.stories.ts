@@ -3,8 +3,16 @@ import BCard, { type CardVariant } from './b-card.vue'
 import ACardInner from '@/components/a/card/a-card-inner.vue'
 
 const meta = {
-    title: 'Bases/Card/Default',
+    title: 'Bases/Card/BCard',
     component: BCard,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'A base card component that serves as a fundamental design element for grouping and organizing content. Its style is based on a border with rounded corners and is structured into distinct header, body, and footer sections.',
+            },
+        },
+    },
     argTypes: {
         as: {
             control: 'text',

@@ -2,6 +2,7 @@
 import { resolveComponent, computed, type Ref } from 'vue'
 import { twMerge, type ClassNameValue } from 'tailwind-merge'
 import type { UForm, UModal } from '#components'
+import type {SemanticColors } from '@/types'
 
 const UFormComponent = resolveComponent('UForm')
 
@@ -17,7 +18,7 @@ interface Props {
     /**
      * The title of the modal
      */
-    title: string
+    title?: string
     /**
      * The description of the modal
      */
@@ -33,7 +34,7 @@ interface Props {
     /**
      * Color variant for the primary button
      */
-    primaryButtonColor?: string
+    primaryButtonColor?: SemanticColors
     /**
      * Text for the secondary button
      */
@@ -63,6 +64,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     state: null,
     schema: null,
+    title: '',
     description: '',
     text: '',
     primaryButtonText: 'Guardar',

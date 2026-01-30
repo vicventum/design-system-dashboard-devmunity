@@ -2,8 +2,16 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import CBadgeStatus from './c-badge-status.vue'
 
 const meta = {
-    title: 'Composites/Badge/Status',
+    title: 'Composites/Badge/CBadgeStatus',
     component: CBadgeStatus,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    'Badge component variant of [CBadge](/docs/bases-badge-bbadge--docs), specifically for displaying the status of a task.',
+            },
+        },
+    },
     argTypes: {
         value: {
             control: { type: 'select' },
@@ -34,7 +42,7 @@ export const Todo: Story = {
 export const InProgress: Story = {
     args: {
         ...Default.args,
-        label: 'In Progress',
+        label: 'In progress',
         value: 'IN_PROGRESS',
     },
 }

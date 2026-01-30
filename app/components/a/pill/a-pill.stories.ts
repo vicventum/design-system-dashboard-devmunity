@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import APill, { type BadgeSize, type BadgeVariant } from './a-pill.vue'
-import { semanticColors } from '@/utils/get-colors-from-css'
+import { semanticColors } from '@/utils/util-get-colors-from-css'
 
 const meta = {
-    title: 'Atoms/Pill/Default',
+    title: 'Atoms/Pill/APill',
     component: APill,
+    parameters: {
+        docs: {
+            description: {
+                component:
+                    "A small, rounded label used to display brief information. Typically used to show a user's name next to their avatar.",
+            },
+        },
+    },
     argTypes: {
         variant: {
             control: 'select',
