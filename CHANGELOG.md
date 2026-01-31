@@ -1,3 +1,25 @@
+# [1.0.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.4.0...v1.0.0) (2026-01-31)
+
+
+* chore!: :boom: Prepara `package.json` para  que pueda usarse la librería como un layer de Nuxt ([9200532](https://github.com/vicventum/design-system-dashboard-devmunity/commit/9200532444142582a65fd9428d015daaef53c12a))
+
+
+### Bug Fixes
+
+* **dev-infra:** :package: Actualiza paquetes de `husky` para corregir su funcionamiento en Linux ([5b3b389](https://github.com/vicventum/design-system-dashboard-devmunity/commit/5b3b389d509e4b9fc7c61c97b8b2df009764fb7e))
+
+
+### Features
+
+* **stories:** :sparkles: Agrega stories básicas a todos los componentes usando Storybook v8 ([9397597](https://github.com/vicventum/design-system-dashboard-devmunity/commit/93975972d3f44cfa5e15c94794de8a903bc0eece))
+* **stories:** :sparkles: Implementa TypeScript en Storybook y lo agrega en la story y componente de `AButtonAvatarDropdown` ([4d0c338](https://github.com/vicventum/design-system-dashboard-devmunity/commit/4d0c338e41bf53502aaa6984e4e9cd6ba70aad97))
+* **theme:** :sparkles: Agrega color `accent` a los colores semánticos del proyecto ([cbd05d6](https://github.com/vicventum/design-system-dashboard-devmunity/commit/cbd05d63669fb14fcea086b8c74398544f961c6d))
+
+
+### BREAKING CHANGES
+
+* Prepara librería para que pueda usarese como layer de Nuxt
+
 # [0.4.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.3.0...v0.4.0) (2025-11-17)
 
 
