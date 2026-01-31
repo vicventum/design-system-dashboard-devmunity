@@ -1,7 +1,13 @@
 {
     "name": "design-system-dashboard-devmunity",
-    "type": "module",
     "version": "0.3.0",
+    "main": "./nuxt.config.ts",
+    "files": [
+        "app",
+        "public",
+        "nuxt.config.ts"
+    ],
+    "type": "module",
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev",

@@ -1,60 +1,62 @@
-# Nuxt Starter Template
+# Design System Dashboard Devmunity
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Este proyecto es un **Nuxt Layer** que funciona como un sistema de diseño para aplicaciones Nuxt. Contiene componentes, estilos y configuraciones compartidas.
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+## Uso como Nuxt Layer
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+Para usar este proyecto como una librería en otro proyecto de Nuxt, sigue estos pasos:
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-  </picture>
-</a>
+### 1. Instalación
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
-
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/starter
-```
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
-
-## Setup
-
-Make sure to install the dependencies:
+Instala el paquete por medio de NPM (o tu gestor de paquetes preferido):
 
 ```bash
-pnpm install
+npm install design-system-dashboard-devmunity
 ```
 
-## Development Server
+### 2. Configuración en Nuxt
 
-Start the development server on `http://localhost:3000`:
+En el proyecto donde desees usar el sistema de diseño, añade el paquete a la propiedad `extends` en tu archivo `nuxt.config.ts`:
+
+```typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+    extends: ['design-system-dashboard-devmunity'],
+})
+```
+
+¡Y listo! Nuxt automáticamente cargará los componentes, composables, assets y la configuración de este layer en tu proyecto.
+
+## Desarrollo Local
+
+Si deseas contribuir o probar este proyecto localmente:
+
+### Instalación de dependencias
 
 ```bash
-pnpm dev
+npm install
 ```
 
-## Production
+### Servidor de Desarrollo
 
-Build the application for production:
+Inicia el servidor de desarrollo:
 
 ```bash
-pnpm build
+npm run dev
 ```
 
-Locally preview production build:
+### Storybook
+
+Para ver y probar los componentes de forma aislada:
 
 ```bash
-pnpm preview
+npm run storybook
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Producción
+
+Para construir el proyecto para producción (como aplicación independiente):
+
+```bash
+npm run build
+```
