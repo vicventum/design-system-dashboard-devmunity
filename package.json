@@ -18,6 +18,10 @@
         "storybook": "STORYBOOK=true storybook dev -p 6006",
         "build-storybook": "nuxt prepare && STORYBOOK=true storybook build"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vicventum/design-system-dashboard-devmunity"
+    },
     "release": {
         "branches": [
             "main",
