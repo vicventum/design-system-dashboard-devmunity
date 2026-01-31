@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.0...v1.0.1) (2026-01-31)
+
+
+### Bug Fixes
+
+* commit de prueba para forzar un cambio de versión ([a1742df](https://github.com/vicventum/design-system-dashboard-devmunity/commit/a1742dffbe84cc2655d3352b3e9f7b2815fd4bb3))
+
 # [1.0.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v0.4.0...v1.0.0) (2026-01-31)
 
 
