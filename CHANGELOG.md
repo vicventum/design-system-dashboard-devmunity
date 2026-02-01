@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.1...v1.0.2) (2026-02-01)
+
+
+### Bug Fixes
+
+* **components:** :bug: Corrige rutas absolutas por rutas de layers ([f03c172](https://github.com/vicventum/design-system-dashboard-devmunity/commit/f03c17227847c79534415b9e850182aaeda0647d))
+
 ## [1.0.1](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.0...v1.0.1) (2026-01-31)
 
 
