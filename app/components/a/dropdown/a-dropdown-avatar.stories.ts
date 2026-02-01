@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import ADropdownAvatar, { type DropdownItem } from './a-dropdown-avatar.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
-import AButtonAvatarDropdown from '@/components/a/button/a-button-avatar-dropdown.vue'
+import AButtonAvatarDropdown from '#layers/design-system/app/components/a/button/a-button-avatar-dropdown.vue'
 
 const meta = {
     title: 'Atoms/Dropdown/ADropdownAvatar',

@@ -2,7 +2,7 @@
 import { resolveComponent, computed, type Ref } from 'vue'
 import { twMerge, type ClassNameValue } from 'tailwind-merge'
 import type { UForm, UModal } from '#components'
-import type {SemanticColors } from '@/types'
+import type { SemanticColors } from '#layers/design-system/app/types'
 
 const UFormComponent = resolveComponent('UForm')
 

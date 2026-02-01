@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import BCard, { type CardVariant } from './b-card.vue'
-import ACardInner from '@/components/a/card/a-card-inner.vue'
+import ACardInner from '#layers/design-system/app/components/a/card/a-card-inner.vue'
 
 const meta = {
     title: 'Bases/Card/BCard',

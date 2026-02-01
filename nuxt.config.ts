@@ -8,7 +8,11 @@ export default defineNuxtConfig({
         // Solo carga el módulo si la variable STORYBOOK es true
         process.env.STORYBOOK === 'true' ? '@nuxtjs/storybook' : undefined,
     ].filter(Boolean), // Elimina los 'undefined' del array
-    css: ['~/assets/css/main.css'],
+    $meta: {
+        name: 'design-system',
+    },
+
+    css: ['#layers/design-system/app/assets/css/main.css'],
 
     vite: {
         plugins: [tailwindcss()],

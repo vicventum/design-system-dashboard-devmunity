@@ -1,5 +1,0 @@
-export { default as card } from './components/card.js'
-export { default as button } from './components/button.js'
-export { default as modal } from './components/modal.js'
-export { default as badge } from './components/badge.js'
-export { default as input } from './components/input.js'

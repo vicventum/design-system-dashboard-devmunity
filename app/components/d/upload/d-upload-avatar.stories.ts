@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import type { SemanticColors } from '@/types'
+import type { SemanticColors } from '#layers/design-system/app/types'
 import { fn } from '@storybook/test'
-import { semanticColors } from '@/utils/util-get-colors-from-css'
+import { semanticColors } from '#layers/design-system/app/utils/util-get-colors-from-css'
 import DUploadAvatar, { type ButtonSize, type ButtonColor } from './d-upload-avatar.vue'
 
 const meta = {

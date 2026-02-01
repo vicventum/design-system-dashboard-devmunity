@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { UBadge } from '#components'
-import { badge } from '~/assets/css/themes'
+import { badge } from '#layers/design-system/app/assets/css/themes'
 
 /**
  * Badge style configuration object

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import DCardHeader from './d-card-header.vue'
-import DActionButtons from '@/components/d/action-buttons/d-action-buttons.vue'
-import BCard from '@/components/b/card/b-card.vue'
-import ACardInner from '@/components/a/card/a-card-inner.vue'
+import DActionButtons from '#layers/design-system/app/components/d/action-buttons/d-action-buttons.vue'
+import BCard from '#layers/design-system/app/components/b/card/b-card.vue'
+import ACardInner from '#layers/design-system/app/components/a/card/a-card-inner.vue'
 
 const meta = {
     title: 'Design/Card/DCardHeader',

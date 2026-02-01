@@ -1,4 +1,4 @@
-import * as components from '~/assets/css/themes/index.js'
+import * as components from '#layers/design-system/app/assets/css/themes'
 
 export default defineAppConfig({
     ui: {

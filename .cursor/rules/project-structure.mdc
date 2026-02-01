@@ -124,13 +124,13 @@ public/
 ### Application Configuration
 
 - **`app/app.config.js`** - Application configuration
-    - Component themes imported from `~/assets/css/themes/index.js`
+    - Component themes imported from `#layers/design-system/app/assets/css/themes/index.js`
     - Color palette: primary, secondary, success, warning, error, info, neutral, test
     - Nuxt UI configuration
 
 - **`nuxt.config.js`** - Main Nuxt configuration
     - Modules: `@nuxt/ui`,
-    - Main CSS: `~/assets/css/main.css`
+    - Main CSS: `#layers/design-system/app/assets/css/main.css`
     - Tailwind CSS plugin via Vite
     - DevTools enabled
 

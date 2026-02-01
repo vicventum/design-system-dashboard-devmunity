@@ -1,4 +1,4 @@
-import appConfig from '@/app.config'
+import appConfig from '#layers/design-system/app/app.config'
 
 export const semanticColors = appConfig.ui.colors
 

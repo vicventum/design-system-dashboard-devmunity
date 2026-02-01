@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { fn } from '@storybook/test'
 import APill, { type BadgeSize, type BadgeVariant } from './a-pill.vue'
-import { semanticColors } from '@/utils/util-get-colors-from-css'
+import { semanticColors } from '#layers/design-system/app/utils/util-get-colors-from-css'
 
 const meta = {
     title: 'Atoms/Pill/APill',

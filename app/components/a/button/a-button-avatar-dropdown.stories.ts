@@ -8,7 +8,8 @@ const meta = {
     parameters: {
         docs: {
             description: {
-                component: 'Button with avatar for drop-down menus with user information. Typically used in the navigation bar.',
+                component:
+                    'Button with avatar for drop-down menus with user information. Typically used in the navigation bar.',
             },
         },
     },
@@ -41,7 +42,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
     args: {
-        src: '~/../public/media/img/user-unknown.png',
+        src: 'https://avatars.githubusercontent.com/u/739984?v=4',
         buttonSize: 'md',
         avatarSize: 'sm',
     },

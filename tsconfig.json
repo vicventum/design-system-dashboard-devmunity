@@ -2,7 +2,16 @@
     // "extends": "./tsconfig.json",
     "extends": "./.nuxt/tsconfig.json",
     "compilerOptions": {
-        "allowArbitraryExtensions": true
+        "allowArbitraryExtensions": true,
+        // "baseUrl": ".",
+        // "paths": {
+        //     "#layers/design-system": [
+        //         "./app"
+        //     ],
+        //     "#layers/design-system/app/*": [
+        //         "./app/*"
+        //     ]
+        // }
     },
     // "exclude": [
     //     ".nuxt",

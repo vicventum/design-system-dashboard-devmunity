@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { twMerge, type ClassNameValue } from 'tailwind-merge'
-import { card } from '~/assets/css/themes/index.js'
+import { card } from '#layers/design-system/app/assets/css/themes'
 
 interface Props {
     /**
