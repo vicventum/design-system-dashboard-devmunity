@@ -12,7 +12,7 @@ export default defineNuxtConfig({
         name: 'design-system',
     },
 
-    css: ['#layers/design-system/app/assets/css/main.css'],
+    css: ['@/assets/css/main.css'],
 
     vite: {
         plugins: [tailwindcss()],

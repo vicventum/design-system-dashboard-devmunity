@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import type { UBadge } from '#components'
-import { badge } from '#layers/design-system/app/assets/css/themes'
+// import { badge } from '#layers/design-system/app/assets/css/themes'
+
+const appConfig = useAppConfig()
 
 /**
  * Badge style configuration object
@@ -35,7 +37,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     value: '',
     styles: () => ({}),
-    defaultStyle: () => badge,
+    defaultStyle: () => appConfig.ui.badge,
 })
 
 defineSlots<{

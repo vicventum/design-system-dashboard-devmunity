@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { twMerge, type ClassNameValue } from 'tailwind-merge'
-import { card } from '#layers/design-system/app/assets/css/themes'
+// import { card } from '#layers/design-system/app/assets/css/themes'
+
+const appConfig = useAppConfig()
 
 interface Props {
     /**
@@ -28,7 +30,7 @@ defineSlots<{
     default(): any
 }>()
 
-const cardClasses = computed(() => twMerge(card.slots.body, props.class))
+const cardClasses = computed(() => twMerge(appConfig.ui.card.slots.body, props.class))
 </script>
 
 <template>
