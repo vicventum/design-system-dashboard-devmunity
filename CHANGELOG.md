@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.2...v1.0.3) (2026-02-03)
+
+
+### Bug Fixes
+
+* **ci:** commit de prueba para comprobar CI ([a398791](https://github.com/vicventum/design-system-dashboard-devmunity/commit/a398791978427e746ef4645e275aa6a23656a71d))
+* **components:** :adhesive_bandage: Corrige acceso a themes en los componentes por medio de `useAppConfig` ([da02bed](https://github.com/vicventum/design-system-dashboard-devmunity/commit/da02bed3fa44d3e08c2bc9d74bef9f1054e943e6))
+
 ## [1.0.2](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.1...v1.0.2) (2026-02-01)
 
 
