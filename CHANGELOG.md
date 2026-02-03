@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.3...v1.0.4) (2026-02-03)
+
+
+### Bug Fixes
+
+* **theme:** :bug: Corrige sobreescritura de colores semánticos del layer sobre el proyecto que lo usa ([75e83b4](https://github.com/vicventum/design-system-dashboard-devmunity/commit/75e83b4c1c1dc79a268b2921975b20f5d8a2ae82))
+
 ## [1.0.3](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.2...v1.0.3) (2026-02-03)
 
 
