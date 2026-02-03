@@ -1,5 +1,12 @@
 # Design System Dashboard Devmunity
 
+<div className="flex gap-2">
+    <div>[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vicventum/design-system-dashboard-devmunity)</div>
+    <div>[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://design-system-dashboard-git-main-vicventums-projects.vercel.app/?path=/docs/introduction--docs)</div>
+</div>
+
+<hr class="mt-4" />
+
 Este proyecto es un **Nuxt Layer** que funciona como un sistema de diseño para aplicaciones Nuxt. Contiene componentes, estilos y configuraciones compartidas.
 
 ## Uso como Nuxt Layer
