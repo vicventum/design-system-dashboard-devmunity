@@ -1,3 +1,11 @@
+## [1.0.5](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.4...v1.0.5) (2026-02-04)
+
+
+### Bug Fixes
+
+* **stories:** :arrow_down: Baja versión minor de Storybook y elimina dependecia innecesaria ([1fcc93d](https://github.com/vicventum/design-system-dashboard-devmunity/commit/1fcc93dc104b4efcfabfb9d5e47f7290ded32012))
+* **stories:** :package: Actualiza versión de Storybook de v8 a v9 para corregir error del build de Storybook ([6eae4e9](https://github.com/vicventum/design-system-dashboard-devmunity/commit/6eae4e9e8bb9d1e00d89db8d8d0e90d92994d03d))
+
 ## [1.0.4](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.3...v1.0.4) (2026-02-03)
 
 
