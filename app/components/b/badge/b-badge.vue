@@ -37,7 +37,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     value: '',
     styles: () => ({}),
-    defaultStyle: () => appConfig.ui.badge,
+    // defaultStyle: () => appConfig.ui.badge,
 })
 
 defineSlots<{

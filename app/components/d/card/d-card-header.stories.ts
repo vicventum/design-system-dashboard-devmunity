@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import DCardHeader from './d-card-header.vue'
 import DActionButtons from '#layers/design-system/app/components/d/action-buttons/d-action-buttons.vue'
 import BCard from '#layers/design-system/app/components/b/card/b-card.vue'

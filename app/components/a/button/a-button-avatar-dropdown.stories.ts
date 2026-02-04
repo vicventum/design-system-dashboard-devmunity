@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import AButtonAvatarDropdown, { type ButtonSize, type AvatarSize } from './a-button-avatar-dropdown.vue'
 
 const meta = {

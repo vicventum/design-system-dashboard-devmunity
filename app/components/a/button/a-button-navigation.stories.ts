@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import AButtonNavigation, { type ButtonSize } from './a-button-navigation.vue'
 
 const meta = {

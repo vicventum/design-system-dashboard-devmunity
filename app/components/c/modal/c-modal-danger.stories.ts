@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import CModalDanger from './c-modal-danger.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 

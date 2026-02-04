@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { semanticColors } from '#layers/design-system/app/utils/util-get-colors-from-css'
 import DActionButtons from './d-action-buttons.vue'
 import type { SemanticColors } from '#layers/design-system/app/types'

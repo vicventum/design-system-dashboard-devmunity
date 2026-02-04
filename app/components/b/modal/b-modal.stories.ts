@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import type { SemanticColors } from '#layers/design-system/app/types'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { semanticColors } from '#layers/design-system/app/utils/util-get-colors-from-css'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UForm from '@nuxt/ui/components/Form.vue'
