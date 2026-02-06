@@ -4,23 +4,23 @@
 
 <hr class="mt-4" />
 
-Este proyecto es un **Nuxt Layer** que funciona como un sistema de diseño para aplicaciones Nuxt. Contiene componentes, estilos y configuraciones compartidas.
+This project is a **Nuxt Layer** that functions as a design system for Nuxt applications. It contains shared components, styles, and configurations.
 
-## Uso como Nuxt Layer
+## Usage as Nuxt Layer
 
-Para usar este proyecto como una librería en otro proyecto de Nuxt, sigue estos pasos:
+To use this project as a library in another Nuxt project, follow these steps:
 
-### 1. Instalación
+### 1. Installation
 
-Instala el paquete por medio de NPM (o tu gestor de paquetes preferido):
+Install the package using NPM (or your preferred package manager):
 
 ```bash
 npm install design-system-dashboard-devmunity
 ```
 
-### 2. Configuración en Nuxt
+### 2. Configuration in Nuxt
 
-En el proyecto donde desees usar el sistema de diseño, añade el paquete a la propiedad `extends` en tu archivo `nuxt.config.ts`:
+In the project where you want to use the design system, add the package to the `extends` property in your `nuxt.config.ts` file:
 
 ```typescript
 // nuxt.config.ts
@@ -29,21 +29,21 @@ export default defineNuxtConfig({
 })
 ```
 
-¡Y listo! Nuxt automáticamente cargará los componentes, composables, assets y la configuración de este layer en tu proyecto.
+And that's it! Nuxt will automatically load the components, composables, assets, and configuration from this layer into your project.
 
-## Desarrollo Local
+## Local Development
 
-Si deseas contribuir o probar este proyecto localmente:
+If you want to contribute or test this project locally:
 
-### Instalación de dependencias
+### Dependency Installation
 
 ```bash
 npm install
 ```
 
-### Servidor de Desarrollo
+### Development Server
 
-Inicia el servidor de desarrollo:
+Start the development server:
 
 ```bash
 npm run dev
@@ -51,15 +51,15 @@ npm run dev
 
 ### Storybook
 
-Para ver y probar los componentes de forma aislada:
+To view and test components in isolation:
 
 ```bash
 npm run storybook
 ```
 
-## Producción
+## Production
 
-Para construir el proyecto para producción (como aplicación independiente):
+To build the project for production (as a standalone application):
 
 ```bash
 npm run build

@@ -8,20 +8,16 @@ import { colorsFromCss, semanticColors } from '#layers/design-system/app/utils/u
 The color tokens within this design system encapsulates a rich palette of semantic colors, each with specific
 roles and shades to cater to various UI elements and states.
 
-The `primary` colors, with shades ranging from light lavender (#faf7fd) to deep purple (#361952), form the core visual identity, suitable for branding elements and primary actions.
+- The `primary` colors, with shades ranging from light blue (#ebf5ff) to deep blue (#1c044f), form the core visual identity, suitable for branding elements and primary actions.
+- The `secondary` colors shift towards purple (#f5f4ff to #401d7b), providing a sophisticated contrast ideal for secondary actions or highlighting important UI elements without overpowering the primary hue.
+- The `accent` color spectrum, from a soft yellow (#fcfce7) to a dark burnt yellow (#401b06), is designed to draw attention to specific components or prompts, making it perfect for call-to-action buttons or interactive elements.
+- The `info` colors, transitioning from a light sky blue (#eaf4ff) to a deep sky blue (#1b274f), are tailored for informational messages and neutral communications, providing clarity without invoking urgency or emotion.
+- The `success` shades signify positive actions or confirmations, with a vibrant green (#f4faf7 to #002d23) that should be used to indicate completion, approval, or progress.
+- The `warning` palette, transitioning from a light orange (#fff7ef) to a dark orange (#641a1a), is tailored for cautionary messages or to highlight areas that require user attention.
+- The `error` colors range from a soft red (#fcf1f1) to a dark red (#410a0a), ideal for error messages, critical warnings, or delete actions, signaling users to proceed with caution.
+- Lastly, the `neutral` collection, with shades from pure white (#ffffff) to pure black (#000), provides a neutral backdrop suited for text, backgrounds, and UI frames, ensuring legibility and a muted contrast against more vibrant colors.
 
-The `secondary` colors shift towards teal (#f0fdfa to #042f2d), providing a refreshing contrast ideal for secondary actions or highlighting important UI elements without overpowering the primary hue.
-
-The `accent` color spectrum, from a soft peach (#fff7ed) to a dark burnt orange (#431307), is designed to draw attention to specific components or prompts, making it perfect for call-to-action buttons or interactive elements.
-
-- The information color in a design system typically employs a clear, subdued shade, such as a light blue or gray, to convey neutral and informative messages without invoking urgency or emotion.
-- The `success` shades signify positive actions or confirmations, with a vibrant green (#f1fcf2 to #082b11) that should be used to indicate completion, approval, or progress.
-- The `warning` palette, transitioning from a light yellow (#fffde7) to a darker shade (#442004), is tailored for cautionary messages or to highlight areas that require user attention.
-- `danger` colors range from a soft pinkish-red (#fef3f2) to a dark maroon (#490815), ideal for error messages, critical warnings, or delete actions, signaling users to proceed with caution.
-
-Lastly, the `slate` collection, with shades from very light gray (#f6f7f9) to almost black (#23272e), provides a neutral backdrop suited for text, backgrounds, and UI frames, ensuring legibility and a muted contrast against more vibrant colors.
-
-Additional constants like `white`, `black`, `transparent`, and `currentColor` offer foundational colors for designing with flexibility and precision, supporting a cohesive and accessible user interface across the design system.
+Although it is recommended not to use colors directly and instead use semantic colors for maintainability, there will be specific cases where it will be necessary to use a raw color, for example for those elements where you want the color to prevail even if there is a change of theme, such as the use of neutral colors like `white`, `black`, or options like `transparent` and `currentColor` are valid in some cases where flexibility is required, but without neglecting a consistent and accessible user interface throughout the design system.
 
 ---
 

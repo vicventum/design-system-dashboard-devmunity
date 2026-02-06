@@ -6,6 +6,14 @@ const preview = {
                 date: /Date$/i,
             },
         },
+        options: {
+            storySort: {
+                order: [
+                    'Guides',
+                    ['Introduction', 'Component Organization System', 'Arquitectura de Estilos'],
+                ],
+            },
+        },
     },
     tags: ['autodocs'],
 }

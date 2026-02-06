@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title='Guides/Component Organization System' />
+
+# Component Organization System
+
+## Foundation: Atomic Design
+
+The system is based on the principles of **[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)**, specifically adapted for component development. The methodology focuses on three main levels:
+
+- **Atoms**: Fundamental and indivisible units of the system. They are recognizable elements that require additional context to have functional meaning. _Examples_: buttons, labels, titles.
+- **Molecules**: Composition of two or more atoms that create elements with their own meaning, although they are not completely independent. _Examples_: cards, label-input pairs.
+- **Organisms**: Complex structures formed by multiple molecules. They are completely independent elements that maintain their functionality regardless of context. _Examples_: headers, grids with filters.
+
+> **Note**: The Templates and Pages levels of the original Atomic Design do not apply directly to style development, as they are built through the composition of organisms in HTML markup.
+
+## A-B-C-D Classification System
+
+Based on the principles of **Atomic Design**, we have implemented a variation called **ABCD System** (Atoms, Bases, Composites, Designs), which maintains the fundamental concepts but reorganizes them to better adapt to the library's component types.
+
+## A - Atoms
+
+The concept of _Atoms_ from **Atomic Design** is maintained, being the most basic and indivisible building blocks of the interface. Although Nuxt UI provides most standard atoms, in this layer we define specific elements that don't exist in the base library or require a unique structure.
+
+- **Example:** `ACardInner`, `AButtonNavigation`, `APill`.
+
+## B - Bases
+
+These are general components that can contain _Atoms_ or _Molecules_, acting as "containers" or standardized versions of more complex components. While they can be used directly, their main purpose is to define general behavior and design to be reused or extended.
+
+- **Example:** `BModal`. It's a wrapper of `UModal` that already includes the project's style standards, functionalities, and internal structure.
+
+## C - Composites
+
+These are semantic specializations of a **Base** component. They are created to cover specific and repetitive use cases, eliminating the need to pass the same props and style modifications repeatedly to a base component.
+
+- **Example:** `CModalDanger` (A preconfigured instance of `BModal` with error colors, warning icons, and destructive confirmation actions).
+
+## D - Designs
+
+These are complex and autonomous structures composed of the union of _Atoms_, _Bases_, or _Composites_. They often represent entire sections of a page or components with specific and highly reusable business logic.
+
+- **Example:** They can be larger reusable sections similar to _Organisms_ composed of several components, such as `DCardHeader`, or something more contained like _Molecules_ but that won't require variants as they are more specific, and therefore can have already subscribed logic, for example `DUploadAvatar`
+
+---
+
+## Nomenclature and Structure Convention
+
+The library implements **Nuxt's path-based naming system**, where the component name directly reflects its location in the directory structure. This approach provides immediate traceability and facilitates its auto-importation and identification of the component category through its prefix.
+
+The location in the file system dictates the component name:
+
+```text
+app/
+└── components/
+    ├── a/           # Atoms
+    │   └── a-pill.vue
+    ├── b/           # Bases
+    │   └── b-modal.vue
+    ├── c/           # Composites
+    │   └── c-modal-danger.vue
+    └── d/           # Designs
+        └── d-card-header.vue
+```
+
+## Benefits of this approach:
+
+- **Self-descriptive:** The prefix (`A-`, `B-`, `C-`, `D-`) immediately indicates the complexity level and purpose of the component.
+- **Scalability**: Facilitates the organization of new components within the existing structure based on the hierarchy
+- **Traceability**: The component path immediately indicates its category and purpose
+- **No Collisions:** Avoids conflicts with native Nuxt UI components (prefixed with `U-`).
+- **Maintenance**: Simplifies the location and modification of specific components
+- **Collaboration**: Standardizes the development process for multiple teams
