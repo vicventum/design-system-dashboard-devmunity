@@ -1,6 +1,6 @@
 {
   "name": "design-system-dashboard-devmunity",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "./nuxt.config.ts",
   "files": [
     "app",

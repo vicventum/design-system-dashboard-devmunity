@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.5...v1.0.6) (2026-02-07)
+
+
+### Bug Fixes
+
+* **dev-infra:** :bug: Corrige error de compilación de Storybook instalando `vite` ([d0c22ff](https://github.com/vicventum/design-system-dashboard-devmunity/commit/d0c22ff1225b50d3641dd0eb7c469ea87468e008))
+
 ## [1.0.5](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.4...v1.0.5) (2026-02-04)
 
 
