@@ -1,6 +1,6 @@
 # Design System Dashboard Devmunity
 
-[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://design-system-dashboard-git-main-vicventums-projects.vercel.app/?path=/docs/introduction--docs) [![NPM Version](https://img.shields.io/npm/v/design-system-dashboard-devmunity?style=for-the-badge)](https://www.npmjs.com/package/design-system-dashboard-devmunity) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge)](https://github.com/semantic-release/semantic-release) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?style=for-the-badge&logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://design-system-dashboard-git-main-vicventums-projects.vercel.app/?path=/docs/guides-introduction--docs) [![NPM Version](https://img.shields.io/npm/v/design-system-dashboard-devmunity?style=for-the-badge)](https://www.npmjs.com/package/design-system-dashboard-devmunity) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge)](https://github.com/semantic-release/semantic-release) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?style=for-the-badge&logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
 <hr class="mt-4" />
 
@@ -30,6 +30,9 @@ export default defineNuxtConfig({
 ```
 
 And that's it! Nuxt will automatically load the components, composables, assets, and configuration from this layer into your project.
+
+> [!note]
+> 🚀 The component library is currently being migrated from an older version, so you'll see new pieces arriving here very soon!
 
 ## Local Development
 
