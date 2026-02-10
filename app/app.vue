@@ -1,91 +1,34 @@
-<script lang="ts" setup>
-import AButtonAvatarDropdown from './components/a/button/a-button-avatar-dropdown.vue'
-import ADropdownAvatar from './components/a/dropdown/a-dropdown-avatar.vue'
-
+<script setup lang="ts">
 useHead({
-    meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+    meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    ],
     link: [{ rel: 'icon', href: '/favicon.ico' }],
     htmlAttrs: {
         lang: 'en',
     },
 })
 
-const title = 'Nuxt Starter Template'
+const title = 'Design System Playground'
 const description =
-    'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+    'A professional design system built with Nuxt UI.'
 
 useSeoMeta({
     title,
     description,
     ogTitle: title,
     ogDescription: description,
-    ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-    twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
+    ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/dashboard-light.png',
+    twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/dashboard-light.png',
     twitterCard: 'summary_large_image',
 })
-
-const isOpen = ref(false)
 </script>
 
 <template>
     <UApp>
-        <UHeader>
-            <template #left>
-                <NuxtLink to="/">
-                    <AppLogo class="h-6 w-auto shrink-0" />
-                </NuxtLink>
-
-                <TemplateMenu />
-            </template>
-
-            <template #right>
-                <UColorModeButton />
-                <UButton
-                    to="https://github.com/nuxt-ui-templates/starter"
-                    target="_blank"
-                    icon="i-simple-icons-github"
-                    aria-label="GitHub"
-                    color="neutral"
-                    variant="ghost"
-                />
-            </template>
-        </UHeader>
-
-        <UMain>
+        <NuxtLayout>
             <NuxtPage />
-        </UMain>
-
-        <USeparator icon="i-simple-icons-nuxtdotjs" />
-
-        <UFooter>
-            <template #left>
-                <p class="text-muted text-sm">Built with Nuxt UI • © {{ new Date().getFullYear() }}</p>
-            </template>
-            <CModalDanger v-model="isOpen" title="Modal" description="Modal description" />
-            <UButton @click="isOpen = true">Open Modal</UButton>
-            <UBadge color="accent" />
-            <DCardHeader title="Card Header" subtitle="Card Subtitle" />
-            <DActionButtons
-                primary-button-text="Primary"
-                secondary-button-text="Secondary"
-                primary-button-icon="i-heroicons-solid-arrow-right"
-                primary-button-trailing-icon="i-heroicons-solid-arrow-right"
-            />
-            <UButton
-                icon="i-heroicons-solid-arrow-right"
-                trailing-icon="i-heroicons-solid-arrow-right"
-                label="Button"
-            />
-            <template #right>
-                <UButton
-                    to="https://github.com/nuxt-ui-templates/starter"
-                    target="_blank"
-                    icon="i-simple-icons-github"
-                    aria-label="GitHub"
-                    color="neutral"
-                    variant="ghost"
-                />
-            </template>
-        </UFooter>
+        </NuxtLayout>
     </UApp>
 </template>

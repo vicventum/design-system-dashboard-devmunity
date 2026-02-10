@@ -54,7 +54,7 @@ const emit = defineEmits<{
             size: avatarSize,
         }"
         :size="buttonSize"
-        trailing-icon="heroicons:chevron-down-20-solid"
+        trailing-icon="i-lucide-chevron-down"
         color="primary"
         variant="ghost"
         class="rounded-full"
