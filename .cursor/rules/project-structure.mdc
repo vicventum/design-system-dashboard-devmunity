@@ -116,7 +116,7 @@ public/
 ├── favicon.ico
 └── media/
     └── img/
-        └── user-unknown.png
+        └── ui-user-unknown.png
 ```
 
 ## Key Configuration Files
@@ -157,7 +157,6 @@ public/
         - Automatic semantic versioning
 
 ### Build & Development
-
 
 - **`commitlint.config.js`** - Commitlint configuration
     - Validates conventional commit format

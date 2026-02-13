@@ -23,7 +23,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    src: '/media/img/user-unknown.png',
+    src: '/media/img/ui-user-unknown.png',
     buttonSize: 'md',
     avatarSize: 'sm',
 })

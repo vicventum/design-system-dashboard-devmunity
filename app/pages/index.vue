@@ -168,8 +168,8 @@ const searchTerm = ref('')
         <template #sidebar>
             <LSidebar
                 v-model:is-open="isOpen"
-                logo-default-src="/media/img/logo-placeholder.svg"
-                logo-mini-src="/media/img/logo-placeholder.svg"
+                logo-default-src="/media/img/ui-logo-placeholder.svg"
+                logo-mini-src="/media/img/ui-logo-placeholder.svg"
                 :links-body="sidebarLinks.slice(0, 1)"
                 :links-body-bottom="sidebarLinks.slice(1)"
                 :links-footer="sidebarLinks.slice(1)"

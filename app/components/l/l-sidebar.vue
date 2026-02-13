@@ -11,7 +11,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    logoDefaultSrc: '/media/img/logo-placeholder.svg',
+    logoDefaultSrc: '/media/img/ui-logo-placeholder.svg',
     logoLink: '/',
     linksBody: () => [],
     linksBodyBottom: () => [],
