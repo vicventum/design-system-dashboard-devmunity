@@ -13,5 +13,9 @@ export default defineAppConfig({
             info: 'brand-blue-sky',
             neutral: 'brand-grey',
         },
+        icons: {
+            panelOpen: 'i-heroicons:arrow-small-right-solid',
+            panelClose: 'i-heroicons:arrow-small-left-solid',
+        },
     },
 })

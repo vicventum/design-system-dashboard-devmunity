@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DropdownMenuItem, UDashboardSearchButton } from '@nuxt/ui'
+import type { DropdownMenuItem } from '@nuxt/ui'
 import type { NavbarLinks } from '~/types'
 
 interface Props {
@@ -12,25 +12,36 @@ interface Props {
     menuUserAvatar?: string
     menuUserTo?: string
     menuItems?: DropdownMenuItem[][]
+    hasSearch?: boolean
     hasNotification?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
     searchPlaceholder: 'Search...',
     searchItems: () => [],
+    searchShortcut: '/',
     links: () => [],
     menuUserName: 'User',
     menuItems: () => [],
+    hasSearch: true,
     hasNotification: false,
 })
 
-const searchTerm = defineModel<string>('search:term', {
+const searchTerm = defineModel<string>('searchTerm', {
     default: '',
     required: true,
 })
-const isOpen = defineModel<boolean>('search:open', {
-    default: false,
-    required: true,
+// const isOpen = defineModel<boolean>('searchOpen', {
+//     default: false,
+//     required: true,
+// })
+
+const inputRef = useTemplateRef('inputRef')
+
+defineShortcuts({
+    [props.searchShortcut]: () => {
+        inputRef.value?.inputRef?.focus()
+    },
 })
 
 const emit = defineEmits<{
@@ -41,13 +52,15 @@ const emit = defineEmits<{
 <template>
     <UDashboardNavbar :ui="{ left: 'gap-8', right: 'gap-3' }">
         <template #left>
-            <UDashboardSidebarCollapse />
+            <!-- <UDashboardSidebarCollapse /> -->
 
             <UInput
+                v-if="hasSearch"
+                ref="inputRef"
                 v-model="searchTerm"
                 :placeholder="searchPlaceholder"
-                :shortcut="searchShortcut"
                 icon="i-lucide-search"
+                name="search"
                 class="w-60"
                 :ui="{ trailing: 'pe-1' }"
             >
@@ -61,31 +74,48 @@ const emit = defineEmits<{
                         @click="searchTerm = ''"
                     />
                 </template>
+                <template #trailing>
+                    <UKbd :value="searchShortcut" />
+                </template>
             </UInput>
-            <!-- <UDashboardSearch v-model:open="isOpen" shortcut="meta_k" size="sm" :color-mode="false"/> -->
+            <!-- <UDashboardSearch v-model:open="isOpen" shortcut="meta_k" size="sm" :color-mode="true"/> -->
 
-            <ULink v-for="link in links" :key="link.to" :to="link.to" :icon="link.icon" class="text-sm">
+            <!-- <ULink v-for="link in links" :key="link.to" :to="link.to" :icon="link.icon" class="text-sm">
                 {{ link.label }}
-            </ULink>
+            </ULink> -->
+            <UNavigationMenu
+                color="neutral"
+                variant="link"
+                :items="links"
+                :ui="{ link: 'px-0', list: 'gap-x-8' }"
+            />
         </template>
 
         <template #right>
-            <UTooltip text="Notifications" :shortcuts="['N']">
-                <UButton color="neutral" variant="ghost" square @click="emit('on-click-notifications')">
-                    <UChip color="error" inset :show="hasNotification">
-                        <UIcon name="i-lucide-bell" class="size-5 shrink-0" />
-                    </UChip>
-                </UButton>
-            </UTooltip>
-
-            <ADropdownAvatar
-                :items="menuItems"
-                :user-name="menuUserName"
-                :user-email="menuUserEmail"
-                :user-to="menuUserTo"
-            >
-                <AButtonAvatarDropdown :src="menuUserAvatar" />
-            </ADropdownAvatar>
+            <slot v-if="$slots.right" name="right" />
+            <template v-else>
+                <UTooltip text="Notifications" :shortcuts="['N']">
+                    <UButton
+                        color="neutral"
+                        variant="ghost"
+                        square
+                        class="text-muted"
+                        @click="emit('on-click-notifications')"
+                    >
+                        <UChip color="error" :show="hasNotification" inset>
+                            <UIcon name="i-lucide-bell" class="size-5 shrink-0" />
+                        </UChip>
+                    </UButton>
+                </UTooltip>
+                <ADropdownAvatar
+                    :items="menuItems"
+                    :user-name="menuUserName"
+                    :user-email="menuUserEmail"
+                    :user-to="menuUserTo"
+                >
+                    <AButtonAvatarDropdown :src="menuUserAvatar" />
+                </ADropdownAvatar>
+            </template>
         </template>
     </UDashboardNavbar>
 </template>

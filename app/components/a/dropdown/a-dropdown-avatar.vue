@@ -1,22 +1,12 @@
 <script lang="ts" setup>
+import type { DropdownMenuItem } from '@nuxt/ui'
 import type { UDropdownMenu } from '#components'
-
-export interface DropdownItem {
-    userName?: string
-    userEmail?: string
-    slot?: string
-    onSelect?: () => void
-    // label?: string
-    // icon?: string
-    // to?: string
-    [key: string]: any
-}
 
 interface Props {
     /**
      * Array of dropdown items to display, grouped in arrays
      */
-    items: DropdownItem[][]
+    items: DropdownMenuItem[][]
     /**
      * Display name of the user
      */
@@ -45,7 +35,7 @@ defineSlots<{
     /**
      * User information slot
      */
-    user(props: { item: DropdownItem }): any
+    user(props: { item: DropdownMenuItem }): any
     /**
      * Additional dynamic slots
      */
@@ -69,7 +59,7 @@ const uiStyles = computed(() => {
     }
 })
 
-const itemsComputed = computed((): DropdownItem[][] => [
+const itemsComputed = computed((): DropdownMenuItem[][] => [
     [
         {
             userName: props.userName,
