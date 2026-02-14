@@ -113,7 +113,9 @@ const emit = defineEmits<{
                     :user-email="menuUserEmail"
                     :user-to="menuUserTo"
                 >
-                    <AButtonAvatarDropdown :src="menuUserAvatar" />
+                    <span>
+                        <AButtonAvatarDropdown :src="menuUserAvatar" />
+                    </span>
                 </ADropdownAvatar>
             </template>
         </template>

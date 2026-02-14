@@ -7,14 +7,14 @@ alwaysApply: false
 
 ## 1. Imports
 
-- Import types `Meta` and `StoryObj` from `@storybook/vue3`.
-- Import `fn` from `@storybook/test` for event spying.
+- Import types `Meta` and `StoryObj` from `storybook/vue3`.
+- Import `fn` from `storybook/test` for event spying.
 - Import `semanticColors` from `#layers/design-system/app/utils/util-get-colors-from-css` for components with color props.
 - Import the component and any necessary types from the component file.
 
 ```typescript
-import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from 'storybook/vue3'
+import { fn } from 'storybook/test'
 import { semanticColors } from '#layers/design-system/app/utils/util-get-colors-from-css'
 import MyComponent, { type MyComponentPropType } from './my-component.vue'
 ```

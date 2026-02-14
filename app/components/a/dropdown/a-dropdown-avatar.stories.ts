@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import ADropdownAvatar, { type DropdownItem } from './a-dropdown-avatar.vue'
+import type { DropdownMenuItem } from '@nuxt/ui'
+import ADropdownAvatar from './a-dropdown-avatar.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
 import AButtonAvatarDropdown from '#layers/design-system/app/components/a/button/a-button-avatar-dropdown.vue'
@@ -46,10 +47,10 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const items: DropdownItem[][] = [
+const items = [
     [{ label: 'Profile', icon: 'heroicons:user' }],
     [{ label: 'Settings', icon: 'heroicons:cog-6-tooth' }],
-]
+] satisfies DropdownMenuItem[][]
 
 export const Default: Story = {
     args: {
