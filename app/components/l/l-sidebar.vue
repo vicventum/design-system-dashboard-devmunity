@@ -8,6 +8,9 @@ interface Props {
     linksBody?: NavigationMenuItem[][]
     linksBodyBottom?: NavigationMenuItem[][]
     linksFooter?: NavigationMenuItem[][]
+    defaultSize?: number
+    minSize?: number
+    maxSize?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,6 +19,9 @@ const props = withDefaults(defineProps<Props>(), {
     linksBody: () => [],
     linksBodyBottom: () => [],
     linksFooter: () => [],
+    defaultSize: 15,
+    minSize: 10,
+    maxSize: 20,
 })
 
 const isOpen = defineModel<boolean>('isOpen', { default: false })
@@ -79,7 +85,7 @@ function getLogo(collapsed?: boolean): string {
             </template>
         </template>
 
-        <template #footer="{ collapsed }">
+        <template v-if="$slots.footer || linksFooter.length" #footer="{ collapsed }">
             <slot v-if="$slots.footer" name="footer" :collapsed="collapsed" />
             <UNavigationMenu
                 v-else
