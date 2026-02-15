@@ -4,7 +4,7 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 
 import UButton from '@nuxt/ui/components/Button.vue'
 import { fn } from 'storybook/test'
-import LNavigationBar from './l-navigation-bar.vue'
+import LNavbar from './l-navbar.vue'
 
 /**
  * Main navigation bar for the application.
@@ -12,8 +12,8 @@ import LNavigationBar from './l-navigation-bar.vue'
  * Built with `UDashboardNavbar` from `@nuxt/ui`.
  */
 const meta = {
-    title: 'Layouts/LNavigationBar',
-    component: LNavigationBar,
+    title: 'Layouts/LNavbar',
+    component: LNavbar,
     parameters: {
         docs: {
             description: {
@@ -51,7 +51,7 @@ const meta = {
         searchTerm: '',
         'onOn-click-notifications': fn(),
     },
-} satisfies Meta<typeof LNavigationBar>
+} satisfies Meta<typeof LNavbar>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -114,12 +114,12 @@ export const WithRightSlot: Story = {
         ...Default.args,
     },
     render: (args) => ({
-        components: { LNavigationBar, UButton },
+        components: { LNavbar, UButton },
         setup() {
             return { args }
         },
         template: `
-            <LNavigationBar v-bind="args">
+            <LNavbar v-bind="args">
                 <template #right>
                     <div class="flex items-center gap-4">
                         <UButton color="accent" variant="outline" size="sm">
@@ -127,7 +127,7 @@ export const WithRightSlot: Story = {
                         </UButton>
                     </div>
                 </template>
-            </LNavigationBar>
+            </LNavbar>
             `,
     }),
 }

@@ -177,7 +177,7 @@ const searchTerm = ref('')
         </template>
 
         <template #header>
-            <LNavigationBar
+            <LNavbar
                 v-model:search-term="searchTerm"
                 :links="links"
                 :menu-items="menuItems"

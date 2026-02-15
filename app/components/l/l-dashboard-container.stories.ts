@@ -4,7 +4,7 @@ import type { NavbarLinks } from '#layers/design-system/app/types'
 
 import LDashboardContainer, { type Unit } from './l-dashboard-container.vue'
 import LSidebar from './l-sidebar.vue'
-import LNavigationBar from './l-navigation-bar.vue'
+import LNavbar from './l-navbar.vue'
 
 /**
  * High-level layout container for building dashboards.
@@ -81,14 +81,14 @@ const linksBody = [
 
 export const Default: Story = {
     render: (args) => ({
-        components: { LDashboardContainer, LNavigationBar, LSidebar },
+        components: { LDashboardContainer, LNavbar, LSidebar },
         setup() {
             return { args, mockLinks, mockMenuItems, linksBody }
         },
         template: `
                 <LDashboardContainer v-bind="args">
                     <template #header>
-                        <LNavigationBar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" />
+                        <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" />
                     </template>
                     <template #sidebar>
                         <LSidebar :links-body="linksBody" logo-default-src="https://placehold.co/100x100" />
@@ -105,16 +105,16 @@ export const Default: Story = {
     }),
 }
 
-export const JustNavigationBar: Story = {
+export const JustNavbar: Story = {
     render: (args) => ({
-        components: { LDashboardContainer, LNavigationBar, LSidebar },
+        components: { LDashboardContainer, LNavbar, LSidebar },
         setup() {
             return { args, mockMenuItems }
         },
         template: `
                 <LDashboardContainer v-bind="args">
                     <template #header>
-                        <LNavigationBar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" />
+                        <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" />
                     </template>
                     <template #body>
                         <div class="p-6 h-full bg-gray-50 dark:bg-gray-950">
@@ -130,7 +130,7 @@ export const JustNavigationBar: Story = {
 
 export const JustSidebar: Story = {
     render: (args) => ({
-        components: { LDashboardContainer, LNavigationBar, LSidebar },
+        components: { LDashboardContainer, LNavbar, LSidebar },
         setup() {
             return { args, linksBody }
         },
