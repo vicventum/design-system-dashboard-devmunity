@@ -9,7 +9,7 @@ interface Props {
     links?: NavbarLinks
     menuUserName?: string
     menuUserEmail?: string
-    menuUserAvatar?: string
+    menuUserAvatarSrc?: string
     menuUserTo?: string
     menuItems?: DropdownMenuItem[][]
     hasSearch?: boolean
@@ -114,7 +114,7 @@ const emit = defineEmits<{
                     :user-to="menuUserTo"
                 >
                     <span>
-                        <AButtonAvatarDropdown :src="menuUserAvatar" />
+                        <AButtonAvatarDropdown :src="menuUserAvatarSrc" />
                     </span>
                 </ADropdownAvatar>
             </template>

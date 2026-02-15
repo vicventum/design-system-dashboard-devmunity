@@ -80,7 +80,7 @@ export const Default: Story = {
         links: mockLinks,
         menuUserName: 'John Doe',
         menuUserEmail: 'john.doe@example.com',
-        menuUserAvatar: 'https://github.com/vicventum.png',
+        menuUserAvatarSrc: 'https://github.com/vicventum.png',
         menuItems: mockMenuItems,
         hasSearch: true,
         hasNotification: false,
