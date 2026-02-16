@@ -3,16 +3,49 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 import type { NavbarLinks } from '~/types'
 
 interface Props {
+    /**
+     * Placeholder text for the search input
+     */
     searchPlaceholder?: string
+    /**
+     * Keyboard shortcut to focus the search input
+     */
     searchShortcut?: string
+    /**
+     * Items to display in the search dropdown
+     */
     searchItems?: DropdownMenuItem[]
+    /**
+     * Navigation links to display in the navbar
+     */
     links?: NavbarLinks
+    /**
+     * User name to display in the avatar dropdown
+     */
     menuUserName?: string
+    /**
+     * User email to display in the avatar dropdown
+     */
     menuUserEmail?: string
+    /**
+     * User avatar source URL
+     */
     menuUserAvatarSrc?: string
+    /**
+     * User profile link
+     */
     menuUserTo?: string
+    /**
+     * Menu items to display in the avatar dropdown
+     */
     menuItems?: DropdownMenuItem[][]
+    /**
+     * Whether to show the search input
+     */
     hasSearch?: boolean
+    /**
+     * Whether to show the notification dot
+     */
     hasNotification?: boolean
 }
 
@@ -31,6 +64,7 @@ const searchTerm = defineModel<string>('searchTerm', {
     default: '',
     required: true,
 })
+
 // const isOpen = defineModel<boolean>('searchOpen', {
 //     default: false,
 //     required: true,
@@ -45,7 +79,17 @@ defineShortcuts({
 })
 
 const emit = defineEmits<{
+    /**
+     * Emitted when the notification button is clicked
+     */
     (e: 'on-click-notifications'): void
+}>()
+
+defineSlots<{
+    /**
+     * Slot for custom content to be displayed in the right side of the navbar
+     */
+    right?: any
 }>()
 </script>
 

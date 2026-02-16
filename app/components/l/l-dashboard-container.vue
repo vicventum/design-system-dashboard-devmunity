@@ -1,20 +1,39 @@
 <script lang="ts" setup>
-import type { UDashboardGroup } from '#components'
+import type { DashboardGroupProps } from '@nuxt/ui/components/DashboardGroup.vue'
 
-export type Unit = InstanceType<typeof UDashboardGroup>['$props']['unit']
-interface Props {
-    unit?: Unit
+export type Props = DashboardGroupProps & {
     id?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    unit: 'rem',
     id: 'home',
+    as: 'div',
+    unit: 'rem',
+    storage: 'cookie',
+    storageKey: 'dashboard',
+    persistent: true,
 })
+
+const { id, ...groupProps } = props
+
+defineSlots<{
+    /**
+     * Content for the sidebar area, typically used for navigation or group lists.
+     */
+    sidebar: void
+    /**
+     * Content for the header section of the main dashboard panel.
+     */
+    header: void
+    /**
+     * Main content area of the dashboard panel.
+     */
+    body: void
+}>()
 </script>
 
 <template>
-    <UDashboardGroup :unit="props.unit">
+    <UDashboardGroup v-bind="groupProps">
         <slot name="sidebar" />
 
         <UDashboardPanel :id="props.id">

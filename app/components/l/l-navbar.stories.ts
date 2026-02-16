@@ -18,33 +18,21 @@ const meta = {
         docs: {
             description: {
                 component:
-                    'Main navigation bar for the application. Includes a search input, navigation links, notification toggle, and a user profile dropdown.',
+                    'Main navigation bar for the application. Includes a search input, navigation links, notification toggle, and a user profile dropdown. Intended to be used with the [LDashboardContainer](?path=/docs/layouts-ldashboardcontainer--docs) component that wraps it.',
             },
         },
     },
     argTypes: {
-        searchTerm: {
-            control: 'text',
-            description: 'The search term for the search input (v-model).',
-        },
-        links: {
-            control: 'object',
-            description: 'Array of links to display in the navigation menu.',
-        },
-        menuItems: {
-            control: 'object',
-            description: 'Dropdown items for the user menu.',
-        },
-        hasSearch: {
-            control: 'boolean',
-            description: 'Whether to show the search input.',
-        },
-        hasNotification: {
-            control: 'boolean',
-            description: 'Whether to show the notification dot.',
-        },
         'onOn-click-notifications': {
             table: { disable: true },
+        },
+        searchTerm: {
+            control: 'text',
+            name: 'searchTerm',
+            description: 'The search term for the search input (v-model).',
+            table: {
+                category: 'v-model',
+            },
         },
     },
     args: {

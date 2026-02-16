@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { NavbarLinks } from '#layers/design-system/app/types'
 
-import LDashboardContainer, { type Unit } from './l-dashboard-container.vue'
+import LDashboardContainer, { type Props } from './l-dashboard-container.vue'
 import LSidebar from './l-sidebar.vue'
 import LNavbar from './l-navbar.vue'
 
@@ -33,14 +33,49 @@ const meta = {
         },
     },
     argTypes: {
-        unit: {
-            control: 'select',
-            options: ['rem', 'px', '%'] satisfies Unit[],
-            description: 'The unit used for sizing sub-components.',
-        },
         id: {
             control: 'text',
             description: 'ID for the main dashboard panel.',
+            table: {
+                category: 'props',
+            },
+        },
+        unit: {
+            control: 'select',
+            options: ['rem', 'px', '%'] satisfies Props['unit'][],
+            description: 'The unit used for sizing sub-components.',
+            table: {
+                category: 'props',
+            },
+        },
+        as: {
+            control: 'text',
+            description: 'The HTML tag to use for the dashboard group.',
+            table: {
+                category: 'props',
+            },
+        },
+        storage: {
+            control: 'select',
+            options: ['cookie', 'local'] satisfies Props['storage'][],
+            description: 'The storage type to use for the dashboard group.',
+            table: {
+                category: 'props',
+            },
+        },
+        storageKey: {
+            control: 'text',
+            description: 'The storage key to use for the dashboard group.',
+            table: {
+                category: 'props',
+            },
+        },
+        persistent: {
+            control: 'boolean',
+            description: 'Whether the dashboard group should be persistent.',
+            table: {
+                category: 'props',
+            },
         },
     },
     args: {
@@ -88,7 +123,7 @@ export const Default: Story = {
         template: `
                 <LDashboardContainer v-bind="args">
                     <template #header>
-                        <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" />
+                        <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" :defaultSize="17" />
                     </template>
                     <template #sidebar>
                         <LSidebar :links-body="linksBody" logo-default-src="https://placehold.co/100x100" />
@@ -114,7 +149,7 @@ export const JustNavbar: Story = {
         template: `
                 <LDashboardContainer v-bind="args">
                     <template #header>
-                        <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" />
+                        <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" :defaultSize="17" />
                     </template>
                     <template #body>
                         <div class="p-6 h-full bg-gray-50 dark:bg-gray-950">

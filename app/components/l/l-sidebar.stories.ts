@@ -12,6 +12,15 @@ import LDashboardContainer from './l-dashboard-container.vue'
 const meta = {
     title: 'Layouts/LSidebar',
     component: LSidebar,
+    parameters: {
+        layout: 'fullscreen',
+        docs: {
+            description: {
+                component:
+                    'Main sidebar component for the dashboard layout. Supports collapsible and resizable states, logo integration, and multiple navigation sections. It must be wrapped by the [LDashboardContainer](?path=/docs/layouts-ldashboardcontainer--docs) component to function correctly.',
+            },
+        },
+    },
     decorators: [
         () => ({
             components: { LDashboardContainer },
@@ -31,43 +40,13 @@ const meta = {
             `,
         }),
     ],
-    parameters: {
-        layout: 'fullscreen',
-        docs: {
-            description: {
-                component:
-                    'Main sidebar component for the dashboard layout. Supports collapsible and resizable states, logo integration, and multiple navigation sections.',
-            },
-        },
-    },
     argTypes: {
         isOpen: {
             control: 'boolean',
             description: 'The open state of the sidebar (v-model:isOpen).',
-        },
-        logoDefaultSrc: {
-            control: 'text',
-            description: 'URL of the logo to show when expanded.',
-        },
-        logoMiniSrc: {
-            control: 'text',
-            description: 'URL of the logo to show when collapsed.',
-        },
-        logoLink: {
-            control: 'text',
-            description: 'URL to navigate to when clicking the logo.',
-        },
-        linksBody: {
-            control: 'object',
-            description: 'Main navigation links displayed in the upper body.',
-        },
-        linksBodyBottom: {
-            control: 'object',
-            description: 'Navigation links displayed at the bottom of the body (above footer).',
-        },
-        linksFooter: {
-            control: 'object',
-            description: 'Navigation links displayed in the footer.',
+            table: {
+                category: 'v-model',
+            },
         },
     },
     args: {
@@ -78,9 +57,7 @@ const meta = {
         linksBody: [],
         linksBodyBottom: [],
         linksFooter: [],
-        defaultSize: 25,
-        minSize: 10,
-        maxSize: 40,
+        defaultSize: 17,
     },
 } satisfies Meta<typeof LSidebar>
 

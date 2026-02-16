@@ -2,14 +2,41 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 
 interface Props {
+    /**
+     * Logo source URL when the sidebar is not collapsed
+     */
     logoDefaultSrc?: string
+    /**
+     * Logo source URL when the sidebar is collapsed
+     */
     logoMiniSrc?: string
+    /**
+     * Logo link URL
+     */
     logoLink?: string
+    /**
+     * Navigation links to display in the body of the sidebar
+     */
     linksBody?: NavigationMenuItem[][]
+    /**
+     * Navigation links to display in the bottom of the sidebar
+     */
     linksBodyBottom?: NavigationMenuItem[][]
+    /**
+     * Navigation links to display in the footer of the sidebar
+     */
     linksFooter?: NavigationMenuItem[][]
+    /**
+     * Default size of the sidebar
+     */
     defaultSize?: number
+    /**
+     * Minimum size of the sidebar
+     */
     minSize?: number
+    /**
+     * Maximum size of the sidebar
+     */
     maxSize?: number
 }
 
@@ -30,6 +57,21 @@ function getLogo(collapsed?: boolean): string {
     if (!props.logoMiniSrc) return props.logoDefaultSrc
     return collapsed ? props.logoMiniSrc : props.logoDefaultSrc
 }
+
+defineSlots<{
+    /**
+     * Slot for custom content to be displayed in the header of the sidebar
+     */
+    header?: (props: { collapsed?: boolean }) => any
+    /**
+     * Slot for custom content to be displayed in the body of the sidebar
+     */
+    body?: (props: { collapsed?: boolean }) => any
+    /**
+     * Slot for custom content to be displayed in the footer of the sidebar
+     */
+    footer?: (props: { collapsed?: boolean }) => any
+}>()
 </script>
 
 <template>
