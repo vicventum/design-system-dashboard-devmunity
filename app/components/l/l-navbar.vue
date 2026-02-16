@@ -151,7 +151,7 @@ defineSlots<{
                         </UChip>
                     </UButton>
                 </UTooltip>
-                <ADropdownAvatar
+                <BDropdownAvatar
                     :items="menuItems"
                     :user-name="menuUserName"
                     :user-email="menuUserEmail"
@@ -160,7 +160,7 @@ defineSlots<{
                     <span>
                         <AButtonAvatarDropdown :src="menuUserAvatarSrc" />
                     </span>
-                </ADropdownAvatar>
+                </BDropdownAvatar>
             </template>
         </template>
     </UDashboardNavbar>

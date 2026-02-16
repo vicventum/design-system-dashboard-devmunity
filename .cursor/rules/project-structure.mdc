@@ -77,7 +77,7 @@ app/
 │   │   ├── card/
 │   │   │   └── a-card-inner.vue
 │   │   ├── dropdown/
-│   │   │   └── a-dropdown-avatar.vue
+│   │   │   └── b-dropdown-avatar.vue
 │   │   └── pill/
 │   │       └── a-pill.vue
 │   │

@@ -1,30 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import type { DropdownMenuItem } from '@nuxt/ui'
-import ADropdownAvatar from './a-dropdown-avatar.vue'
+import BDropdownAvatar from './b-dropdown-avatar.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
 import AButtonAvatarDropdown from '#layers/design-system/app/components/a/button/a-button-avatar-dropdown.vue'
 
 const meta = {
-    title: 'Atoms/Dropdown/ADropdownAvatar',
-    component: ADropdownAvatar,
+    title: 'Bases/Dropdown/BDropdownAvatar',
+    component: BDropdownAvatar,
     parameters: {
         docs: {
             description: {
                 component:
-                    'A specialized dropdown menu for displaying user information. Typically used in conjunction with the [AButtonAvatarDropdown](?path=/docs/atoms-button-abuttonavatardropdown--docs) component.',
+                    'A specialized dropdown menu for displaying user information. Typically used in conjunction with the [AButtonAvatarDropdown](?path=/docs/bases-button-abuttonavatardropdown--docs) component.',
             },
         },
     },
     render: (args) => ({
-        components: { ADropdownAvatar, UButton, UAvatar, AButtonAvatarDropdown },
+        components: { BDropdownAvatar, UButton, UAvatar, AButtonAvatarDropdown },
         setup() {
             return { args }
         },
         template: `
-        <ADropdownAvatar v-bind="args">
+        <BDropdownAvatar v-bind="args">
             <UButton icon="i-lucide-menu" color="neutral" variant="outline" />
-        </ADropdownAvatar>
+        </BDropdownAvatar>
     `,
     }),
     argTypes: {
@@ -41,7 +41,7 @@ const meta = {
             control: 'object',
         },
     },
-} satisfies Meta<typeof ADropdownAvatar>
+} satisfies Meta<typeof BDropdownAvatar>
 
 export default meta
 
@@ -63,12 +63,12 @@ export const Default: Story = {
 export const WithAButtonAvatarDropdownComponent: Story = {
     name: 'With AButtonAvatarDropdown Component',
     render: (args) => ({
-        components: { ADropdownAvatar, AButtonAvatarDropdown },
+        components: { BDropdownAvatar, AButtonAvatarDropdown },
         setup() {
             return { args }
         },
         template: `
-        <ADropdownAvatar v-bind="args">
+        <BDropdownAvatar v-bind="args">
             <span>
                 <AButtonAvatarDropdown
                     label="Custom Trigger"
@@ -77,7 +77,7 @@ export const WithAButtonAvatarDropdownComponent: Story = {
                     src="https://avatars.githubusercontent.com/u/739984?v=4"
                 />
             </span>
-        </ADropdownAvatar>
+        </BDropdownAvatar>
     `,
     }),
     args: {
@@ -116,14 +116,14 @@ export const WithNavigation: Story = {
 
 export const CustomTrigger: Story = {
     render: (args) => ({
-        components: { ADropdownAvatar, UButton },
+        components: { BDropdownAvatar, UButton },
         setup() {
             return { args }
         },
         template: `
-        <ADropdownAvatar v-bind="args">
+        <BDropdownAvatar v-bind="args">
             <UButton label="Custom Trigger" color="primary" trailing-icon="i-heroicons-chevron-down" />
-        </ADropdownAvatar>
+        </BDropdownAvatar>
     `,
     }),
     args: {
@@ -134,12 +134,12 @@ export const CustomTrigger: Story = {
 
 export const CustomUserSlot: Story = {
     render: (args) => ({
-        components: { ADropdownAvatar, UAvatar },
+        components: { BDropdownAvatar, UAvatar },
         setup() {
             return { args }
         },
         template: `
-        <ADropdownAvatar v-bind="args">
+        <BDropdownAvatar v-bind="args">
             <UAvatar src="https://avatars.githubusercontent.com/u/739984?v=4" alt="Avatar" size="sm" />
             <template #user="{ item }">
             <div class="flex items-center gap-2 p-1">
@@ -150,7 +150,7 @@ export const CustomUserSlot: Story = {
                 </div>
             </div>
             </template>
-        </ADropdownAvatar>
+        </BDropdownAvatar>
     `,
     }),
     args: {

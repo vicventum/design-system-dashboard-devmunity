@@ -45,7 +45,7 @@ defineSlots<{
 // Validate that the default slot is provided
 const slots = useSlots()
 if (!slots.default) {
-    console.warn('ADropdownAvatar: The default slot is required')
+    console.warn('BDropdownAvatar: The default slot is required')
 }
 
 const uiStyles = computed(() => {
