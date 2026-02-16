@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.6...v1.1.0) (2026-02-16)
+
+
+### Features
+
+* **components:** :sparkles: Agrega componente de layout `NavigationBar` ([092795a](https://github.com/vicventum/design-system-dashboard-devmunity/commit/092795afc6f483689622c1f3d6aacb326d577ed4))
+* **components:** :sparkles: Crea componentes de layout ([ea95c2d](https://github.com/vicventum/design-system-dashboard-devmunity/commit/ea95c2dfe0254c3101c155cdf5a03a2fe8cc8f51))
+
 ## [1.0.6](https://github.com/vicventum/design-system-dashboard-devmunity/compare/v1.0.5...v1.0.6) (2026-02-07)
 
 
