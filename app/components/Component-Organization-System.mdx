@@ -42,6 +42,12 @@ These are complex and autonomous structures composed of the union of _Atoms_, _B
 
 - **Example:** They can be larger reusable sections similar to _Organisms_ composed of several components, such as `DCardHeader`, or something more contained like _Molecules_ but that won't require variants as they are more specific, and therefore can have already subscribed logic, for example `DUploadAvatar`
 
+## L - Layouts
+
+Additionally, there are layout components, designed to be used within Nuxt Layouts. They represent complete layout structures, making them the largest and most specific components in the system. Unlike other categories, these components define the overall page scaffolding and structural arrangement rather than individual UI elements or sections.
+
+- **Example:** `LNavbar` for the application's navigation bar, `LSidebar` for the application's sidebar, and `LDashboardContainer` for the container that wraps both sections along with the body where the main content will be.
+
 ---
 
 ## Nomenclature and Structure Convention
@@ -61,11 +67,13 @@ app/
     │   └── c-modal-danger.vue
     └── d/           # Designs
         └── d-card-header.vue
+    └── l/           # Layouts
+        └── l-navbar.vue
 ```
 
 ## Benefits of this approach:
 
-- **Self-descriptive:** The prefix (`A-`, `B-`, `C-`, `D-`) immediately indicates the complexity level and purpose of the component.
+- **Self-descriptive:** The prefix (`A-`, `B-`, `C-`, `D-`, `L-`) immediately indicates the complexity level and purpose of the component.
 - **Scalability**: Facilitates the organization of new components within the existing structure based on the hierarchy
 - **Traceability**: The component path immediately indicates its category and purpose
 - **No Collisions:** Avoids conflicts with native Nuxt UI components (prefixed with `U-`).
