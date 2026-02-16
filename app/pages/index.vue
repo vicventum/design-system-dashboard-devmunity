@@ -190,11 +190,15 @@ const searchTerm = ref('')
         <template #body>
             <BCard>
                 <template #header>
-                    <DCardHeader title="Holi" />
+                    <DCardHeader title="Main Content Body Area" />
                 </template>
-                <template #body>
-                    <p class="text-gray-600">Card Content</p>
-                </template>
+                <ACardInner>
+                    <p class="text-gray-600">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto dicta cupiditate
+                        suscipit veniam minus pariatur totam, impedit porro similique at, vero iusto quaerat,
+                        ipsam ad aliquid id nulla iure voluptates.
+                    </p>
+                </ACardInner>
             </BCard>
         </template>
     </LDashboardContainer>

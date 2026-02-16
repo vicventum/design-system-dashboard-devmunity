@@ -90,7 +90,6 @@ type Story = StoryObj<typeof meta>
 const mockLinks = [
     { label: 'Home', icon: 'i-lucide-home', to: '/' },
     { label: 'Projects', icon: 'i-lucide-folder', to: '/projects' },
-    { label: 'Team', icon: 'i-lucide-users', to: '/team' },
     { label: 'Settings', icon: 'i-lucide-settings', to: '/settings' },
 ] satisfies NavbarLinks
 
@@ -108,7 +107,7 @@ const mockMenuItems = [
 
 const linksBody = [
     [
-        { label: 'Home', icon: 'i-lucide-home', to: '/' },
+        { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/' },
         { label: 'Analytics', icon: 'i-lucide-bar-chart-3', to: '/analytics' },
         { label: 'Users', icon: 'i-lucide-users', to: '/users' },
     ],
@@ -129,8 +128,8 @@ export const Default: Story = {
                         <LSidebar :links-body="linksBody" logo-default-src="https://placehold.co/100x100" />
                     </template>
                     <template #body>
-                        <div class="p-6 h-full bg-gray-50 dark:bg-gray-950">
-                            <div class="p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm h-64 flex items-center justify-center">
+                        <div class="h-full bg-gray-50 dark:bg-gray-950">
+                            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm h-64 flex items-center justify-center">
                                 <span class="text-subtle italic">Main Content Body Area</span>
                             </div>
                         </div>
@@ -152,8 +151,8 @@ export const JustNavbar: Story = {
                         <LNavbar :links="mockLinks" :menu-items="mockMenuItems" menuUserAvatarSrc="https://placehold.co/50x50" :defaultSize="17" />
                     </template>
                     <template #body>
-                        <div class="p-6 h-full bg-gray-50 dark:bg-gray-950">
-                            <div class="p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm h-64 flex items-center justify-center">
+                        <div class="h-full bg-gray-50 dark:bg-gray-950">
+                            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm h-64 flex items-center justify-center">
                                 <span class="text-subtle italic">Main Content Body Area</span>
                             </div>
                         </div>
@@ -175,8 +174,8 @@ export const JustSidebar: Story = {
                         <LSidebar :links-body="linksBody" logo-default-src="https://placehold.co/100x100" />
                     </template>
                     <template #body>
-                        <div class="p-6 h-full bg-gray-50 dark:bg-gray-950">
-                            <div class="p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm h-64 flex items-center justify-center">
+                        <div class="h-full bg-gray-50 dark:bg-gray-950">
+                            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm h-64 flex items-center justify-center">
                                 <span class="text-subtle italic">Main Content Body Area</span>
                             </div>
                         </div>
